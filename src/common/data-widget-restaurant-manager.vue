@@ -7,7 +7,7 @@
                         <bar-chart :data="chartData" :hideAxis="true" :isDashboard="true"></bar-chart>
                     </div>
                     <div class="widget-content">
-                        <v-card-title primary class="title" >
+                        <v-card-title primary class="title">
                             <v-menu bottom origin="center center" transition="scale-transition">
                                 <div slot="activator" class="cursor-pointer"><v-icon>fa-cog</v-icon></div>
                                 <v-list>
@@ -24,6 +24,10 @@
                         </v-card-title>
                         <v-card-text class="d-block text-center">
                             <span class="display-2">30</span><span class="display-1"> {{computed_measurement}}</span>
+                        </v-card-text>
+                        <v-card-title primary class="d-block title text-center mt-0">В среднем по сети: </v-card-title>
+                        <v-card-text class="d-block text-center">
+                            <span class="display-2">125</span><span class="display-1"> {{computed_measurement}}</span>
                         </v-card-text>
                     </div>
                 </v-card>
