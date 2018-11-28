@@ -24,10 +24,10 @@
                             <span class="text-capitalize" v-else>{{title}}</span>
                         </v-card-title>
                         <v-card-text v-if="average_method == 'arithmetic_average'" class="d-block text-center">
-                            <span class="display-2">20</span> <span class="display-1">кВтЧ/с</span>
+                            <span class="display-2">20</span> <span class="display-1">{{measurement}}</span>
                         </v-card-text>
                         <v-card-text v-if="average_method == 'median'" class="d-block text-center">
-                            <span class="display-2">30</span> <span class="display-1">кВтЧ/с</span>
+                            <span class="display-2">30</span> <span class="display-1">{{measurement}}</span>
                         </v-card-text>
                     </div>
                 </v-card>
