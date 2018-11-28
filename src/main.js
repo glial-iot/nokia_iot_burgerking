@@ -46,7 +46,8 @@ Vue.use(Vuex, VueAxios, Axios, Vue_i18n);
 
 const store = new Vuex.Store({
     state: {
-        locale: "ru"
+        locale: "ru",
+        influxdb_server: "http://192.168.1.45:8086",
     },
     mutations: {
         updateLocale(state, locale) {
@@ -56,6 +57,9 @@ const store = new Vuex.Store({
     getters: {
         getLocale: state => {
             return state.locale;
+        },
+        getInfluxServerAddress: state => {
+            return state.influxdb_server;
         }
     },
     actions: {

@@ -36,22 +36,22 @@
          <v-flex d-flex md5>
             <v-layout row wrap>
                <v-flex d-flex md3>
-                  <data-widget-text :averaged="true" :chartData="sampleChartData"
+                  <data-widget-text :averaged="true" :chartData="sampleChartData" parameter="RH" sensor="ambience/AM-1/"
                                     :title="$t('message.network_consumption_per_m2')"
                                     :measurement="$t('message.kWh_per_meter')"></data-widget-text>
                </v-flex>
                <v-flex d-flex md3>
-                  <data-widget-text :averaged="true" :chartData="sampleChartData"
+                  <data-widget-text :averaged="true" :chartData="sampleChartData" parameter="DP" sensor="ambience/AM-1/"
                                     :title="$t('message.network_consumption_per_client')"
                                     :measurement="$t('message.kWh_per_client')"></data-widget-text>
                </v-flex>
                <v-flex d-flex md3>
-                  <data-widget-text :averaged="true" :chartData="sampleChartData"
+                  <data-widget-text :averaged="true" :chartData="sampleChartData" parameter="WVP" sensor="ambience/AM-1/"
                                     :title="$t('message.network_consumption_per_month')"
                                     :measurement="$t('message.kilowatt_per_hour')"></data-widget-text>
                </v-flex>
                <v-flex d-flex md3>
-                  <data-widget-text :averaged="false" :chartData="sampleChartData"
+                  <data-widget-text :averaged="false" :chartData="sampleChartData" parameter="WBT" sensor="ambience/AM-1/"
                                     :title="$t('message.minimal_network_consumption_per_client')"
                                     :measurement="$t('message.kWh_per_client')"></data-widget-text>
                </v-flex>
@@ -109,7 +109,7 @@
                 { title: "Период 3", value: 4 },
                 { title: "Период 4", value: 3 },
                 { title: "Период 5", value: 2}
-            ]
+            ],
         }),
         methods: {
             table_click(item) {

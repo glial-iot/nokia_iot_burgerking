@@ -4,7 +4,7 @@
             <v-flex d-flex md12>
                 <v-card color="green lighten-3">
                     <div class="chart-background" style="z-index:0">
-                        <bar-chart :data="chartData" :hideAxis="true" :isDashboard="true"></bar-chart>
+                        <bar-chart :data="small_chart_data" :hideAxis="true" :isDashboard="true"></bar-chart>
                     </div>
                     <div class="widget-content">
                         <v-card-title primary class="title" >
@@ -21,26 +21,28 @@
                         </v-card-title>
                         <v-card-title primary class="d-block title text-center mt-0">
                             <span v-if="averaged === true">{{concat_title}}</span>
-                            <span class="text-capitalize" v-else>{{title}}</span>
+                            <span v-else>{{title}}</span>
                         </v-card-title>
                         <v-card-text v-if="average_method == 'arithmetic_average'" class="d-block text-center">
-                            <span class="display-2">20</span> <span class="display-1">{{measurement}}</span>
+                            <span class="display-2">{{current_value}}</span> <span class="display-1">{{measurement}}</span>
                         </v-card-text>
                         <v-card-text v-if="average_method == 'median'" class="d-block text-center">
-                            <span class="display-2">30</span> <span class="display-1">{{measurement}}</span>
+                            <span class="display-2">{{current_value}}</span> <span class="display-1">{{measurement}}</span>
                         </v-card-text>
                     </div>
                 </v-card>
             </v-flex>
         </v-layout>
-        <data-widget-chart-modal ref="chartModal"></data-widget-chart-modal>
+        <data-widget-chart-modal ref="chartModal" :chart_data="full_chart_data"></data-widget-chart-modal>
     </div>
 </template>
 
 <script>
     import Vue from "vue";
     import Vue_i18n from 'vue-i18n';
-    Vue.use(Vue_i18n);
+    import Axios from "axios";
+    import VueAxios from "vue-axios";
+    Vue.use(Vue_i18n, VueAxios, Axios);
 
     import BarChart from "./charts/BarChart"
     import DataWidgetChartModal from "./data-widget-chart-modal"
@@ -51,19 +53,134 @@
             DataWidgetChartModal
         },
         name: "data-widget-text",
-        props: ["type", "title", "value", "measurement", "avg_net_value", "chartData", "averaged"],
+        props: ["type", "parameter", "title", "sensor", "value", "measurement", "avg_net_value", "chartData", "averaged"],
         data: () => ({
             value_type: "average",
             average_method: "arithmetic_average",
+            small_chart_data: [],
+            full_chart_data: [],
+            current_value: ""
         }),
         methods: {
             showChart() {
-                let chart_title = this.$props.averaged ? this.concat_title() : this.title;
+                let chart_title = this.$props.averaged ? this.concat_title : this.title;
                 this.$refs.chartModal.show(this.title, this.chartData);
             },
             setAvgOption(option) {
                 this.average_method = option;
-                console.log(this.average_method)
+            },
+            getFullChartData() {
+                let data_series = [];
+                let sensor = this.sensor;
+                let parameter = this.parameter; //parameter we need for this chart
+                let fill = "none"; //fill the gap between "now" and last data received
+                let time_interval = "time > now() - 24h";
+                let group_by = "1h"; // group by 1 hour
+                let query_parameter = parameter;
+                if (this.average_method === "arithmetic_average"){
+                    query_parameter = "mean(\""+parameter+"\") as \"Mean_"+parameter+"\"";
+                }
+                if (this.average_method === "median"){
+                    query_parameter = "median(\""+parameter+"\")";
+                }
+                let sql_query_part = "SELECT "+query_parameter+" FROM \"bk\".\"autogen\".\"/burgerking/"+sensor+"\" WHERE "+time_interval+" GROUP BY time("+group_by+") FILL("+fill+")";
+                Vue.axios
+                    .get(this.$store.getters.getInfluxServerAddress + "/query", {
+                        params: {
+                            epoch: "ms",
+                            q: sql_query_part
+                        }
+                    })
+                    .then(response => {
+                        if (response.data.results[0].series) {
+                            response.data.results[0].series[0].values.map((value) => {
+                                data_series.push(
+                                    {
+                                        date: new Date(value[0]),
+                                        name: this.parameter,
+                                        value: value[1]
+                                    }
+                                )
+                            })
+                        }
+                        this.full_chart_data = data_series;
+                    })
+                    .catch(error => {console.log(error)});
+
+            },
+            getSmallChartData() {
+                let data_series = [];
+                let sensor = this.sensor;
+                let parameter = this.parameter; //parameter we need for this chart
+                let fill = "none"; //fill the gap between "now" and last data received
+                let limit = 5; // only 5 values
+                let time_interval = "time > now() - "+limit+"d"; //last 5 days
+                let group_by = "1d"; // group by 1 day
+                let query_parameter = parameter;
+                if (this.average_method === "arithmetic_average"){
+                    query_parameter = "mean(\""+parameter+"\") as \"Mean_"+parameter+"\"";
+                }
+                if (this.average_method === "median"){
+                    query_parameter = "median(\""+parameter+"\")";
+                }
+                let sql_query_part = "SELECT "+query_parameter+" FROM \"bk\".\"autogen\".\"/burgerking/"+sensor+"\" WHERE "+time_interval+" GROUP BY time("+group_by+") FILL("+fill+") LIMIT "+limit;
+                Vue.axios
+                    .get(this.$store.getters.getInfluxServerAddress + "/query", {
+                        params: {
+                            epoch: "ms",
+                            q: sql_query_part
+                        }
+                    })
+                    .then(response => {
+                        if (response.data.results[0].series) {
+                            response.data.results[0].series[0].values.map((value) => {
+                                data_series.push(
+                                    {
+                                        title: new Date(value[0]),
+                                        value: value[1]
+                                    }
+                                )
+                            })
+                        }
+                        this.small_chart_data = data_series;
+                    })
+                    .catch(error => {console.log(error)});
+            },
+            getLatestValue() {
+                let value = "";
+                let sensor = this.sensor;
+                let parameter = this.parameter; //parameter we need for this chart
+                let fill = "none"; //fill the gap between "now" and last data received
+                let limit = 1; // only 1 value
+                let time_interval = "time > now() - 5h AND time < now() - 3h"; //last 5 days
+                let group_by = "2h"; // group by 2 hours
+                let query_parameter = parameter;
+                if (this.average_method === "arithmetic_average"){
+                    query_parameter = "mean(\""+parameter+"\") as \"Mean_"+parameter+"\"";
+                }
+                if (this.average_method === "median"){
+                    query_parameter = "median(\""+parameter+"\")";
+                }
+                let sql_query_part = "SELECT "+query_parameter+" FROM \"bk\".\"autogen\".\"/burgerking/"+sensor+"\" WHERE "+time_interval+" GROUP BY time("+group_by+") FILL("+fill+") LIMIT "+limit;
+                Vue.axios
+                    .get(this.$store.getters.getInfluxServerAddress + "/query", {
+                        params: {
+                            epoch: "ms",
+                            q: sql_query_part
+                        }
+                    })
+                    .then(response => {
+                        if (response.data.results[0].series) {
+                            value = Math.round(response.data.results[0].series[0].values[0][1]).toString();
+                            this.current_value = value;
+                        }
+                    })
+                    .catch(error => {console.log(error)});
+            },
+            refreshData() {
+                this.getLatestValue();
+                this.getSmallChartData();
+                this.getFullChartData();
             }
         },
         computed: {
@@ -76,6 +193,13 @@
             concat_title() {
                 return this.average_method_options[this.average_method]+" "+this.title;
             }
+
+        },
+        mounted: function () {
+            this.refreshData();
+        },
+        watch: {
+            average_method: 'refreshData'
         }
     }
 </script>

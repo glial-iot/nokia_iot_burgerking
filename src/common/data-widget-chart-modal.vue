@@ -3,7 +3,7 @@
         <v-dialog v-model="visible" max-width="800px" overlay-hide style="z-index: 1">
             <v-card>
                 <v-card-title>
-                    <div class="title text-xs-center">{{title}}</div>
+                    <div class="title text-xs-center">{{title | capitalize}}</div>
                 </v-card-title>
                 <v-divider></v-divider>
                 <v-card-text>
@@ -26,13 +26,15 @@
         data: () => ({
             visible: false,
             title: "",
-            chartData: []
+            chart: false
         }),
+        props: ["chart_data"],
         methods: {
             show (title, data) {
                 this.visible = true;
                 this.title = title;
-                this.chartData = data
+                this.chartData = data;
+                this.drawChart();
             },
             drawChart() {
 
@@ -40,13 +42,7 @@
 
                 chart.paddingRight = 20;
 
-                let data = [];
-                let visits = 10;
-                for (let i = 1; i < 366; i++) {
-                    visits += Math.round((Math.random() < 0.5 ? 1 : -1) * Math.random() * 10);
-                    data.push({ date: new Date(2018, 0, i), name: "name" + i, value: visits });
-                }
-                chart.data = data;
+                chart.data = this.chart_data;
 
                 let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
                 dateAxis.renderer.grid.template.location = 0;
@@ -70,14 +66,22 @@
 
             }
         },
-        mounted: function (){
-            this.drawChart();
-        },
-
         beforeDestroy() {
-            if (this.chart) {
-                this.chart.dispose();
+            this.chart && this.chart.dispose()
+        },
+        filters: {
+            capitalize (value) {
+                if (!value) return ''
+                value = value.toString()
+                return value.charAt(0).toUpperCase() + value.slice(1)
             }
+        },
+        watch: {
+            visible: function (newValue) {
+                if (newValue === false) {
+                    this.chart && this.chart.dispose()
+                }
+            },
         }
     }
 </script>
