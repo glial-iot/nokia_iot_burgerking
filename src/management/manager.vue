@@ -4,38 +4,38 @@
          <v-flex d-flex md6>
             <v-flex d-flex md3>
                <data-widget-manager :chartData="sampleChartData" :type="'clients_per_period'"
-                                 :title="'Количество клиентов²'"></data-widget-manager>
+                                 :title="$t('message.qty_of_customers')"></data-widget-manager>
             </v-flex>
             <v-flex d-flex md3>
                <data-widget-manager :chartData="sampleChartData" :type="'consumption_per_period'"
-                                 :title="'Потребление ресторана'"></data-widget-manager>
+                                 :title="$t('message.restaurant_consumption')"></data-widget-manager>
             </v-flex>
             <v-flex d-flex md3>
                <data-widget-manager :chartData="sampleChartData" :type="'consumption_per_client_and_area'"
-                                 :title="'Потребление ресторана'"></data-widget-manager>
+                                 :title="$t('message.restaurant_consumption')"></data-widget-manager>
             </v-flex>
             <v-flex d-flex md3>
                <data-widget-manager :chartData="sampleChartData" :type="'consumption_per_area'"
-                                 :title="'Потребление ресторана в нерабочие часы'"></data-widget-manager>
+                                 :title="$t('message.restaurant_consumption_not_working_hours')"></data-widget-manager>
             </v-flex>
          </v-flex>
          <v-flex d-flex md6>
             <v-layout row wrap>
                <v-flex d-flex md3>
                   <data-widget-manager :chartData="sampleChartData" :type="'specific_consumption_per_area'"
-                                    :title="'Потребление освещением'"></data-widget-manager>
+                                    :title="$t('message.lighting_consumption')"></data-widget-manager>
                </v-flex>
                <v-flex d-flex md3>
                   <data-widget-manager :chartData="sampleChartData" :type="'specific_consumption_per_area'"
-                                    :title="'Потребление кухней'"></data-widget-manager>
+                                    :title="$t('message.kitchen_consumption')"></data-widget-manager>
                </v-flex>
                <v-flex d-flex md3>
                   <data-widget-manager :chartData="sampleChartData" :type="'specific_consumption_per_area'"
-                                    :title="'Потребление подготовкой воздуха'"></data-widget-manager>
+                                    :title="$t('message.air_equipment_consumption')"></data-widget-manager>
                </v-flex>
                <v-flex d-flex md3>
                   <data-widget-manager :chartData="sampleChartData" :type="'specific_consumption_per_area'"
-                                    :title="'Потребление остальным'"></data-widget-manager>
+                                    :title="$t('message.other_equipment_consumption')"></data-widget-manager>
                </v-flex>
             </v-layout>
          </v-flex>

@@ -25,7 +25,7 @@
                         <v-card-text class="d-block text-center">
                             <span class="display-2">30</span><span class="display-1"> {{computed_measurement}}</span>
                         </v-card-text>
-                        <v-card-title primary class="d-block title text-center mt-0">В среднем по сети: </v-card-title>
+                        <v-card-title primary class="d-block title text-center mt-0">{{$t("message.network_average")}}: </v-card-title>
                         <v-card-text class="d-block text-center">
                             <span class="display-2">125</span><span class="display-1"> {{computed_measurement}}</span>
                         </v-card-text>

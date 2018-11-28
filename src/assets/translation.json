@@ -159,7 +159,19 @@
          "kWh_per_meter": "kWh/m²",
          "roubles_per_client": "RUB/cl.",
          "roubles_per_meter": "RUB/m²",
-         "manager_ui": "Manager's interface"
+         "manager_ui": "Manager's interface",
+         "network_consumption_per_m2": "network consumption per m²",
+         "network_consumption_per_client": "network consumption per client",
+         "network_consumption_per_month": "network consumption per month",
+         "minimal_network_consumption_per_client": "Minimal network consumption per client",
+         "network_average": "Network average",
+         "qty_of_customers": "Customers",
+         "restaurant_consumption": "Restaurant consumption",
+         "restaurant_consumption_not_working_hours": "Restaurant consumption (non-working hours)",
+         "lighting_consumption": "Lighting consumption",
+         "kitchen_consumption": "Kitchen consumption",
+         "air_equipment_consumption": "Air equipment consumption",
+         "other_equipment_consumption": "Other equipment consumption"
       }
    },
    "ru": {
@@ -322,7 +334,19 @@
          "kWh_per_meter": "кВт•ч/м²",
          "roubles_per_client": "₽/кл.",
          "roubles_per_meter": "₽/м²",
-         "manager_ui": "Интерфейс менеджера"
+         "manager_ui": "Интерфейс менеджера",
+         "network_consumption_per_m2": "потребление по сети на м²",
+         "network_consumption_per_client": "потребление по сети на клиента",
+         "network_consumption_per_month": "потребление по сети за месяц",
+         "minimal_network_consumption_per_client": "Минимальное потребление по сети на одного клиента",
+         "network_average": "В среднем по сети",
+         "qty_of_customers": "Количество клиентов",
+         "restaurant_consumption": "Потребление ресторана",
+         "restaurant_consumption_not_working_hours": "Потребление ресторана в нерабочие часы",
+         "lighting_consumption": "Потребление освещением",
+         "kitchen_consumption": "Потребление кухней",
+         "air_equipment_consumption": "Потребление подготовкой воздуха",
+         "other_equipment_consumption": "Потребление остальным"
       }
    }
 }

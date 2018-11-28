@@ -37,19 +37,23 @@
             <v-layout row wrap>
                <v-flex d-flex md3>
                   <data-widget-text :averaged="true" :chartData="sampleChartData"
-                                    :title="'потребление по сети на м²'"></data-widget-text>
+                                    :title="$t('message.network_consumption_per_m2')"
+                                    :measurement="$t('message.kWh_per_meter')"></data-widget-text>
                </v-flex>
                <v-flex d-flex md3>
                   <data-widget-text :averaged="true" :chartData="sampleChartData"
-                                    :title="'потребление по сети на клиента'"></data-widget-text>
+                                    :title="$t('message.network_consumption_per_client')"
+                                    :measurement="$t('message.kWh_per_client')"></data-widget-text>
                </v-flex>
                <v-flex d-flex md3>
                   <data-widget-text :averaged="true" :chartData="sampleChartData"
-                                    :title="'потребление по сети за месяц'"></data-widget-text>
+                                    :title="$t('message.network_consumption_per_month')"
+                                    :measurement="$t('message.kilowatt_per_hour')"></data-widget-text>
                </v-flex>
                <v-flex d-flex md3>
                   <data-widget-text :averaged="false" :chartData="sampleChartData"
-                                    :title="'Минимальное потребление по сети на одного клиента'"></data-widget-text>
+                                    :title="$t('message.minimal_network_consumption_per_client')"
+                                    :measurement="$t('message.kWh_per_client')"></data-widget-text>
                </v-flex>
             </v-layout>
          </v-flex>
