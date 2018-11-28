@@ -3,38 +3,38 @@
       <v-layout column>
          <v-flex d-flex md6>
             <v-flex d-flex md3>
-               <data-widget-manager :chartData="sampleChartData" :type="'clients_per_period'"
+               <data-widget-manager :type="'clients_per_period'" parameter="I" data_object="/power/QF20/"
                                  :title="$t('message.qty_of_customers')"></data-widget-manager>
             </v-flex>
             <v-flex d-flex md3>
-               <data-widget-manager :chartData="sampleChartData" :type="'consumption_per_period'"
+               <data-widget-manager :type="'consumption_per_period'" parameter="P" data_object="/power/QF20/"
                                  :title="$t('message.restaurant_consumption')"></data-widget-manager>
             </v-flex>
             <v-flex d-flex md3>
-               <data-widget-manager :chartData="sampleChartData" :type="'consumption_per_client_and_area'"
+               <data-widget-manager :type="'consumption_per_client_and_area'" parameter="PF" data_object="/power/QF20/"
                                  :title="$t('message.restaurant_consumption')"></data-widget-manager>
             </v-flex>
             <v-flex d-flex md3>
-               <data-widget-manager :chartData="sampleChartData" :type="'consumption_per_area'"
+               <data-widget-manager :type="'consumption_per_area'" parameter="Q" data_object="/power/QF20/"
                                  :title="$t('message.restaurant_consumption_not_working_hours')"></data-widget-manager>
             </v-flex>
          </v-flex>
          <v-flex d-flex md6>
             <v-layout row wrap>
                <v-flex d-flex md3>
-                  <data-widget-manager :chartData="sampleChartData" :type="'specific_consumption_per_area'"
+                  <data-widget-manager :type="'specific_consumption_per_area'" parameter="S" data_object="/power/QF20/"
                                     :title="$t('message.lighting_consumption')"></data-widget-manager>
                </v-flex>
                <v-flex d-flex md3>
-                  <data-widget-manager :chartData="sampleChartData" :type="'specific_consumption_per_area'"
+                  <data-widget-manager :type="'specific_consumption_per_area'" parameter="W" data_object="/power/QF20/"
                                     :title="$t('message.kitchen_consumption')"></data-widget-manager>
                </v-flex>
                <v-flex d-flex md3>
-                  <data-widget-manager :chartData="sampleChartData" :type="'specific_consumption_per_area'"
+                  <data-widget-manager :type="'specific_consumption_per_area'" parameter="Wq" data_object="/power/QF20/"
                                     :title="$t('message.air_equipment_consumption')"></data-widget-manager>
                </v-flex>
                <v-flex d-flex md3>
-                  <data-widget-manager :chartData="sampleChartData" :type="'specific_consumption_per_area'"
+                  <data-widget-manager :type="'specific_consumption_per_area'" parameter="Ws" data_object="/power/QF20/"
                                     :title="$t('message.other_equipment_consumption')"></data-widget-manager>
                </v-flex>
             </v-layout>

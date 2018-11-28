@@ -53,9 +53,8 @@
             DataWidgetChartModal
         },
         name: "data-widget-text",
-        props: ["type", "parameter", "title", "sensor", "value", "measurement", "avg_net_value", "chartData", "averaged"],
+        props: ["type", "parameter", "title", "data_object", "value", "measurement", "avg_net_value", "chartData", "averaged"],
         data: () => ({
-            value_type: "average",
             average_method: "arithmetic_average",
             small_chart_data: [],
             full_chart_data: [],
@@ -64,31 +63,29 @@
         methods: {
             showChart() {
                 let chart_title = this.$props.averaged ? this.concat_title : this.title;
-                this.$refs.chartModal.show(this.title, this.chartData);
+                this.$refs.chartModal.show(chart_title, this.chartData);
             },
             setAvgOption(option) {
                 this.average_method = option;
             },
             getFullChartData() {
                 let data_series = [];
-                let sensor = this.sensor;
-                let parameter = this.parameter; //parameter we need for this chart
                 let fill = "none"; //fill the gap between "now" and last data received
                 let time_interval = "time > now() - 24h";
                 let group_by = "1h"; // group by 1 hour
-                let query_parameter = parameter;
+                let query_parameter = this.parameter;
                 if (this.average_method === "arithmetic_average"){
-                    query_parameter = "mean(\""+parameter+"\") as \"Mean_"+parameter+"\"";
+                    query_parameter = "mean(\""+this.parameter+"\") as \"Mean_"+this.parameter+"\"";
                 }
                 if (this.average_method === "median"){
-                    query_parameter = "median(\""+parameter+"\")";
+                    query_parameter = "median(\""+this.parameter+"\")";
                 }
-                let sql_query_part = "SELECT "+query_parameter+" FROM \"bk\".\"autogen\".\"/burgerking/"+sensor+"\" WHERE "+time_interval+" GROUP BY time("+group_by+") FILL("+fill+")";
+                let influxql_query = "SELECT "+query_parameter+" FROM \"bk\".\"autogen\".\"/burgerking"+this.data_object+"\" WHERE "+time_interval+" GROUP BY time("+group_by+") FILL("+fill+")";
                 Vue.axios
                     .get(this.$store.getters.getInfluxServerAddress + "/query", {
                         params: {
                             epoch: "ms",
-                            q: sql_query_part
+                            q: influxql_query
                         }
                     })
                     .then(response => {
@@ -106,29 +103,26 @@
                         this.full_chart_data = data_series;
                     })
                     .catch(error => {console.log(error)});
-
             },
             getSmallChartData() {
                 let data_series = [];
-                let sensor = this.sensor;
-                let parameter = this.parameter; //parameter we need for this chart
                 let fill = "none"; //fill the gap between "now" and last data received
                 let limit = 5; // only 5 values
                 let time_interval = "time > now() - "+limit+"d"; //last 5 days
                 let group_by = "1d"; // group by 1 day
-                let query_parameter = parameter;
+                let query_parameter = this.parameter;
                 if (this.average_method === "arithmetic_average"){
-                    query_parameter = "mean(\""+parameter+"\") as \"Mean_"+parameter+"\"";
+                    query_parameter = "mean(\""+this.parameter+"\") as \"Mean_"+this.parameter+"\"";
                 }
                 if (this.average_method === "median"){
-                    query_parameter = "median(\""+parameter+"\")";
+                    query_parameter = "median(\""+this.parameter+"\")";
                 }
-                let sql_query_part = "SELECT "+query_parameter+" FROM \"bk\".\"autogen\".\"/burgerking/"+sensor+"\" WHERE "+time_interval+" GROUP BY time("+group_by+") FILL("+fill+") LIMIT "+limit;
+                let influxql_query = "SELECT "+query_parameter+" FROM \"bk\".\"autogen\".\"/burgerking"+this.data_object+"\" WHERE "+time_interval+" GROUP BY time("+group_by+") FILL("+fill+") LIMIT "+limit;
                 Vue.axios
                     .get(this.$store.getters.getInfluxServerAddress + "/query", {
                         params: {
                             epoch: "ms",
-                            q: sql_query_part
+                            q: influxql_query
                         }
                     })
                     .then(response => {
@@ -147,32 +141,28 @@
                     .catch(error => {console.log(error)});
             },
             getLatestValue() {
-                let value = "";
-                let sensor = this.sensor;
-                let parameter = this.parameter; //parameter we need for this chart
                 let fill = "none"; //fill the gap between "now" and last data received
                 let limit = 1; // only 1 value
                 let time_interval = "time > now() - 5h AND time < now() - 3h"; //last 5 days
                 let group_by = "2h"; // group by 2 hours
-                let query_parameter = parameter;
+                let query_parameter = this.parameter;
                 if (this.average_method === "arithmetic_average"){
-                    query_parameter = "mean(\""+parameter+"\") as \"Mean_"+parameter+"\"";
+                    query_parameter = "mean(\""+this.parameter+"\") as \"Mean_"+this.parameter+"\"";
                 }
                 if (this.average_method === "median"){
-                    query_parameter = "median(\""+parameter+"\")";
+                    query_parameter = "median(\""+this.parameter+"\") as \"Median"+this.parameter+"\"";
                 }
-                let sql_query_part = "SELECT "+query_parameter+" FROM \"bk\".\"autogen\".\"/burgerking/"+sensor+"\" WHERE "+time_interval+" GROUP BY time("+group_by+") FILL("+fill+") LIMIT "+limit;
+                let influxql_query = "SELECT "+query_parameter+" FROM \"bk\".\"autogen\".\"/burgerking"+this.data_object+"\" WHERE "+time_interval+" GROUP BY time("+group_by+") FILL("+fill+") LIMIT "+limit;
                 Vue.axios
                     .get(this.$store.getters.getInfluxServerAddress + "/query", {
                         params: {
                             epoch: "ms",
-                            q: sql_query_part
+                            q: influxql_query
                         }
                     })
                     .then(response => {
                         if (response.data.results[0].series) {
-                            value = Math.round(response.data.results[0].series[0].values[0][1]).toString();
-                            this.current_value = value;
+                            this.current_value = response.data.results[0].series[0].values[0][1].toFixed(2);
                         }
                     })
                     .catch(error => {console.log(error)});
