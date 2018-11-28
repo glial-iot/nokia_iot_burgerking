@@ -72,7 +72,7 @@
         },
         methods: {
             show_restaurant_page(item) {
-                this.$router.push("/restaurant/"+item);
+                this.$router.push("/restaurant");
             },
             center_map(item) {
                 this.$emit("restaurant_row_clicked", item);
