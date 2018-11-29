@@ -24,16 +24,16 @@ Vue.use(VueRouter)
 
 const router = new VueRouter({
     routes: [{
-            path: '/management',
+            path: '/sites-management',
             component: management_map
         },
         {
-            path: '/restaurant',
+            path: '/restaurant-management/:restaurant_id',
             component: manager_ui
         },
         {
             path: '*',
-            redirect: '/management'
+            redirect: '/sites-management'
         }]
 });
 

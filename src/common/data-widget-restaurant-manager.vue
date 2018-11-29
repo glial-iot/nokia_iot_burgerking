@@ -2,34 +2,34 @@
     <div>
         <v-layout row wrap>
             <v-flex d-flex md12>
-                <v-card :color="card_color">
+                <v-card :color="card_color" class="restaurant-card">
                     <div class="chart-background" style="z-index:0">
                         <bar-chart :data="small_chart_data" :hideAxis="true" :isDashboard="true"></bar-chart>
                     </div>
                     <div class="widget-content">
-                        <v-card-title primary class="title">
-                            <v-menu bottom origin="center center" transition="scale-transition">
-                                <div slot="activator" class="cursor-pointer"><v-icon>fa-cog</v-icon></div>
-                                <v-list>
-                                    <v-list-tile v-for="feed in data_feeds" @click="">
-                                        <v-list-tile-title @click="setCurrentFeed(feed)">{{feed.measurement.literal}}</v-list-tile-title>
-                                    </v-list-tile>
-                                </v-list>
-                            </v-menu>
-                            <v-spacer></v-spacer>
-                            <div class="cursor-pointer" @click="showChart()"><v-icon >fa-chart-bar</v-icon></div>
-                        </v-card-title>
                         <v-card-title primary class="d-block title text-center mt-0">
                             <span>{{title}} {{current_feed.measurement.literal | decapitalize}}</span>
                         </v-card-title>
                         <v-card-text class="d-block text-center">
-                            <span class="display-2">{{current_value}}</span><span class="display-1"> {{current_feed.measurement.short}}</span>
+                            <span class="display-2">{{current_value}}</span><span class="headline"> {{current_feed.measurement.short}}</span>
                         </v-card-text>
                         <v-card-title primary class="d-block title text-center mt-0">{{$t("message.network_average")}}: </v-card-title>
                         <v-card-text class="d-block text-center">
-                            <span class="display-2">{{average_network_value}}</span><span class="display-1"> {{current_feed.measurement.short}}</span>
+                            <span class="display-2">{{average_network_value}}</span><span class="headline"> {{current_feed.measurement.short}}</span>
                         </v-card-text>
                     </div>
+                    <v-card-actions class="widget-actions">
+                        <v-menu bottom origin="center center" transition="scale-transition">
+                            <div slot="activator" class="cursor-pointer"><v-icon>fa-bars</v-icon></div>
+                            <v-list>
+                                <v-list-tile v-for="feed in data_feeds" @click="">
+                                    <v-list-tile-title @click="setCurrentFeed(feed)">{{feed.measurement.literal}}</v-list-tile-title>
+                                </v-list-tile>
+                            </v-list>
+                        </v-menu>
+                        <v-spacer></v-spacer>
+                        <div class="cursor-pointer" @click="showChart()"><v-icon >fa-chart-bar</v-icon></div>
+                    </v-card-actions>
                 </v-card>
             </v-flex>
         </v-layout>

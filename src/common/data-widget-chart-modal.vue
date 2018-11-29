@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-dialog v-model="visible" max-width="800px" overlay-hide style="z-index: 1">
+        <v-dialog v-model="visible" persistent max-width="800px" overlay-hide style="z-index: 1">
             <v-card>
                 <v-card-title>
                     <div class="title text-xs-center">{{title | capitalize}}</div>
@@ -9,6 +9,11 @@
                 <v-card-text>
                     <div ref="chartdiv" class="amChart"></div>
                 </v-card-text>
+                <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn class="white--text" color="blue darken-1" @click="visible = false">{{$t("message.close")}}</v-btn>
+                    <v-spacer></v-spacer>
+                </v-card-actions>
             </v-card>
         </v-dialog>
     </div>

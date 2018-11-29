@@ -71,8 +71,8 @@
             }
         },
         methods: {
-            show_restaurant_page(item) {
-                this.$router.push("/restaurant");
+            show_restaurant_page(page) {
+                this.$router.push("/restaurant-management/"+page);
             },
             center_map(item) {
                 this.$emit("restaurant_row_clicked", item);

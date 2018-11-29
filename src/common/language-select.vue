@@ -13,8 +13,13 @@
 
 <script>
     export default {
-        data () {
-            return { langs: ['ru', 'en'] }
+        data() {
+            return {
+                langs: [
+                    {value: "en", text: "English"},
+                    {value: "ru", text: "Russian"}
+                ]
+            }
         }
     }
 </script>

@@ -2,7 +2,7 @@
    <v-container grid-list-md fill-height fluid>
       <v-layout row wrap>
          <template v-for="card in cards_data">
-            <v-flex d-flex md3>
+            <v-flex d-flex md3 class="restaurant-manager-card">
                <data-widget-manager :type="card.type" :data_feeds="card.data_feeds"
                                     :title="card.title"></data-widget-manager>
             </v-flex>
