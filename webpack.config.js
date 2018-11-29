@@ -2,6 +2,11 @@ var path = require('path')
 var webpack = require('webpack')
 var FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
+var GitRevisionPlugin = require('git-revision-webpack-plugin')
+
+var gitRevisionPlugin = new GitRevisionPlugin({
+    versionCommand: 'describe --dirty --always --tags'
+})
 
 module.exports = {
     entry: './src/main.js',
@@ -63,7 +68,7 @@ module.exports = {
     devtool: '#eval-source-map',
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'NOKIA IMPACT Glue',
+            title: 'BurgerKing Energy Management',
             meta: {
                 author: 'vvzvlad by nokia iot lab'
             },
@@ -71,6 +76,9 @@ module.exports = {
             inject: false,
             template: '!!ejs-loader!src/assets/index.ejs'
         }),
+        new webpack.DefinePlugin({
+            'VERSION': JSON.stringify(gitRevisionPlugin.version()),
+        })
     ]
 }
 

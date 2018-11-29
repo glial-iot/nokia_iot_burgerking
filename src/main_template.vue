@@ -13,6 +13,9 @@
         <v-content>
             <router-view></router-view>
         </v-content>
+        <div class="pt-0 mt-0 mb-0 pb-0 ml-0 pl-2 caption">
+            2018 © Nokia IoT Laboratory. Version: {{frontend_version}}
+        </div>
     </v-app>
 </template>
 
@@ -30,6 +33,7 @@
             languageSelect
         },
         data: () => ({
+            frontend_version: VERSION,
             menu_collapsed: true
         }),
         methods: {
