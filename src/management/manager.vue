@@ -1,44 +1,12 @@
 <template>
    <v-container grid-list-md fill-height fluid>
-      <v-layout column>
-         <v-flex d-flex md6>
+      <v-layout row wrap>
+         <template v-for="card in cards_data">
             <v-flex d-flex md3>
-               <data-widget-manager :type="'clients_per_period'" parameter="I" data_object="/power/QF20/"
-                                 :title="$t('message.qty_of_customers')"></data-widget-manager>
+               <data-widget-manager :type="card.type" :data_feeds="card.data_feeds"
+                                    :title="card.title"></data-widget-manager>
             </v-flex>
-            <v-flex d-flex md3>
-               <data-widget-manager :type="'consumption_per_period'" parameter="P" data_object="/power/QF20/"
-                                 :title="$t('message.restaurant_consumption')"></data-widget-manager>
-            </v-flex>
-            <v-flex d-flex md3>
-               <data-widget-manager :type="'consumption_per_client_and_area'" parameter="PF" data_object="/power/QF20/"
-                                 :title="$t('message.restaurant_consumption')"></data-widget-manager>
-            </v-flex>
-            <v-flex d-flex md3>
-               <data-widget-manager :type="'consumption_per_area'" parameter="Q" data_object="/power/QF20/"
-                                 :title="$t('message.restaurant_consumption_not_working_hours')"></data-widget-manager>
-            </v-flex>
-         </v-flex>
-         <v-flex d-flex md6>
-            <v-layout row wrap>
-               <v-flex d-flex md3>
-                  <data-widget-manager :type="'specific_consumption_per_area'" parameter="S" data_object="/power/QF20/"
-                                    :title="$t('message.lighting_consumption')"></data-widget-manager>
-               </v-flex>
-               <v-flex d-flex md3>
-                  <data-widget-manager :type="'specific_consumption_per_area'" parameter="W" data_object="/power/QF20/"
-                                    :title="$t('message.kitchen_consumption')"></data-widget-manager>
-               </v-flex>
-               <v-flex d-flex md3>
-                  <data-widget-manager :type="'specific_consumption_per_area'" parameter="Wq" data_object="/power/QF20/"
-                                    :title="$t('message.air_equipment_consumption')"></data-widget-manager>
-               </v-flex>
-               <v-flex d-flex md3>
-                  <data-widget-manager :type="'specific_consumption_per_area'" parameter="Ws" data_object="/power/QF20/"
-                                    :title="$t('message.other_equipment_consumption')"></data-widget-manager>
-               </v-flex>
-            </v-layout>
-         </v-flex>
+         </template>
       </v-layout>
    </v-container>
 </template>
@@ -60,23 +28,353 @@
         components: {
             DataWidgetManager
         },
-        data: () => ({
-            sampleChartData: [
-                { title: "Период 1", value: 1 },
-                { title: "Период 2", value: 1 },
-                { title: "Период 3", value: 4 },
-                { title: "Период 4", value: 3 },
-                { title: "Период 5", value: 2}
-            ]
-        }),
-        methods: {
-
-        },
+        data: () => ({}),
+        methods: {},
         mounted: function () {
 
         },
         computed: {
+            cards_data() {
+                return [
+                    {
+                        type: "clients_per_period",
+                        title: this.$i18n.t("message.qty_of_customers"),
+                        data_feeds: [
+                            {
+                                measurement: {
+                                    name: "clients_per_day",
+                                    literal: this.$i18n.t("message.per_day"),
+                                    short: this.$i18n.t("message.clients_short")
+                                },
+                                parameter: "I",
+                                object: "/power/QF20/"
+                            },
+                            {
+                                measurement: {
+                                    name: "clients_per_month",
+                                    literal: this.$i18n.t("message.per_month"),
+                                    short: this.$i18n.t("message.clients_short")
 
+                                },
+                                parameter: "P",
+                                object: "/power/QF20/"
+                            },
+                            {
+                                measurement: {
+                                    name: "clients_per_day_per_meter",
+                                    literal: this.$i18n.t("message.per_day_per_meter"),
+                                    short: this.$i18n.t("message.clients_short")
+                                },
+                                parameter: "PF",
+                                object: "/power/QF20/"
+                            },
+                            {
+                                measurement: {
+                                    name: "clients_per_month_per_meter",
+                                    literal: this.$i18n.t("message.per_month_per_meter"),
+                                    short: this.$i18n.t("message.clients_short")
+                                },
+                                parameter: "Q",
+                                object: "/power/QF20/"
+                            }
+                        ]
+                    },
+                    {
+                        type: "consumption_per_period",
+                        title: this.$i18n.t("message.restaurant_consumption"),
+                        data_feeds: [
+                            {
+                                measurement: {
+                                    name: "per_day_kWh",
+                                    literal: this.$i18n.t("message.per_day_kWh"),
+                                    short: this.$i18n.t("message.kilowatt_per_hour")
+                                },
+                                parameter: "I",
+                                object: "/power/QF20/"
+                            },
+                            {
+                                measurement: {
+                                    name: "per_month_kWh",
+                                    literal: this.$i18n.t("message.per_month_kWh"),
+                                    short: this.$i18n.t("message.kilowatt_per_hour")
+                                },
+                                parameter: "P",
+                                object: "/power/QF20/"
+                            },
+                            {
+                                measurement: {
+                                    name: "per_day_roubles",
+                                    literal: this.$i18n.t("message.per_day_roubles"),
+                                    short: this.$i18n.t("message.roubles_short")
+                                },
+                                parameter: "PF",
+                                object: "/power/QF20/"
+                            },
+                            {
+                                measurement: {
+                                    name: "per_month_roubles",
+                                    literal: this.$i18n.t("message.per_month_roubles"),
+                                    short: this.$i18n.t("message.roubles_short")
+                                },
+                                parameter: "Q",
+                                object: "/power/QF20/"
+                            }
+                        ]
+                    },
+                    {
+                        type: "consumption_per_client_and_area",
+                        title: this.$i18n.t("message.restaurant_consumption"),
+                        data_feeds: [
+                            {
+                                measurement: {
+                                    name: "per_month_kWh_per_client",
+                                    literal: this.$i18n.t("message.per_month_kWh_per_client"),
+                                    short: this.$i18n.t("message.kWh_per_client")
+                                },
+                                parameter: "I",
+                                object: "/power/QF20/"
+                            },
+                            {
+                                measurement: {
+                                    name: "per_month_kWh_per_meter",
+                                    literal: this.$i18n.t("message.per_month_kWh_per_meter"),
+                                    short: this.$i18n.t("message.kWh_per_meter")
+                                },
+                                parameter: "P",
+                                object: "/power/QF20/"
+                            },
+                            {
+                                measurement: {
+                                    name: "per_month_roubles_per_client",
+                                    literal: this.$i18n.t("message.per_month_roubles_per_client"),
+                                    short: this.$i18n.t("message.roubles_per_client")
+                                },
+                                parameter: "PF",
+                                object: "/power/QF20/"
+                            },
+                            {
+                                measurement: {
+                                    name: "per_month_roubles_per_meter",
+                                    literal: this.$i18n.t("message.per_month_roubles_per_meter"),
+                                    short: this.$i18n.t("message.roubles_per_meter")
+                                },
+                                parameter: "Q",
+                                object: "/power/QF20/"
+                            }
+                        ]
+                    },
+                    {
+                        type: "consumption_per_area",
+                        title: this.$i18n.t("message.restaurant_consumption_not_working_hours"),
+                        data_feeds: [
+                            {
+                                measurement: {
+                                    name: "per_day_kWh_per_meter",
+                                    literal: this.$i18n.t("message.per_day_kWh_per_meter"),
+                                    short: this.$i18n.t("message.kWh_per_meter")
+                                },
+                                parameter: "I",
+                                object : "/power/QF20/"
+                            },
+                            {
+                                measurement: {
+                                    name: "per_month_kWh_per_meter",
+                                    literal: this.$i18n.t("message.per_month_kWh_per_meter"),
+                                    short: this.$i18n.t("message.kWh_per_meter")
+                                },
+                                parameter: "P",
+                                object: "/power/QF20/"
+                            },
+                            {
+                                measurement: {
+                                    name: "per_day_roubles_per_meter",
+                                    literal: this.$i18n.t("message.per_day_roubles_per_meter"),
+                                    short: this.$i18n.t("message.roubles_per_meter")
+                                },
+                                parameter: "PF",
+                                object: "/power/QF20/"
+                            },
+                            {
+                                measurement: {
+                                    name: "per_month_roubles_per_meter",
+                                    literal: this.$i18n.t("message.per_month_roubles_per_meter"),
+                                    short: this.$i18n.t("message.roubles_per_meter")
+                                },
+                                parameter: "Q",
+                                object: "/power/QF20/"
+                            }
+                        ]
+                    },
+                    {
+                        type: "specific_consumption_per_area",
+                        title: this.$i18n.t("message.lighting_consumption"),
+                        data_feeds: [
+                            {
+                                measurement: {
+                                    name: "per_month_kWh",
+                                    literal: this.$i18n.t("message.per_month_kWh"),
+                                    short: this.$i18n.t("message.kilowatt_per_hour")
+                                },
+                                parameter: "I",
+                                object: "/power/QF20/"
+                            },
+                            {
+                                measurement: {
+                                    name: "per_month_kWh_per_meter",
+                                    literal: this.$i18n.t("message.per_month_kWh_per_meter"),
+                                    short: this.$i18n.t("message.kWh_per_meter")
+                                },
+                                parameter: "P",
+                                object: "/power/QF20/"
+                            },
+                            {
+                                measurement: {
+                                    name: "per_month_roubles",
+                                    literal: this.$i18n.t("message.per_month_roubles"),
+                                    short: this.$i18n.t("message.roubles_short")
+                                },
+                                parameter: "PF",
+                                object: "/power/QF20/"
+                            },
+                            {
+                                measurement: {
+                                    name: "per_month_roubles_per_meter",
+                                    literal: this.$i18n.t("message.per_month_roubles_per_meter"),
+                                    short: this.$i18n.t("message.roubles_per_meter")
+                                },
+                                parameter: "Q",
+                                object: "/power/QF20/"
+                            }
+                        ]
+                    },
+                    {
+                        type: "specific_consumption_per_area",
+                        title: this.$i18n.t("message.kitchen_consumption"),
+                        data_feeds: [
+                            {
+                                measurement: {
+                                    name: "per_month_kWh",
+                                    literal: this.$i18n.t("message.per_month_kWh"),
+                                    short: this.$i18n.t("message.kilowatt_per_hour")
+                                },
+                                parameter: "I",
+                                object: "/power/QF20/"
+                            },
+                            {
+                                measurement: {
+                                    name: "per_month_kWh_per_meter",
+                                    literal: this.$i18n.t("message.per_month_kWh_per_meter"),
+                                    short: this.$i18n.t("message.kWh_per_meter")
+                                },
+                                parameter: "P",
+                                object: "/power/QF20/"
+                            },
+                            {
+                                measurement: {
+                                    name: "per_month_roubles",
+                                    literal: this.$i18n.t("message.per_month_roubles"),
+                                    short: this.$i18n.t("message.roubles_short")
+                                },
+                                parameter: "PF",
+                                object: "/power/QF20/"
+                            },
+                            {
+                                measurement: {
+                                    name: "per_month_roubles_per_meter",
+                                    literal: this.$i18n.t("message.per_month_roubles_per_meter"),
+                                    short: this.$i18n.t("message.roubles_per_meter")
+                                },
+                                parameter: "Q",
+                                object: "/power/QF20/"
+                            }
+                        ]
+                    },
+                    {
+                        type: "specific_consumption_per_area",
+                        title: this.$i18n.t("message.air_equipment_consumption"),
+                        data_feeds: [
+                            {
+                                measurement: {
+                                    name: "per_month_kWh",
+                                    literal: this.$i18n.t("message.per_month_kWh"),
+                                    short: this.$i18n.t("message.kilowatt_per_hour")
+                                },
+                                parameter: "I",
+                                object: "/power/QF20/"
+                            },
+                            {
+                                measurement: {
+                                    name: "per_month_kWh_per_meter",
+                                    literal: this.$i18n.t("message.per_month_kWh_per_meter"),
+                                    short: this.$i18n.t("message.kWh_per_meter")
+                                },
+                                parameter: "P",
+                                object: "/power/QF20/"
+                            },
+                            {
+                                measurement: {
+                                    name: "per_month_roubles",
+                                    literal: this.$i18n.t("message.per_month_roubles"),
+                                    short: this.$i18n.t("message.roubles_short")
+                                },
+                                parameter: "PF",
+                                object: "/power/QF20/"
+                            },
+                            {
+                                measurement: {
+                                    name: "per_month_roubles_per_meter",
+                                    literal: this.$i18n.t("message.per_month_roubles_per_meter"),
+                                    short: this.$i18n.t("message.roubles_per_meter")
+                                },
+                                parameter: "Q",
+                                object: "/power/QF20/"
+                            }
+                        ]
+                    },
+                    {
+                        type: "specific_consumption_per_area",
+                        title: this.$i18n.t("message.other_equipment_consumption"),
+                        data_feeds: [
+                            {
+                                measurement: {
+                                    name: "per_month_kWh",
+                                    literal: this.$i18n.t("message.per_month_kWh"),
+                                    short: this.$i18n.t("message.kilowatt_per_hour")
+                                },
+                                parameter: "I",
+                                object: "/power/QF20/"
+                            },
+                            {
+                                measurement: {
+                                    name: "per_month_kWh_per_meter",
+                                    literal: this.$i18n.t("message.per_month_kWh_per_meter"),
+                                    short: this.$i18n.t("message.kWh_per_meter")
+                                },
+                                parameter: "P",
+                                object: "/power/QF20/"
+                            },
+                            {
+                                measurement: {
+                                    name: "per_month_roubles",
+                                    literal: this.$i18n.t("message.per_month_roubles"),
+                                    short: this.$i18n.t("message.roubles_short")
+                                },
+                                parameter: "PF",
+                                object: "/power/QF20/"
+                            },
+                            {
+                                measurement: {
+                                    name: "per_month_roubles_per_meter",
+                                    literal: this.$i18n.t("message.per_month_roubles_per_meter"),
+                                    short: this.$i18n.t("message.roubles_per_meter")
+                                },
+                                parameter: "Q",
+                                object: "/power/QF20/"
+                            }
+                        ]
+                    }
+                ]
+            }
         }
     };
 </script>

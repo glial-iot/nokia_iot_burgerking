@@ -11,8 +11,8 @@
                             <v-menu bottom origin="center center" transition="scale-transition">
                                 <div slot="activator" class="cursor-pointer"><v-icon>fa-cog</v-icon></div>
                                 <v-list>
-                                    <v-list-tile v-for="(item, i) in period_options" :key="i" @click="">
-                                        <v-list-tile-title @click="setPeriod(i)">{{item}}</v-list-tile-title>
+                                    <v-list-tile v-for="feed in data_feeds" @click="">
+                                        <v-list-tile-title @click="setCurrentFeed(feed)">{{feed.measurement.literal}}</v-list-tile-title>
                                     </v-list-tile>
                                 </v-list>
                             </v-menu>
@@ -20,14 +20,14 @@
                             <div class="cursor-pointer" @click="showChart()"><v-icon >fa-chart-bar</v-icon></div>
                         </v-card-title>
                         <v-card-title primary class="d-block title text-center mt-0">
-                            <span>{{title}} {{computed_period | decapitalize}}</span>
+                            <span>{{title}} {{current_feed.measurement.literal | decapitalize}}</span>
                         </v-card-title>
                         <v-card-text class="d-block text-center">
-                            <span class="display-2">{{current_value}}</span><span class="display-1"> {{computed_measurement}}</span>
+                            <span class="display-2">{{current_value}}</span><span class="display-1"> {{current_feed.measurement.short}}</span>
                         </v-card-text>
                         <v-card-title primary class="d-block title text-center mt-0">{{$t("message.network_average")}}: </v-card-title>
                         <v-card-text class="d-block text-center">
-                            <span class="display-2">{{average_network_value}}</span><span class="display-1"> {{computed_measurement}}</span>
+                            <span class="display-2">{{average_network_value}}</span><span class="display-1"> {{current_feed.measurement.short}}</span>
                         </v-card-text>
                     </div>
                 </v-card>
@@ -51,53 +51,41 @@
             DataWidgetChartModal
         },
         name: "data-widget-text",
-        props: ["type", "title", "parameter", "data_object", "value", "avg_net_value", "chartData", "averaged"],
+        props: ["type", "title", "data_feeds"],
         data: () => ({
             small_chart_data: [],
             full_chart_data: [],
             current_value: "",
             average_network_value: "",
             average_method: "arithmetic_average",
-            period: ""
+            current_feed: {
+                measurement: {}
+            }
         }),
         methods: {
             showChart() {
-                let chart_title = this.title + " " + this.$options.filters.decapitalize(this.computed_period);
-                this.$refs.chartModal.show(chart_title, this.chartData);
+                let chart_title = this.title + " " + this.$options.filters.decapitalize(this.current_feed.measurement.literal);
+                this.$refs.chartModal.show(chart_title, this.small_chart_data);
             },
-            setPeriod(option) {
-                this.period = option;
+            setDefaultFeed() {
+                this.current_feed = this.data_feeds[0];
             },
-            setDefaultPeriod() {
-                    if (this.type === "clients_per_period") {
-                        this.period = "clients_per_day"
-                    }
-                    else if (this.type === "consumption_per_period") {
-                        this.period = "per_day_kWh"
-                    }
-                    else if (this.type=== "consumption_per_client_and_area") {
-                        this.period = "per_month_kWh_per_client"
-                    }
-                    else if (this.type === "consumption_per_area") {
-                        this.period = "per_day_kWh_per_meter"
-                    }
-                    else if (this.type === "specific_consumption_per_area") {
-                        this.period = "per_month_kWh"
-                    }
+            setCurrentFeed(feed) {
+                this.current_feed = feed;
             },
             getFullChartData() {
                 let data_series = [];
                 let fill = "none"; //fill the gap between "now" and last data received
                 let time_interval = "time > now() - 24h";
                 let group_by = "1h"; // group by 1 hour
-                let query_parameter = this.parameter;
+                let query_parameter = this.current_feed.parameter;
                 if (this.average_method === "arithmetic_average"){
-                    query_parameter = "mean(\""+this.parameter+"\") as \"Mean_"+this.parameter+"\"";
+                    query_parameter = "mean(\""+this.current_feed.parameter+"\") as \"Mean_"+this.current_feed.parameter+"\"";
                 }
                 if (this.average_method === "median"){
-                    query_parameter = "median(\""+this.parameter+"\")";
+                    query_parameter = "median(\""+this.current_feed.parameter+"\")";
                 }
-                let influxql_query = "SELECT "+query_parameter+" FROM \"bk\".\"autogen\".\"/burgerking"+this.data_object+"\" WHERE "+time_interval+" GROUP BY time("+group_by+") FILL("+fill+")";
+                let influxql_query = "SELECT "+query_parameter+" FROM \"bk\".\"autogen\".\"/burgerking"+this.current_feed.object+"\" WHERE "+time_interval+" GROUP BY time("+group_by+") FILL("+fill+")";
                 Vue.axios
                     .get(this.$store.getters.getInfluxServerAddress + "/query", {
                         params: {
@@ -111,7 +99,7 @@
                                 data_series.push(
                                     {
                                         date: new Date(value[0]),
-                                        name: this.parameter,
+                                        name: this.current_feed.parameter,
                                         value: value[1]
                                     }
                                 )
@@ -127,14 +115,14 @@
                 let limit = 5; // only 5 values
                 let time_interval = "time > now() - "+limit+"d"; //last 5 days
                 let group_by = "1d"; // group by 1 day
-                let query_parameter = this.parameter;
+                let query_parameter = this.current_feed.parameter;
                 if (this.average_method === "arithmetic_average"){
-                    query_parameter = "mean(\""+this.parameter+"\") as \"Mean_"+this.parameter+"\"";
+                    query_parameter = "mean(\""+this.current_feed.parameter+"\") as \"Mean_"+this.current_feed.parameter+"\"";
                 }
                 if (this.average_method === "median"){
-                    query_parameter = "median(\""+this.parameter+"\")";
+                    query_parameter = "median(\""+this.current_feed.parameter+"\")";
                 }
-                let influxql_query = "SELECT "+query_parameter+" FROM \"bk\".\"autogen\".\"/burgerking"+this.data_object+"\" WHERE "+time_interval+" GROUP BY time("+group_by+") FILL("+fill+") LIMIT "+limit;
+                let influxql_query = "SELECT "+query_parameter+" FROM \"bk\".\"autogen\".\"/burgerking"+this.current_feed.object+"\" WHERE "+time_interval+" GROUP BY time("+group_by+") FILL("+fill+") LIMIT "+limit;
                 Vue.axios
                     .get(this.$store.getters.getInfluxServerAddress + "/query", {
                         params: {
@@ -162,14 +150,14 @@
                 let limit = 1; // only 1 value
                 let time_interval = "time > now() - 5h AND time < now() - 3h"; //last 5 days
                 let group_by = "2h"; // group by 2 hours
-                let query_parameter = this.parameter;
+                let query_parameter = this.current_feed.parameter;
                 if (this.average_method === "arithmetic_average"){
-                    query_parameter = "mean(\""+this.parameter+"\") as \"Mean_"+this.parameter+"\"";
+                    query_parameter = "mean(\""+this.current_feed.parameter+"\") as \"Mean_"+this.current_feed.parameter+"\"";
                 }
                 if (this.average_method === "median"){
-                    query_parameter = "median(\""+this.parameter+"\") as \"Median"+this.parameter+"\"";
+                    query_parameter = "median(\""+this.current_feed.parameter+"\") as \"Median"+this.current_feed.parameter+"\"";
                 }
-                let influxql_query = "SELECT "+query_parameter+" FROM \"bk\".\"autogen\".\"/burgerking"+this.data_object+"\" WHERE "+time_interval+" GROUP BY time("+group_by+") FILL("+fill+") LIMIT "+limit;
+                let influxql_query = "SELECT "+query_parameter+" FROM \"bk\".\"autogen\".\"/burgerking"+this.current_feed.object+"\" WHERE "+time_interval+" GROUP BY time("+group_by+") FILL("+fill+") LIMIT "+limit;
                 Vue.axios
                     .get(this.$store.getters.getInfluxServerAddress + "/query", {
                         params: {
@@ -194,76 +182,10 @@
             }
         },
         mounted: function () {
-            this.setDefaultPeriod();
+            this.setDefaultFeed();
             this.refreshData();
         },
         computed: {
-            period_options() {
-               if (this.$props.type === "clients_per_period") {
-                   return {
-                       "clients_per_day": this.$i18n.t("message.per_day"),
-                       "clients_per_month": this.$i18n.t("message.per_month"),
-                       "clients_per_day_per_meter": this.$i18n.t("message.per_day_per_meter"),
-                       "clients_per_month_per_meter": this.$i18n.t("message.per_month_per_meter"),
-                   }
-               }
-               else if (this.$props.type === "consumption_per_period") {
-                   return {
-                       "per_day_kWh": this.$i18n.t("message.per_day_kWh"),
-                       "per_month_kWh": this.$i18n.t("message.per_month_kWh"),
-                       "per_day_roubles": this.$i18n.t("message.per_day_roubles"),
-                       "per_month_roubles": this.$i18n.t("message.per_month_roubles")
-                   }
-               }
-               else if (this.$props.type === "consumption_per_client_and_area") {
-                   return {
-                       "per_month_kWh_per_client": this.$i18n.t("message.per_month_kWh_per_client"),
-                       "per_month_kWh_per_meter": this.$i18n.t("message.per_month_kWh_per_meter"),
-                       "per_month_roubles_per_client": this.$i18n.t("message.per_month_roubles_per_client"),
-                       "per_month_roubles_per_meter": this.$i18n.t("message.per_month_roubles_per_meter")
-                   }
-               }
-               else if (this.$props.type === "consumption_per_area") {
-                   return {
-                       "per_day_kWh_per_meter": this.$i18n.t("message.per_day_kWh_per_meter"),
-                       "per_month_kWh_per_meter": this.$i18n.t("message.per_month_kWh_per_meter"),
-                       "per_day_roubles_per_meter": this.$i18n.t("message.per_day_roubles_per_meter"),
-                       "per_month_roubles_per_meter": this.$i18n.t("message.per_month_roubles_per_meter")
-                   }
-               }
-               else if (this.$props.type === "specific_consumption_per_area") {
-                   return {
-                       "per_month_kWh": this.$i18n.t("message.per_month_kWh"),
-                       "per_month_kWh_per_meter": this.$i18n.t("message.per_month_kWh_per_meter"),
-                       "per_month_roubles": this.$i18n.t("message.per_month_roubles"),
-                       "per_month_roubles_per_meter": this.$i18n.t("message.per_month_roubles_per_meter")
-                   }
-               }
-            },
-            measurement() {
-                return {
-                    "clients_per_day": this.$i18n.t("message.clients_short"),
-                    "clients_per_month": this.$i18n.t("message.clients_short"),
-                    "clients_per_day_per_meter": this.$i18n.t("message.clients_short"),
-                    "clients_per_month_per_meter": this.$i18n.t("message.clients_short"),
-                    "per_day_kWh": this.$i18n.t("message.kilowatt_per_hour"),
-                    "per_month_kWh": this.$i18n.t("message.kilowatt_per_hour"),
-                    "per_day_roubles": this.$i18n.t("message.roubles_short"),
-                    "per_month_roubles": this.$i18n.t("message.roubles_short"),
-                    "per_month_kWh_per_client": this.$i18n.t("message.kWh_per_client"),
-                    "per_month_kWh_per_meter": this.$i18n.t("message.kWh_per_meter"),
-                    "per_month_roubles_per_client": this.$i18n.t("message.roubles_per_client"),
-                    "per_month_roubles_per_meter": this.$i18n.t("message.roubles_per_meter"),
-                    "per_day_kWh_per_meter": this.$i18n.t("message.kWh_per_meter"),
-                    "per_day_roubles_per_meter": this.$i18n.t("message.roubles_per_meter"),
-                }
-            },
-            computed_measurement(){
-                return this.measurement[this.period]
-            },
-            computed_period() {
-                return this.period_options[this.period];
-            },
             card_color() {
                 let fl_cv = parseFloat(this.current_value);
                 let fl_anv = parseFloat(this.average_network_value);
@@ -295,11 +217,7 @@
             }
         },
         watch: {
-            period: 'refreshData'
+            current_feed: 'refreshData'
         }
     }
 </script>
-
-<style scoped>
-
-</style>
