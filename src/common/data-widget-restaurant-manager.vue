@@ -22,8 +22,8 @@
                         <v-menu bottom origin="center center" transition="scale-transition">
                             <div slot="activator" class="cursor-pointer"><v-icon>fa-bars</v-icon></div>
                             <v-list>
-                                <v-list-tile v-for="feed in data_feeds" @click="">
-                                    <v-list-tile-title @click="setCurrentFeed(feed)">{{feed.measurement.literal}}</v-list-tile-title>
+                                <v-list-tile v-for="(feed, index) in data_feeds" @click="">
+                                    <v-list-tile-title @click="setCurrentFeed(feed, index)">{{feed.measurement.literal}}</v-list-tile-title>
                                 </v-list-tile>
                             </v-list>
                         </v-menu>
@@ -39,8 +39,9 @@
 
 <script>
     import Vue from "vue";
+    import Vuex from "vuex";
     import Vue_i18n from 'vue-i18n';
-    Vue.use(Vue_i18n);
+    Vue.use(Vuex, Vue_i18n);
 
     import BarChart from "./charts/BarChart"
     import DataWidgetChartModal from "./data-widget-chart-modal"
@@ -60,7 +61,8 @@
             average_method: "arithmetic_average",
             current_feed: {
                 measurement: {}
-            }
+            },
+            current_feed_index: 0
         }),
         methods: {
             showChart() {
@@ -70,8 +72,12 @@
             setDefaultFeed() {
                 this.current_feed = this.data_feeds[0];
             },
-            setCurrentFeed(feed) {
+            setCurrentFeed(feed, index) {
                 this.current_feed = feed;
+                this.current_feed_index = index;
+            },
+            reloadFeedMeta(){
+                this.current_feed.measurement = this.data_feeds[this.current_feed_index].measurement;
             },
             getFullChartData() {
                 let data_series = [];
@@ -195,18 +201,18 @@
                     color = "blue lighten-3"
                 }
                 if (fl_cv < 0.9*fl_anv){
-                    console.log(0.9);
                     color = "green lighten-3"
                 }
                 if (fl_cv > 1.1*fl_anv){
-                    console.log(1.1);
                     color = "yellow lighten-3"
                 }
                 if (fl_cv > 1.3*fl_anv){
-                    console.log(1.3);
                     color = "red lighten-3"
                 }
                 return color;
+            },
+            current_locale () {
+                return this.$store.getters.getLocale;
             }
         },
         filters: {
@@ -217,6 +223,7 @@
             }
         },
         watch: {
+            current_locale : 'reloadFeedMeta',
             current_feed: 'refreshData'
         }
     }
