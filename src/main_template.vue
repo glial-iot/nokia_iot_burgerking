@@ -13,7 +13,7 @@
         <v-content>
             <router-view></router-view>
         </v-content>
-        <div class="pt-0 mt-0 mb-0 pb-0 ml-0 pl-2 caption">
+        <div class="pt-0 mt-0 mb-0 pb-0 ml-0 pl-2 caption text-center">
             2018 © Nokia IoT Laboratory. Version: {{frontend_version}}
         </div>
     </v-app>
