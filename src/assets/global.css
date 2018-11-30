@@ -265,3 +265,8 @@ table.table thead tr {
 .restaurant-card {
     min-height:350px;
 }
+
+.logo_bk {
+    height: 86%;
+    padding: 1%;
+}

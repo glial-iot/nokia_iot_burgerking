@@ -2,7 +2,7 @@
     <v-app id="inspire">
         <v-toolbar color="primary" dark app fixed clipped-left class="toolbar">
             <v-toolbar-items class="cursor-pointer" @click="$router.push('/')">
-                <img class="align-self-center mr-3 mt-2" src="./assets/logo_burgerking.svg" height="50px" alt="BK Logo">
+                <img class="align-self-center logo_bk mr-3" src="./assets/logo_burgerking.svg" alt="BK Logo">
                 <div class="d-inline align-self-center title">{{$t("message.energy_management")}}</div>
             </v-toolbar-items>
             <language-select class="language-select"></language-select>
