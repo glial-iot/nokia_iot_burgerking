@@ -27,7 +27,7 @@
                         <v-menu bottom origin="center center" transition="scale-transition">
                             <div slot="activator" class="cursor-pointer"><v-icon>fa-bars</v-icon></div>
                             <v-list>
-                                <v-list-tile v-for="(feed, index) in data_feeds" @click="">
+                                <v-list-tile v-for="(feed, index) in data_feeds" :key="feed.id" @click="">
                                     <v-list-tile-title @click="setCurrentFeed(feed, index)">{{feed.measurement.literal}}</v-list-tile-title>
                                 </v-list-tile>
                             </v-list>
