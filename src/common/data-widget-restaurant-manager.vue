@@ -1,8 +1,13 @@
 <template>
     <div>
+        <div v-if="!data_loaded" class="data-is-loading">
+            <div class="spinner">
+                <v-icon>fa fa-spinner fa-spin fa-3x</v-icon>
+            </div>
+        </div>
         <v-layout row wrap>
             <v-flex d-flex md12>
-                <v-card :color="card_color" class="restaurant-card">
+                <v-card v-if="data_loaded" :color="card_color" class="restaurant-card">
                     <div class="chart-background" style="z-index:0">
                         <bar-chart :data="small_chart_data" :hideAxis="true" :isDashboard="true"></bar-chart>
                     </div>
@@ -28,7 +33,7 @@
                             </v-list>
                         </v-menu>
                         <v-spacer></v-spacer>
-                        <div class="cursor-pointer" @click="showChart()"><v-icon >fa-chart-bar</v-icon></div>
+                        <div class="cursor-pointer" @click="showChart()"><v-icon>fa-chart-bar</v-icon></div>
                     </v-card-actions>
                 </v-card>
             </v-flex>
@@ -62,7 +67,8 @@
             current_feed: {
                 measurement: {}
             },
-            current_feed_index: 0
+            current_feed_index: 0,
+            data_loaded: false
         }),
         methods: {
             showChart() {
@@ -78,6 +84,7 @@
             },
             reloadFeedMeta(){
                 this.current_feed.measurement = this.data_feeds[this.current_feed_index].measurement;
+                console.log("locale changed")
             },
             getFullChartData() {
                 let data_series = [];
@@ -112,6 +119,7 @@
                             })
                         }
                         this.full_chart_data = data_series;
+                        this.data_loaded = true;
                     })
                     .catch(error => {console.log(error)});
             },
@@ -178,6 +186,7 @@
                                 (parseFloat(this.current_value) + (this.current_value * (Math.random() * 0.4))).toFixed(2) :
                                 (parseFloat(this.current_value) - (this.current_value * (Math.random() * 0.4))).toFixed(2)
                         }
+                        console.log("fired")
                     })
                     .catch(error => {console.log(error)});
             },
@@ -189,7 +198,6 @@
         },
         mounted: function () {
             this.setDefaultFeed();
-            this.refreshData();
         },
         computed: {
             card_color() {

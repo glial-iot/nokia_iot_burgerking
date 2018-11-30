@@ -1,8 +1,13 @@
 <template>
     <div>
+        <div v-if="!data_loaded" class="data-is-loading">
+            <div class="spinner">
+                <v-icon>fa fa-spinner fa-spin fa-3x</v-icon>
+            </div>
+        </div>
         <v-layout row wrap>
             <v-flex d-flex md12>
-                <v-card color="green lighten-3">
+                <v-card v-if="data_loaded" color="green lighten-3">
                     <div class="chart-background" style="z-index:0">
                         <bar-chart :data="small_chart_data" :hideAxis="true" :isDashboard="true"></bar-chart>
                     </div>
@@ -58,7 +63,8 @@
             average_method: "arithmetic_average",
             small_chart_data: [],
             full_chart_data: [],
-            current_value: ""
+            current_value: "",
+            data_loaded: false
         }),
         methods: {
             showChart() {
@@ -101,6 +107,7 @@
                             })
                         }
                         this.full_chart_data = data_series;
+                        this.data_loaded = true;
                     })
                     .catch(error => {console.log(error)});
             },

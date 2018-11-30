@@ -274,3 +274,20 @@ table.table thead tr {
 .main-title {
     white-space: nowrap
 }
+
+.data-is-loading {
+    height: 100%;
+    width:100%;
+    background-color: #fff;
+    display:flex;
+    flex-direction:row;
+    justify-content: center;
+    align-items: center;
+}
+
+.spinner .v-icon{
+    color: darkgrey;
+    opacity: 0.5;
+    font-size: 3em !important;
+    transition: opacity 0.3s;
+}
