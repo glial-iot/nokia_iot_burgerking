@@ -89,15 +89,11 @@
             getFullChartData() {
                 let data_series = [];
                 let fill = "none"; //fill the gap between "now" and last data received
-                let time_interval = "time > now() - 24h";
-                let group_by = "5m"; // group by 5 minutes
-                let query_parameter = this.current_feed.parameter;
-                if (this.average_method === "arithmetic_average"){
-                    query_parameter = "mean(\""+this.current_feed.parameter+"\") as \"Mean_"+this.current_feed.parameter+"\"";
-                }
-                if (this.average_method === "median"){
-                    query_parameter = "median(\""+this.current_feed.parameter+"\")";
-                }
+                let time_interval = this.current_feed.full_chart_time_interval;
+                let group_by = this.current_feed.full_chart_group_period;
+                let fun = this.current_feed.full_chart_data_function;
+                let query_parameter = fun+"(\""+this.current_feed.parameter+"\") as \""+fun+"_"+this.current_feed.parameter+"\"";
+
                 let influxql_query = "SELECT "+query_parameter+" FROM \"bk\".\"autogen\".\"/burgerking"+this.current_feed.object+"\" WHERE "+time_interval+" GROUP BY time("+group_by+") FILL("+fill+")";
                 Vue.axios
                     .get(this.$store.getters.getInfluxServerAddress + "/query", {
@@ -125,17 +121,13 @@
             },
             getSmallChartData() {
                 let data_series = [];
-                let fill = "none"; //fill the gap between "now" and last data received
-                let limit = 5; // only 5 values
-                let time_interval = "time > now() - "+limit+"d"; //last 5 days
-                let group_by = "1d"; // group by 1 day
-                let query_parameter = this.current_feed.parameter;
-                if (this.average_method === "arithmetic_average"){
-                    query_parameter = "mean(\""+this.current_feed.parameter+"\") as \"Mean_"+this.current_feed.parameter+"\"";
-                }
-                if (this.average_method === "median"){
-                    query_parameter = "median(\""+this.current_feed.parameter+"\")";
-                }
+                let fill = "none";
+                let limit = 5;
+                let time_interval = this.current_feed.small_chart_time_interval;
+                let group_by = this.current_feed.small_chart_group_period;
+                let fun = this.current_feed.small_chart_data_function;
+                let query_parameter = fun+"(\""+this.current_feed.parameter+"\") as \""+fun+"_"+this.current_feed.parameter+"\"";
+
                 let influxql_query = "SELECT "+query_parameter+" FROM \"bk\".\"autogen\".\"/burgerking"+this.current_feed.object+"\" WHERE "+time_interval+" GROUP BY time("+group_by+") FILL("+fill+") LIMIT "+limit;
                 Vue.axios
                     .get(this.$store.getters.getInfluxServerAddress + "/query", {
@@ -162,15 +154,11 @@
             getLatestValue() {
                 let fill = "none"; //fill the gap between "now" and last data received
                 let limit = 1; // only 1 value
-                let time_interval = "time > now() - 5h AND time < now() - 3h"; //last 5 days
-                let group_by = "2h"; // group by 2 hours
-                let query_parameter = this.current_feed.parameter;
-                if (this.average_method === "arithmetic_average"){
-                    query_parameter = "mean(\""+this.current_feed.parameter+"\") as \"Mean_"+this.current_feed.parameter+"\"";
-                }
-                if (this.average_method === "median"){
-                    query_parameter = "median(\""+this.current_feed.parameter+"\") as \"Median"+this.current_feed.parameter+"\"";
-                }
+                let time_interval = this.current_feed.latest_value_calc_avg_period;
+                let group_by = this.current_feed.latest_value_calc_group_period;
+                let fun = this.current_feed.latest_value_data_function;
+                let query_parameter = fun+"(\""+this.current_feed.parameter+"\") as \""+fun+"_"+this.current_feed.parameter+"\"";
+
                 let influxql_query = "SELECT "+query_parameter+" FROM \"bk\".\"autogen\".\"/burgerking"+this.current_feed.object+"\" WHERE "+time_interval+" GROUP BY time("+group_by+") FILL("+fill+") LIMIT "+limit;
                 Vue.axios
                     .get(this.$store.getters.getInfluxServerAddress + "/query", {

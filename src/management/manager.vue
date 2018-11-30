@@ -44,7 +44,17 @@ export default {
                 short: this.$i18n.t("message.clients_short")
               },
               parameter: "in",
-              object: "/users/1/"
+              object: "/users/1/",
+              net_average_object: "/users/1/",
+              small_chart_group_period: "1d",
+              small_chart_time_interval: "time > now() - 5d",
+              small_chart_data_function: "mean", //median, sum
+              full_chart_group_period: "5m",
+              full_chart_time_interval: "time > now() - 24h",
+              full_chart_data_function: "mean",
+              latest_value_calc_avg_period: "time > now() - 5h AND time < now() - 3h",
+              latest_value_calc_group_period: "2h",
+              latest_value_data_function: "mean"
             },
             {
               measurement: {
@@ -53,7 +63,8 @@ export default {
                 short: this.$i18n.t("message.clients_short")
               },
               parameter: "in",
-              object: "/users/1/"
+              object: "/users/1/",
+              net_average_object: "/users/1/"
             },
             {
               measurement: {
@@ -62,7 +73,17 @@ export default {
                 short: this.$i18n.t("message.clients_short")
               },
               parameter: "in",
-              object: "/users/1/"
+              object: "/users/1/",
+              net_average_object: "/users/1/",
+              small_chart_group_period: "1d",
+              small_chart_time_interval: "time > now() - 5d",
+              small_chart_data_function: "mean", //median, sum
+              full_chart_group_period: "5m",
+              full_chart_time_interval: "time > now() - 24h",
+              full_chart_data_function: "mean",
+              latest_value_calc_avg_period: "time > now() - 5h AND time < now() - 3h",
+              latest_value_calc_group_period: "2h",
+              latest_value_data_function: "mean"
             },
             {
               measurement: {
@@ -71,7 +92,17 @@ export default {
                 short: this.$i18n.t("message.clients_short")
               },
               parameter: "in",
-              object: "/users/1/"
+              object: "/users/1/",
+              net_average_object: "/users/1/",
+              small_chart_group_period: "1d",
+              small_chart_time_interval: "time > now() - 5d",
+              small_chart_data_function: "mean", //median, sum
+              full_chart_group_period: "5m",
+              full_chart_time_interval: "time > now() - 24h",
+              full_chart_data_function: "mean",
+              latest_value_calc_avg_period: "time > now() - 5h AND time < now() - 3h",
+              latest_value_calc_group_period: "2h",
+              latest_value_data_function: "mean"
             }
           ]
         },
@@ -86,7 +117,17 @@ export default {
                 short: this.$i18n.t("message.kilowatt_per_hour")
               },
               parameter: "I",
-              object: "/power/QF20/"
+              object: "/power/QF20/",
+              net_average_object: "/power/QF20/",
+              small_chart_group_period: "1d",
+              small_chart_time_interval: "time > now() - 5d",
+              small_chart_data_function: "mean", //median, sum
+              full_chart_group_period: "5m",
+              full_chart_time_interval: "time > now() - 24h",
+              full_chart_data_function: "mean",
+              latest_value_calc_avg_period: "time > now() - 5h AND time < now() - 3h",
+              latest_value_calc_group_period: "2h",
+              latest_value_data_function: "mean"
             },
             {
               measurement: {
@@ -95,7 +136,17 @@ export default {
                 short: this.$i18n.t("message.kilowatt_per_hour")
               },
               parameter: "P",
-              object: "/power/QF20/"
+              object: "/power/QF20/",
+              net_average_object: "/power/QF20/",
+              small_chart_group_period: "1d",
+              small_chart_time_interval: "time > now() - 5d",
+              small_chart_data_function: "mean", //median, sum
+              full_chart_group_period: "5m",
+              full_chart_time_interval: "time > now() - 24h",
+              full_chart_data_function: "mean",
+              latest_value_calc_avg_period: "time > now() - 5h AND time < now() - 3h",
+              latest_value_calc_group_period: "2h",
+              latest_value_data_function: "mean"
             },
             {
               measurement: {
@@ -104,7 +155,17 @@ export default {
                 short: this.$i18n.t("message.roubles_short")
               },
               parameter: "PF",
-              object: "/power/QF20/"
+              object: "/power/QF20/",
+              net_average_object: "/power/QF20/",
+              small_chart_group_period: "1d",
+              small_chart_time_interval: "time > now() - 5d",
+              small_chart_data_function: "mean", //median, sum
+              full_chart_group_period: "5m",
+              full_chart_time_interval: "time > now() - 24h",
+              full_chart_data_function: "mean",
+              latest_value_calc_avg_period: "time > now() - 5h AND time < now() - 3h",
+              latest_value_calc_group_period: "2h",
+              latest_value_data_function: "mean"
             },
             {
               measurement: {
@@ -113,7 +174,17 @@ export default {
                 short: this.$i18n.t("message.roubles_short")
               },
               parameter: "Q",
-              object: "/power/QF20/"
+              object: "/power/QF20/",
+              net_average_object: "/power/QF20/",
+              small_chart_group_period: "1d",
+              small_chart_time_interval: "time > now() - 5d",
+              small_chart_data_function: "mean", //median, sum
+              full_chart_group_period: "5m",
+              full_chart_time_interval: "time > now() - 24h",
+              full_chart_data_function: "mean",
+              latest_value_calc_avg_period: "time > now() - 5h AND time < now() - 3h",
+              latest_value_calc_group_period: "2h",
+              latest_value_data_function: "mean"
             }
           ]
         },
@@ -128,7 +199,17 @@ export default {
                 short: this.$i18n.t("message.kWh_per_client")
               },
               parameter: "I",
-              object: "/power/QF20/"
+              object: "/power/QF20/",
+              net_average_object: "/power/QF20/",
+              small_chart_group_period: "1d",
+              small_chart_time_interval: "time > now() - 5d",
+              small_chart_data_function: "mean", //median, sum
+              full_chart_group_period: "5m",
+              full_chart_time_interval: "time > now() - 24h",
+              full_chart_data_function: "mean",
+              latest_value_calc_avg_period: "time > now() - 5h AND time < now() - 3h",
+              latest_value_calc_group_period: "2h",
+              latest_value_data_function: "mean"
             },
             {
               measurement: {
@@ -137,7 +218,17 @@ export default {
                 short: this.$i18n.t("message.kWh_per_meter")
               },
               parameter: "P",
-              object: "/power/QF20/"
+              object: "/power/QF20/",
+              net_average_object: "/power/QF20/",
+              small_chart_group_period: "1d",
+              small_chart_time_interval: "time > now() - 5d",
+              small_chart_data_function: "mean", //median, sum
+              full_chart_group_period: "5m",
+              full_chart_time_interval: "time > now() - 24h",
+              full_chart_data_function: "mean",
+              latest_value_calc_avg_period: "time > now() - 5h AND time < now() - 3h",
+              latest_value_calc_group_period: "2h",
+              latest_value_data_function: "mean"
             },
             {
               measurement: {
@@ -146,7 +237,17 @@ export default {
                 short: this.$i18n.t("message.roubles_per_client")
               },
               parameter: "PF",
-              object: "/power/QF20/"
+              object: "/power/QF20/",
+              net_average_object: "/power/QF20/",
+              small_chart_group_period: "1d",
+              small_chart_time_interval: "time > now() - 5d",
+              small_chart_data_function: "mean", //median, sum
+              full_chart_group_period: "5m",
+              full_chart_time_interval: "time > now() - 24h",
+              full_chart_data_function: "mean",
+              latest_value_calc_avg_period: "time > now() - 5h AND time < now() - 3h",
+              latest_value_calc_group_period: "2h",
+              latest_value_data_function: "mean"
             },
             {
               measurement: {
@@ -155,7 +256,17 @@ export default {
                 short: this.$i18n.t("message.roubles_per_meter")
               },
               parameter: "Q",
-              object: "/power/QF20/"
+              object: "/power/QF20/",
+              net_average_object: "/power/QF20/",
+              small_chart_group_period: "1d",
+              small_chart_time_interval: "time > now() - 5d",
+              small_chart_data_function: "mean", //median, sum
+              full_chart_group_period: "5m",
+              full_chart_time_interval: "time > now() - 24h",
+              full_chart_data_function: "mean",
+              latest_value_calc_avg_period: "time > now() - 5h AND time < now() - 3h",
+              latest_value_calc_group_period: "2h",
+              latest_value_data_function: "mean"
             }
           ]
         },
@@ -172,7 +283,17 @@ export default {
                 short: this.$i18n.t("message.kWh_per_meter")
               },
               parameter: "I",
-              object: "/power/QF20/"
+              object: "/power/QF20/",
+              net_average_object: "/power/QF20/",
+              small_chart_group_period: "1d",
+              small_chart_time_interval: "time > now() - 5d",
+              small_chart_data_function: "mean", //median, sum
+              full_chart_group_period: "5m",
+              full_chart_time_interval: "time > now() - 24h",
+              full_chart_data_function: "mean",
+              latest_value_calc_avg_period: "time > now() - 5h AND time < now() - 3h",
+              latest_value_calc_group_period: "2h",
+              latest_value_data_function: "mean"
             },
             {
               measurement: {
@@ -181,7 +302,17 @@ export default {
                 short: this.$i18n.t("message.kWh_per_meter")
               },
               parameter: "P",
-              object: "/power/QF20/"
+              object: "/power/QF20/",
+              net_average_object: "/power/QF20/",
+              small_chart_group_period: "1d",
+              small_chart_time_interval: "time > now() - 5d",
+              small_chart_data_function: "mean", //median, sum
+              full_chart_group_period: "5m",
+              full_chart_time_interval: "time > now() - 24h",
+              full_chart_data_function: "mean",
+              latest_value_calc_avg_period: "time > now() - 5h AND time < now() - 3h",
+              latest_value_calc_group_period: "2h",
+              latest_value_data_function: "mean"
             },
             {
               measurement: {
@@ -190,7 +321,17 @@ export default {
                 short: this.$i18n.t("message.roubles_per_meter")
               },
               parameter: "PF",
-              object: "/power/QF20/"
+              object: "/power/QF20/",
+              net_average_object: "/power/QF20/",
+              small_chart_group_period: "1d",
+              small_chart_time_interval: "time > now() - 5d",
+              small_chart_data_function: "mean", //median, sum
+              full_chart_group_period: "5m",
+              full_chart_time_interval: "time > now() - 24h",
+              full_chart_data_function: "mean",
+              latest_value_calc_avg_period: "time > now() - 5h AND time < now() - 3h",
+              latest_value_calc_group_period: "2h",
+              latest_value_data_function: "mean"
             },
             {
               measurement: {
@@ -199,7 +340,17 @@ export default {
                 short: this.$i18n.t("message.roubles_per_meter")
               },
               parameter: "Q",
-              object: "/power/QF20/"
+              object: "/power/QF20/",
+              net_average_object: "/power/QF20/",
+              small_chart_group_period: "1d",
+              small_chart_time_interval: "time > now() - 5d",
+              small_chart_data_function: "mean", //median, sum
+              full_chart_group_period: "5m",
+              full_chart_time_interval: "time > now() - 24h",
+              full_chart_data_function: "mean",
+              latest_value_calc_avg_period: "time > now() - 5h AND time < now() - 3h",
+              latest_value_calc_group_period: "2h",
+              latest_value_data_function: "mean"
             }
           ]
         },
@@ -214,7 +365,17 @@ export default {
                 short: this.$i18n.t("message.kilowatt_per_hour")
               },
               parameter: "W",
-              object: "/metrics/powergroups/main/Light/"
+              object: "/metrics/powergroups/main/Light/",
+              net_average_object: "/metrics/powergroups/main/Light/",
+              small_chart_group_period: "1d",
+              small_chart_time_interval: "time > now() - 5d",
+              small_chart_data_function: "mean", //median, sum
+              full_chart_group_period: "5m",
+              full_chart_time_interval: "time > now() - 24h",
+              full_chart_data_function: "mean",
+              latest_value_calc_avg_period: "time > now() - 5h AND time < now() - 3h",
+              latest_value_calc_group_period: "2h",
+              latest_value_data_function: "mean"
             },
             {
               measurement: {
@@ -223,7 +384,17 @@ export default {
                 short: this.$i18n.t("message.kWh_per_meter")
               },
               parameter: "W",
-              object: "/metrics/powergroups/main/Light/"
+              object: "/metrics/powergroups/main/Light/",
+              net_average_object: "/metrics/powergroups/main/Light/",
+              small_chart_group_period: "1d",
+              small_chart_time_interval: "time > now() - 5d",
+              small_chart_data_function: "mean", //median, sum
+              full_chart_group_period: "5m",
+              full_chart_time_interval: "time > now() - 24h",
+              full_chart_data_function: "mean",
+              latest_value_calc_avg_period: "time > now() - 5h AND time < now() - 3h",
+              latest_value_calc_group_period: "2h",
+              latest_value_data_function: "mean"
             },
             {
               measurement: {
@@ -232,7 +403,17 @@ export default {
                 short: this.$i18n.t("message.roubles_short")
               },
               parameter: "W",
-              object: "/metrics/powergroups/main/Light/"
+              object: "/metrics/powergroups/main/Light/",
+              net_average_object: "/metrics/powergroups/main/Light/",
+              small_chart_group_period: "1d",
+              small_chart_time_interval: "time > now() - 5d",
+              small_chart_data_function: "mean", //median, sum
+              full_chart_group_period: "5m",
+              full_chart_time_interval: "time > now() - 24h",
+              full_chart_data_function: "mean",
+              latest_value_calc_avg_period: "time > now() - 5h AND time < now() - 3h",
+              latest_value_calc_group_period: "2h",
+              latest_value_data_function: "mean"
             },
             {
               measurement: {
@@ -241,7 +422,17 @@ export default {
                 short: this.$i18n.t("message.roubles_per_meter")
               },
               parameter: "W",
-              object: "/metrics/powergroups/main/Light/"
+              object: "/metrics/powergroups/main/Light/",
+              net_average_object: "/metrics/powergroups/main/Light/",
+              small_chart_group_period: "1d",
+              small_chart_time_interval: "time > now() - 5d",
+              small_chart_data_function: "mean", //median, sum
+              full_chart_group_period: "5m",
+              full_chart_time_interval: "time > now() - 24h",
+              full_chart_data_function: "mean",
+              latest_value_calc_avg_period: "time > now() - 5h AND time < now() - 3h",
+              latest_value_calc_group_period: "2h",
+              latest_value_data_function: "mean"
             }
           ]
         },
@@ -256,7 +447,17 @@ export default {
                 short: this.$i18n.t("message.kilowatt_per_hour")
               },
               parameter: "W",
-              object: "/metrics/powergroups/main/Kitchen/"
+              object: "/metrics/powergroups/main/Kitchen/",
+              net_average_object: "/metrics/powergroups/main/Kitchen/",
+              small_chart_group_period: "1d",
+              small_chart_time_interval: "time > now() - 5d",
+              small_chart_data_function: "mean", //median, sum
+              full_chart_group_period: "5m",
+              full_chart_time_interval: "time > now() - 24h",
+              full_chart_data_function: "mean",
+              latest_value_calc_avg_period: "time > now() - 5h AND time < now() - 3h",
+              latest_value_calc_group_period: "2h",
+              latest_value_data_function: "mean"
             },
             {
               measurement: {
@@ -265,7 +466,17 @@ export default {
                 short: this.$i18n.t("message.kWh_per_meter")
               },
               parameter: "W",
-              object: "/metrics/powergroups/main/Kitchen/"
+              object: "/metrics/powergroups/main/Kitchen/",
+              net_average_object: "/metrics/powergroups/main/Kitchen/",
+              small_chart_group_period: "1d",
+              small_chart_time_interval: "time > now() - 5d",
+              small_chart_data_function: "mean", //median, sum
+              full_chart_group_period: "5m",
+              full_chart_time_interval: "time > now() - 24h",
+              full_chart_data_function: "mean",
+              latest_value_calc_avg_period: "time > now() - 5h AND time < now() - 3h",
+              latest_value_calc_group_period: "2h",
+              latest_value_data_function: "mean"
             },
             {
               measurement: {
@@ -274,7 +485,17 @@ export default {
                 short: this.$i18n.t("message.roubles_short")
               },
               parameter: "W",
-              object: "/metrics/powergroups/main/Kitchen/"
+              object: "/metrics/powergroups/main/Kitchen/",
+              net_average_object: "/metrics/powergroups/main/Kitchen/",
+              small_chart_group_period: "1d",
+              small_chart_time_interval: "time > now() - 5d",
+              small_chart_data_function: "mean", //median, sum
+              full_chart_group_period: "5m",
+              full_chart_time_interval: "time > now() - 24h",
+              full_chart_data_function: "mean",
+              latest_value_calc_avg_period: "time > now() - 5h AND time < now() - 3h",
+              latest_value_calc_group_period: "2h",
+              latest_value_data_function: "mean"
             },
             {
               measurement: {
@@ -283,7 +504,17 @@ export default {
                 short: this.$i18n.t("message.roubles_per_meter")
               },
               parameter: "W",
-              object: "/metrics/powergroups/main/Kitchen/"
+              object: "/metrics/powergroups/main/Kitchen/",
+              net_average_object: "/metrics/powergroups/main/Kitchen/",
+              small_chart_group_period: "1d",
+              small_chart_time_interval: "time > now() - 5d",
+              small_chart_data_function: "mean", //median, sum
+              full_chart_group_period: "5m",
+              full_chart_time_interval: "time > now() - 24h",
+              full_chart_data_function: "mean",
+              latest_value_calc_avg_period: "time > now() - 5h AND time < now() - 3h",
+              latest_value_calc_group_period: "2h",
+              latest_value_data_function: "mean"
             }
           ]
         },
@@ -298,7 +529,17 @@ export default {
                 short: this.$i18n.t("message.kilowatt_per_hour")
               },
               parameter: "W",
-              object: "/metrics/powergroups/main/Climate/"
+              object: "/metrics/powergroups/main/Climate/",
+              net_average_object: "/metrics/powergroups/main/Climate/",
+              small_chart_group_period: "1d",
+              small_chart_time_interval: "time > now() - 5d",
+              small_chart_data_function: "mean", //median, sum
+              full_chart_group_period: "5m",
+              full_chart_time_interval: "time > now() - 24h",
+              full_chart_data_function: "mean",
+              latest_value_calc_avg_period: "time > now() - 5h AND time < now() - 3h",
+              latest_value_calc_group_period: "2h",
+              latest_value_data_function: "mean"
             },
             {
               measurement: {
@@ -307,7 +548,17 @@ export default {
                 short: this.$i18n.t("message.kWh_per_meter")
               },
               parameter: "W",
-              object: "/metrics/powergroups/main/Climate/"
+              object: "/metrics/powergroups/main/Climate/",
+              net_average_object: "/metrics/powergroups/main/Climate/",
+              small_chart_group_period: "1d",
+              small_chart_time_interval: "time > now() - 5d",
+              small_chart_data_function: "mean", //median, sum
+              full_chart_group_period: "5m",
+              full_chart_time_interval: "time > now() - 24h",
+              full_chart_data_function: "mean",
+              latest_value_calc_avg_period: "time > now() - 5h AND time < now() - 3h",
+              latest_value_calc_group_period: "2h",
+              latest_value_data_function: "mean"
             },
             {
               measurement: {
@@ -316,7 +567,17 @@ export default {
                 short: this.$i18n.t("message.roubles_short")
               },
               parameter: "W",
-              object: "/metrics/powergroups/main/Climate/"
+              object: "/metrics/powergroups/main/Climate/",
+              net_average_object: "/metrics/powergroups/main/Climate/",
+              small_chart_group_period: "1d",
+              small_chart_time_interval: "time > now() - 5d",
+              small_chart_data_function: "mean", //median, sum
+              full_chart_group_period: "5m",
+              full_chart_time_interval: "time > now() - 24h",
+              full_chart_data_function: "mean",
+              latest_value_calc_avg_period: "time > now() - 5h AND time < now() - 3h",
+              latest_value_calc_group_period: "2h",
+              latest_value_data_function: "mean"
             },
             {
               measurement: {
@@ -325,7 +586,17 @@ export default {
                 short: this.$i18n.t("message.roubles_per_meter")
               },
               parameter: "W",
-              object: "/metrics/powergroups/main/Climate/"
+              object: "/metrics/powergroups/main/Climate/",
+              net_average_object: "/metrics/powergroups/main/Climate/",
+              small_chart_group_period: "1d",
+              small_chart_time_interval: "time > now() - 5d",
+              small_chart_data_function: "mean", //median, sum
+              full_chart_group_period: "5m",
+              full_chart_time_interval: "time > now() - 24h",
+              full_chart_data_function: "mean",
+              latest_value_calc_avg_period: "time > now() - 5h AND time < now() - 3h",
+              latest_value_calc_group_period: "2h",
+              latest_value_data_function: "mean"
             }
           ]
         },
@@ -340,7 +611,17 @@ export default {
                 short: this.$i18n.t("message.kilowatt_per_hour")
               },
               parameter: "W",
-              object: "/metrics/powergroups/main/Other/"
+              object: "/metrics/powergroups/main/Other/",
+              net_average_object: "/metrics/powergroups/main/Other/",
+              small_chart_group_period: "1d",
+              small_chart_time_interval: "time > now() - 5d",
+              small_chart_data_function: "mean", //median, sum
+              full_chart_group_period: "5m",
+              full_chart_time_interval: "time > now() - 24h",
+              full_chart_data_function: "mean",
+              latest_value_calc_avg_period: "time > now() - 5h AND time < now() - 3h",
+              latest_value_calc_group_period: "2h",
+              latest_value_data_function: "mean"
             },
             {
               measurement: {
@@ -349,7 +630,17 @@ export default {
                 short: this.$i18n.t("message.kWh_per_meter")
               },
               parameter: "W",
-              object: "/metrics/powergroups/main/Other/"
+              object: "/metrics/powergroups/main/Other/",
+              net_average_object: "/metrics/powergroups/main/Other/",
+              small_chart_group_period: "1d",
+              small_chart_time_interval: "time > now() - 5d",
+              small_chart_data_function: "mean", //median, sum
+              full_chart_group_period: "5m",
+              full_chart_time_interval: "time > now() - 24h",
+              full_chart_data_function: "mean",
+              latest_value_calc_avg_period: "time > now() - 5h AND time < now() - 3h",
+              latest_value_calc_group_period: "2h",
+              latest_value_data_function: "mean"
             },
             {
               measurement: {
@@ -358,7 +649,17 @@ export default {
                 short: this.$i18n.t("message.roubles_short")
               },
               parameter: "W",
-              object: "/metrics/powergroups/main/Other/"
+              object: "/metrics/powergroups/main/Other/",
+              net_average_object: "/metrics/powergroups/main/Other/",
+              small_chart_group_period: "1d",
+              small_chart_time_interval: "time > now() - 5d",
+              small_chart_data_function: "mean", //median, sum
+              full_chart_group_period: "5m",
+              full_chart_time_interval: "time > now() - 24h",
+              full_chart_data_function: "mean",
+              latest_value_calc_avg_period: "time > now() - 5h AND time < now() - 3h",
+              latest_value_calc_group_period: "2h",
+              latest_value_data_function: "mean"
             },
             {
               measurement: {
@@ -367,7 +668,17 @@ export default {
                 short: this.$i18n.t("message.roubles_per_meter")
               },
               parameter: "W",
-              object: "/metrics/powergroups/main/Other/"
+              object: "/metrics/powergroups/main/Other/",
+              net_average_object: "/metrics/powergroups/main/Other/",
+              small_chart_group_period: "1d",
+              small_chart_time_interval: "time > now() - 5d",
+              small_chart_data_function: "mean", //median, sum
+              full_chart_group_period: "5m",
+              full_chart_time_interval: "time > now() - 24h",
+              full_chart_data_function: "mean",
+              latest_value_calc_avg_period: "time > now() - 5h AND time < now() - 3h",
+              latest_value_calc_group_period: "2h",
+              latest_value_data_function: "mean"
             }
           ]
         }
