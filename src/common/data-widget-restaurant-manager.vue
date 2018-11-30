@@ -83,7 +83,7 @@
                 let data_series = [];
                 let fill = "none"; //fill the gap between "now" and last data received
                 let time_interval = "time > now() - 24h";
-                let group_by = "1h"; // group by 1 hour
+                let group_by = "5m"; // group by 5 minutes
                 let query_parameter = this.current_feed.parameter;
                 if (this.average_method === "arithmetic_average"){
                     query_parameter = "mean(\""+this.current_feed.parameter+"\") as \"Mean_"+this.current_feed.parameter+"\"";
