@@ -3,6 +3,7 @@ import main_template from './main_template.vue'
 
 import management_map from './management/map.vue'
 import manager_ui from './management/manager.vue'
+import welcome_page from './index/index.vue'
 
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
@@ -32,8 +33,12 @@ const router = new VueRouter({
             component: manager_ui
         },
         {
+            path: '/',
+            component: welcome_page
+        },
+        {
             path: '*',
-            redirect: '/sites-management'
+            redirect: '/'
         }]
 });
 

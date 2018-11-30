@@ -291,3 +291,23 @@ table.table thead tr {
     font-size: 3em !important;
     transition: opacity 0.3s;
 }
+
+.logo_main {
+    display: block;
+    flex-grow: 0 !important;
+    margin: 50px;
+}
+
+.main-page-button {
+    display: block;
+    flex-grow: 0 !important;
+    margin: 50px;
+}
+
+.logo_nokia_main {
+    height: 40px;
+}
+
+.logo_bk_main {
+    height: 100px;
+}
