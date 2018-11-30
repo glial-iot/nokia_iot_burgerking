@@ -45,7 +45,30 @@ export default {
               },
               parameter: "in",
               object: "/users/1/",
-              net_average_object: "/users/1/",
+              object_net_avg: "/users/1/",
+              parameter_net_avg: "in",
+              math_net_avg_multiplier: "1.1", // +10%
+              small_chart_group_period: "1d",
+              small_chart_time_interval: "time > now() - 5d",
+              small_chart_data_function: "sum", //median, sum
+              full_chart_group_period: "5m",
+              full_chart_time_interval: "time > now() - 24h",
+              full_chart_data_function: "sum",
+              latest_value_calc_avg_period: "time > now() - 24h",
+              latest_value_calc_group_period: "24h",
+              latest_value_data_function: "sum"
+            },
+            {
+              measurement: {
+                name: "clients_per_month",
+                literal: this.$i18n.t("message.per_month"),
+                short: this.$i18n.t("message.clients_short")
+              },
+              parameter: "in",
+              object: "/users/1/",
+              object_net_avg: "/users/1/",
+              parameter_net_avg: "in",
+              math_net_avg_multiplier: "1.1", // +10%
               small_chart_group_period: "1d",
               small_chart_time_interval: "time > now() - 5d",
               small_chart_data_function: "mean", //median, sum
@@ -58,23 +81,15 @@ export default {
             },
             {
               measurement: {
-                name: "clients_per_month",
-                literal: this.$i18n.t("message.per_month"),
-                short: this.$i18n.t("message.clients_short")
-              },
-              parameter: "in",
-              object: "/users/1/",
-              net_average_object: "/users/1/"
-            },
-            {
-              measurement: {
                 name: "clients_per_day_per_meter",
                 literal: this.$i18n.t("message.per_day_per_meter"),
                 short: this.$i18n.t("message.clients_short")
               },
               parameter: "in",
               object: "/users/1/",
-              net_average_object: "/users/1/",
+              object_net_avg: "/users/1/",
+              parameter_net_avg: "in",
+              math_net_avg_multiplier: "1.1",
               small_chart_group_period: "1d",
               small_chart_time_interval: "time > now() - 5d",
               small_chart_data_function: "mean", //median, sum
@@ -93,7 +108,9 @@ export default {
               },
               parameter: "in",
               object: "/users/1/",
-              net_average_object: "/users/1/",
+              object_net_avg: "/users/1/",
+              parameter_net_avg: "in",
+              math_net_avg_multiplier: "1.1",
               small_chart_group_period: "1d",
               small_chart_time_interval: "time > now() - 5d",
               small_chart_data_function: "mean", //median, sum
@@ -118,7 +135,9 @@ export default {
               },
               parameter: "I",
               object: "/power/QF20/",
-              net_average_object: "/power/QF20/",
+              object_net_avg: "/power/QF20/",
+              parameter_net_avg: "I",
+              math_net_avg_multiplier: "1.1",
               small_chart_group_period: "1d",
               small_chart_time_interval: "time > now() - 5d",
               small_chart_data_function: "mean", //median, sum
@@ -137,7 +156,9 @@ export default {
               },
               parameter: "P",
               object: "/power/QF20/",
-              net_average_object: "/power/QF20/",
+              object_net_avg: "/power/QF20/",
+              parameter_net_avg: "P",
+              math_net_avg_multiplier: "1.1",
               small_chart_group_period: "1d",
               small_chart_time_interval: "time > now() - 5d",
               small_chart_data_function: "mean", //median, sum
@@ -156,7 +177,9 @@ export default {
               },
               parameter: "PF",
               object: "/power/QF20/",
-              net_average_object: "/power/QF20/",
+              object_net_avg: "/power/QF20/",
+              parameter_net_avg: "PF",
+              math_net_avg_multiplier: "1.1",
               small_chart_group_period: "1d",
               small_chart_time_interval: "time > now() - 5d",
               small_chart_data_function: "mean", //median, sum
@@ -175,7 +198,9 @@ export default {
               },
               parameter: "Q",
               object: "/power/QF20/",
-              net_average_object: "/power/QF20/",
+              object_net_avg: "/power/QF20/",
+              parameter_net_avg: "Q",
+              math_net_avg_multiplier: "1.1",
               small_chart_group_period: "1d",
               small_chart_time_interval: "time > now() - 5d",
               small_chart_data_function: "mean", //median, sum
@@ -200,7 +225,9 @@ export default {
               },
               parameter: "I",
               object: "/power/QF20/",
-              net_average_object: "/power/QF20/",
+              object_net_avg: "/power/QF20/",
+              parameter_net_avg: "I",
+              math_net_avg_multiplier: "1.1",
               small_chart_group_period: "1d",
               small_chart_time_interval: "time > now() - 5d",
               small_chart_data_function: "mean", //median, sum
@@ -219,7 +246,9 @@ export default {
               },
               parameter: "P",
               object: "/power/QF20/",
-              net_average_object: "/power/QF20/",
+              object_net_avg: "/power/QF20/",
+              parameter_net_avg: "P",
+              math_net_avg_multiplier: "1.1",
               small_chart_group_period: "1d",
               small_chart_time_interval: "time > now() - 5d",
               small_chart_data_function: "mean", //median, sum
@@ -238,7 +267,9 @@ export default {
               },
               parameter: "PF",
               object: "/power/QF20/",
-              net_average_object: "/power/QF20/",
+              object_net_avg: "/power/QF20/",
+              parameter_net_avg: "PF",
+              math_net_avg_multiplier: "1.1",
               small_chart_group_period: "1d",
               small_chart_time_interval: "time > now() - 5d",
               small_chart_data_function: "mean", //median, sum
@@ -257,7 +288,9 @@ export default {
               },
               parameter: "Q",
               object: "/power/QF20/",
-              net_average_object: "/power/QF20/",
+              object_net_avg: "/power/QF20/",
+              parameter_net_avg: "Q",
+              math_net_avg_multiplier: "1.1",
               small_chart_group_period: "1d",
               small_chart_time_interval: "time > now() - 5d",
               small_chart_data_function: "mean", //median, sum
@@ -284,7 +317,9 @@ export default {
               },
               parameter: "I",
               object: "/power/QF20/",
-              net_average_object: "/power/QF20/",
+              object_net_avg: "/power/QF20/",
+              parameter_net_avg: "I",
+              math_net_avg_multiplier: "1.1",
               small_chart_group_period: "1d",
               small_chart_time_interval: "time > now() - 5d",
               small_chart_data_function: "mean", //median, sum
@@ -303,7 +338,9 @@ export default {
               },
               parameter: "P",
               object: "/power/QF20/",
-              net_average_object: "/power/QF20/",
+              object_net_avg: "/power/QF20/",
+              parameter_net_avg: "P",
+              math_net_avg_multiplier: "1.1",
               small_chart_group_period: "1d",
               small_chart_time_interval: "time > now() - 5d",
               small_chart_data_function: "mean", //median, sum
@@ -322,7 +359,9 @@ export default {
               },
               parameter: "PF",
               object: "/power/QF20/",
-              net_average_object: "/power/QF20/",
+              object_net_avg: "/power/QF20/",
+              parameter_net_avg: "PF",
+              math_net_avg_multiplier: "1.1",
               small_chart_group_period: "1d",
               small_chart_time_interval: "time > now() - 5d",
               small_chart_data_function: "mean", //median, sum
@@ -341,7 +380,9 @@ export default {
               },
               parameter: "Q",
               object: "/power/QF20/",
-              net_average_object: "/power/QF20/",
+              object_net_avg: "/power/QF20/",
+              parameter_net_avg: "Q",
+              math_net_avg_multiplier: "1.1",
               small_chart_group_period: "1d",
               small_chart_time_interval: "time > now() - 5d",
               small_chart_data_function: "mean", //median, sum
@@ -366,7 +407,9 @@ export default {
               },
               parameter: "W",
               object: "/metrics/powergroups/main/Light/",
-              net_average_object: "/metrics/powergroups/main/Light/",
+              object_net_avg: "/metrics/powergroups/main/Light/",
+              parameter_net_avg: "W",
+              math_net_avg_multiplier: "1.1",
               small_chart_group_period: "1d",
               small_chart_time_interval: "time > now() - 5d",
               small_chart_data_function: "mean", //median, sum
@@ -385,7 +428,9 @@ export default {
               },
               parameter: "W",
               object: "/metrics/powergroups/main/Light/",
-              net_average_object: "/metrics/powergroups/main/Light/",
+              object_net_avg: "/metrics/powergroups/main/Light/",
+              parameter_net_avg: "W",
+              math_net_avg_multiplier: "1.1",
               small_chart_group_period: "1d",
               small_chart_time_interval: "time > now() - 5d",
               small_chart_data_function: "mean", //median, sum
@@ -404,7 +449,9 @@ export default {
               },
               parameter: "W",
               object: "/metrics/powergroups/main/Light/",
-              net_average_object: "/metrics/powergroups/main/Light/",
+              object_net_avg: "/metrics/powergroups/main/Light/",
+              parameter_net_avg: "W",
+              math_net_avg_multiplier: "1.1",
               small_chart_group_period: "1d",
               small_chart_time_interval: "time > now() - 5d",
               small_chart_data_function: "mean", //median, sum
@@ -423,7 +470,9 @@ export default {
               },
               parameter: "W",
               object: "/metrics/powergroups/main/Light/",
-              net_average_object: "/metrics/powergroups/main/Light/",
+              object_net_avg: "/metrics/powergroups/main/Light/",
+              parameter_net_avg: "W",
+              math_net_avg_multiplier: "1.1",
               small_chart_group_period: "1d",
               small_chart_time_interval: "time > now() - 5d",
               small_chart_data_function: "mean", //median, sum
@@ -448,7 +497,9 @@ export default {
               },
               parameter: "W",
               object: "/metrics/powergroups/main/Kitchen/",
-              net_average_object: "/metrics/powergroups/main/Kitchen/",
+              object_net_avg: "/metrics/powergroups/main/Kitchen/",
+              parameter_net_avg: "W",
+              math_net_avg_multiplier: "1.1",
               small_chart_group_period: "1d",
               small_chart_time_interval: "time > now() - 5d",
               small_chart_data_function: "mean", //median, sum
@@ -467,7 +518,9 @@ export default {
               },
               parameter: "W",
               object: "/metrics/powergroups/main/Kitchen/",
-              net_average_object: "/metrics/powergroups/main/Kitchen/",
+              object_net_avg: "/metrics/powergroups/main/Kitchen/",
+              parameter_net_avg: "in",
+              math_net_avg_multiplier: "1.1",
               small_chart_group_period: "1d",
               small_chart_time_interval: "time > now() - 5d",
               small_chart_data_function: "mean", //median, sum
@@ -486,7 +539,9 @@ export default {
               },
               parameter: "W",
               object: "/metrics/powergroups/main/Kitchen/",
-              net_average_object: "/metrics/powergroups/main/Kitchen/",
+              object_net_avg: "/metrics/powergroups/main/Kitchen/",
+              parameter_net_avg: "W",
+              math_net_avg_multiplier: "1.1",
               small_chart_group_period: "1d",
               small_chart_time_interval: "time > now() - 5d",
               small_chart_data_function: "mean", //median, sum
@@ -505,7 +560,9 @@ export default {
               },
               parameter: "W",
               object: "/metrics/powergroups/main/Kitchen/",
-              net_average_object: "/metrics/powergroups/main/Kitchen/",
+              object_net_avg: "/metrics/powergroups/main/Kitchen/",
+              parameter_net_avg: "W",
+              math_net_avg_multiplier: "1.1",
               small_chart_group_period: "1d",
               small_chart_time_interval: "time > now() - 5d",
               small_chart_data_function: "mean", //median, sum
@@ -530,7 +587,9 @@ export default {
               },
               parameter: "W",
               object: "/metrics/powergroups/main/Climate/",
-              net_average_object: "/metrics/powergroups/main/Climate/",
+              object_net_avg: "/metrics/powergroups/main/Climate/",
+              parameter_net_avg: "W",
+              math_net_avg_multiplier: "1.1",
               small_chart_group_period: "1d",
               small_chart_time_interval: "time > now() - 5d",
               small_chart_data_function: "mean", //median, sum
@@ -549,7 +608,9 @@ export default {
               },
               parameter: "W",
               object: "/metrics/powergroups/main/Climate/",
-              net_average_object: "/metrics/powergroups/main/Climate/",
+              object_net_avg: "/metrics/powergroups/main/Climate/",
+              parameter_net_avg: "W",
+              math_net_avg_multiplier: "1.1",
               small_chart_group_period: "1d",
               small_chart_time_interval: "time > now() - 5d",
               small_chart_data_function: "mean", //median, sum
@@ -568,7 +629,9 @@ export default {
               },
               parameter: "W",
               object: "/metrics/powergroups/main/Climate/",
-              net_average_object: "/metrics/powergroups/main/Climate/",
+              object_net_avg: "/metrics/powergroups/main/Climate/",
+              parameter_net_avg: "W",
+              math_net_avg_multiplier: "1.1",
               small_chart_group_period: "1d",
               small_chart_time_interval: "time > now() - 5d",
               small_chart_data_function: "mean", //median, sum
@@ -587,7 +650,9 @@ export default {
               },
               parameter: "W",
               object: "/metrics/powergroups/main/Climate/",
-              net_average_object: "/metrics/powergroups/main/Climate/",
+              object_net_avg: "/metrics/powergroups/main/Climate/",
+              parameter_net_avg: "W",
+              math_net_avg_multiplier: "1.1",
               small_chart_group_period: "1d",
               small_chart_time_interval: "time > now() - 5d",
               small_chart_data_function: "mean", //median, sum
@@ -612,7 +677,9 @@ export default {
               },
               parameter: "W",
               object: "/metrics/powergroups/main/Other/",
-              net_average_object: "/metrics/powergroups/main/Other/",
+              object_net_avg: "/metrics/powergroups/main/Other/",
+              parameter_net_avg: "W",
+              math_net_avg_multiplier: "1.1",
               small_chart_group_period: "1d",
               small_chart_time_interval: "time > now() - 5d",
               small_chart_data_function: "mean", //median, sum
@@ -631,7 +698,9 @@ export default {
               },
               parameter: "W",
               object: "/metrics/powergroups/main/Other/",
-              net_average_object: "/metrics/powergroups/main/Other/",
+              object_net_avg: "/metrics/powergroups/main/Other/",
+              parameter_net_avg: "W",
+              math_net_avg_multiplier: "1.1",
               small_chart_group_period: "1d",
               small_chart_time_interval: "time > now() - 5d",
               small_chart_data_function: "mean", //median, sum
@@ -650,7 +719,9 @@ export default {
               },
               parameter: "W",
               object: "/metrics/powergroups/main/Other/",
-              net_average_object: "/metrics/powergroups/main/Other/",
+              object_net_avg: "/metrics/powergroups/main/Other/",
+              parameter_net_avg: "W",
+              math_net_avg_multiplier: "1.1",
               small_chart_group_period: "1d",
               small_chart_time_interval: "time > now() - 5d",
               small_chart_data_function: "mean", //median, sum
@@ -669,7 +740,9 @@ export default {
               },
               parameter: "W",
               object: "/metrics/powergroups/main/Other/",
-              net_average_object: "/metrics/powergroups/main/Other/",
+              object_net_avg: "/metrics/powergroups/main/Other/",
+              parameter_net_avg: "W",
+              math_net_avg_multiplier: "1.1",
               small_chart_group_period: "1d",
               small_chart_time_interval: "time > now() - 5d",
               small_chart_data_function: "mean", //median, sum

@@ -170,16 +170,37 @@
                     .then(response => {
                         if (response.data.results[0].series) {
                             this.current_value = response.data.results[0].series[0].values[0][1].toFixed(2);
-                            this.average_network_value = Math.random() >= 0.5 ?
-                                (parseFloat(this.current_value) + (this.current_value * (Math.random() * 0.4))).toFixed(2) :
-                                (parseFloat(this.current_value) - (this.current_value * (Math.random() * 0.4))).toFixed(2)
                         }
-                        console.log("fired")
+                    })
+                    .catch(error => {console.log(error)});
+            },
+            getNetAvgValue() {
+                let fill = "none"; //fill the gap between "now" and last data received
+                let limit = 1; // only 1 value
+                let time_interval = this.current_feed.latest_value_calc_avg_period;
+                let group_by = this.current_feed.latest_value_calc_group_period;
+                let fun = this.current_feed.latest_value_data_function;
+                let query_parameter = fun+"(\""+this.current_feed.parameter_net_avg+"\") as \""+fun+"_"+this.current_feed.parameter_net_avg+"\"";
+
+                let influxql_query = "SELECT "+query_parameter+" FROM \"bk\".\"autogen\".\"/burgerking"+this.current_feed.object_net_avg+"\" WHERE "+time_interval+" GROUP BY time("+group_by+") FILL("+fill+") LIMIT "+limit;
+                Vue.axios
+                    .get(this.$store.getters.getInfluxServerAddress + "/query", {
+                        params: {
+                            epoch: "ms",
+                            q: influxql_query
+                        }
+                    })
+                    .then(response => {
+                        if (response.data.results[0].series) {
+                            let avg_multiplier = parseFloat(this.current_feed.math_net_avg_multiplier);
+                            this.average_network_value = (avg_multiplier * response.data.results[0].series[0].values[0][1]).toFixed(2);
+                        }
                     })
                     .catch(error => {console.log(error)});
             },
             refreshData() {
                 this.getLatestValue();
+                this.getNetAvgValue();
                 this.getSmallChartData();
                 this.getFullChartData();
             }
