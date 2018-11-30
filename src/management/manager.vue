@@ -54,11 +54,11 @@ export default {
                             small_chart_group_period: "1d",
                             small_chart_time_interval: "time > now() - 5d",
                             small_chart_data_function: "sum", //median, sum
-                            full_chart_group_period: "5m",
-                            full_chart_time_interval: "time > now() - 24h",
+                            full_chart_group_period: "10m",
+                            full_chart_time_interval: "time > now() - 10d",
                             full_chart_data_function: "sum",
-                            latest_value_calc_avg_period: "time > now() - 24h",
-                            latest_value_calc_group_period: "24h",
+                            latest_value_calc_avg_period: "time > now() - 1d",
+                            latest_value_calc_group_period: "1d",
                             latest_value_data_function: "sum"
                         },
                         {
@@ -141,18 +141,18 @@ export default {
                                 literal: this.$i18n.t("message.per_day_kWh"),
                                 short: this.$i18n.t("message.kilowatt_per_hour")
                             },
-                            parameter: "I",
-                            object: "/power/QF20/",
-                            object_net_avg: "/power/QF20/",
-                            parameter_net_avg: "I",
+                            parameter: "W",
+                            object: "/metrics/powergroups/main/All/",
+                            object_net_avg: "/metrics/powergroups/main/All/",
+                            parameter_net_avg: "W",
                             math_net_avg_multiplier: "1.1",
                             small_chart_group_period: "1d",
                             small_chart_time_interval: "time > now() - 5d",
-                            small_chart_data_function: "mean", //median, sum
-                            full_chart_group_period: "5m",
-                            full_chart_time_interval: "time > now() - 24h",
-                            full_chart_data_function: "mean",
-                            latest_value_calc_avg_period: "time > now() - 5h AND time < now() - 3h",
+                            small_chart_data_function: "median", //median, sum
+                            full_chart_group_period: "1h",
+                            full_chart_time_interval: "time > now() - 10h",
+                            full_chart_data_function: "median",
+                            latest_value_calc_avg_period: "time > now() - 1d",
                             latest_value_calc_group_period: "2h",
                             latest_value_data_function: "mean"
                         },
@@ -163,10 +163,10 @@ export default {
                                 literal: this.$i18n.t("message.per_month_kWh"),
                                 short: this.$i18n.t("message.kilowatt_per_hour")
                             },
-                            parameter: "P",
-                            object: "/power/QF20/",
-                            object_net_avg: "/power/QF20/",
-                            parameter_net_avg: "P",
+                            parameter: "W",
+                            object: "/metrics/powergroups/main/All/",
+                            object_net_avg: "/metrics/powergroups/main/All/",
+                            parameter_net_avg: "W",
                             math_net_avg_multiplier: "1.1",
                             small_chart_group_period: "1d",
                             small_chart_time_interval: "time > now() - 5d",
