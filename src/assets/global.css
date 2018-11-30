@@ -30,12 +30,11 @@
     left: 0;
     height: 100%;
     width: 100%;
-    opacity: 0.3;
+    opacity: 0.2;
     display: flex;
     align-items: flex-end;
     justify-content: center;
     z-index: 1;
-    padding-bottom:12%
 }
 
 .widget-content {

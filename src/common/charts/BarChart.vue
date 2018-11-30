@@ -41,7 +41,7 @@ export default BaseChart.extend({
         width = parent.clientWidth
         height = parent.clientHeight
       } else if (this.isDashboard) {
-        width = parent.clientWidth
+        width = parent.clientWidth + parent.clientWidth * 0.09
         height = parent.clientHeight / 4
       } else {
         let baseSize;
@@ -63,7 +63,7 @@ export default BaseChart.extend({
       
       const ticksHidden = width < 300 || this.hideAxis;
       const padding = ticksHidden ? 8 : 24;
-      
+
       let svg = d3.select(this.$el).append("svg").attr("width", width).attr("height", height);
 
       var xScale = d3.scaleBand()
