@@ -3,11 +3,11 @@
         <v-toolbar color="primary" dark app fixed clipped-left class="toolbar">
             <v-toolbar-items class="cursor-pointer" @click="$router.push('/')">
                 <img class="align-self-center logo_bk mr-3" src="./assets/logo_burgerking.svg" alt="BK Logo">
-                <div class="d-inline align-self-center title">{{$t("message.energy_management")}}</div>
+                <div class="d-inline align-self-center title main-title">{{$t("message.energy_management")}}</div>
             </v-toolbar-items>
             <language-select class="language-select"></language-select>
-            <v-toolbar-items class="hidden-sm-and-down" style="min-width:200px;">
-                <div class="title mt-4">{{$t("message.powered_by_nokia")}}</div>
+            <v-toolbar-items class="hidden-sm-and-down">
+                <div class="title mt-4 main-title">{{$t("message.working_on_glial_impact")}}</div>
             </v-toolbar-items>
         </v-toolbar>
         <v-content>

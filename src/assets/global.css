@@ -1,5 +1,6 @@
 .toolbar {
-    z-index: 10
+    z-index: 10;
+    justify-content: space-between;
 }
 
 .no-logo-margin {
@@ -268,4 +269,8 @@ table.table thead tr {
 .logo_bk {
     height: 86%;
     padding: 1%;
+}
+
+.main-title {
+    white-space: nowrap
 }
