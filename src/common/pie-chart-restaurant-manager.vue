@@ -70,7 +70,7 @@
         let axios_requests = [];
         this.data_feeds.forEach((feed) => {
           let query_parameter = fun + "(\"" + feed.data_parameter + "\") as \"" + fun + "_" + feed.data_parameter + "\"";
-          let influxql_query = "SELECT " + query_parameter + " FROM \"bk\".\"autogen\".\"/burgerking" + feed.data_object + "\" WHERE " + this.config.time_interval + " GROUP BY time(" + this.config.group_period + ") FILL(none) LIMIT 1";
+          let influxql_query = "SELECT " + query_parameter + " FROM \"bk_metrics\".\"autogen\".\"/burgerking" + feed.data_object + "\" WHERE " + this.config.time_interval + " GROUP BY time(" + this.config.group_period + ") FILL(none) LIMIT 1";
           console.log(influxql_query);
           axios_requests.push(Vue.axios
             .get(this.$store.getters.getInfluxServerAddress + "/query", {

@@ -92,7 +92,7 @@
         if (this.average_method === "median") {
           query_parameter = "median(\"" + this.parameter + "\")";
         }
-        let influxql_query = "SELECT " + query_parameter + " FROM \"bk\".\"autogen\".\"/burgerking" + this.data_object + "\" WHERE " + time_interval + " GROUP BY time(" + group_by + ") FILL(" + fill + ")";
+        let influxql_query = "SELECT " + query_parameter + " FROM \"bk_metrics\".\"autogen\".\"/burgerking" + this.data_object + "\" WHERE " + time_interval + " GROUP BY time(" + group_by + ") FILL(" + fill + ")";
         Vue.axios
           .get(this.$store.getters.getInfluxServerAddress + "/query", {
             params: {
@@ -132,7 +132,7 @@
         if (this.average_method === "median") {
           query_parameter = "median(\"" + this.parameter + "\")";
         }
-        let influxql_query = "SELECT " + query_parameter + " FROM \"bk\".\"autogen\".\"/burgerking" + this.data_object + "\" WHERE " + time_interval + " GROUP BY time(" + group_by + ") FILL(" + fill + ") LIMIT " + limit;
+        let influxql_query = "SELECT " + query_parameter + " FROM \"bk_metrics\".\"autogen\".\"/burgerking" + this.data_object + "\" WHERE " + time_interval + " GROUP BY time(" + group_by + ") FILL(" + fill + ") LIMIT " + limit;
         Vue.axios
           .get(this.$store.getters.getInfluxServerAddress + "/query", {
             params: {
@@ -169,7 +169,7 @@
         if (this.average_method === "median") {
           query_parameter = "median(\"" + this.parameter + "\") as \"Median" + this.parameter + "\"";
         }
-        let influxql_query = "SELECT " + query_parameter + " FROM \"bk\".\"autogen\".\"/burgerking" + this.data_object + "\" WHERE " + time_interval + " GROUP BY time(" + group_by + ") FILL(" + fill + ") LIMIT " + limit;
+        let influxql_query = "SELECT " + query_parameter + " FROM \"bk_metrics\".\"autogen\".\"/burgerking" + this.data_object + "\" WHERE " + time_interval + " GROUP BY time(" + group_by + ") FILL(" + fill + ") LIMIT " + limit;
         Vue.axios
           .get(this.$store.getters.getInfluxServerAddress + "/query", {
             params: {

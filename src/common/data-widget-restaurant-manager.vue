@@ -109,7 +109,7 @@
         let fun = this.current_feed.full_chart_data_function;
         let query_parameter = fun + "(\"" + this.current_feed.parameter + "\") as \"" + fun + "_" + this.current_feed.parameter + "\"";
 
-        let influxql_query = "SELECT " + query_parameter + " FROM \"bk\".\"autogen\".\"/burgerking" + this.current_feed.object + "\" WHERE " + time_interval + " GROUP BY time(" + group_by + ") FILL(" + fill + ")";
+        let influxql_query = "SELECT " + query_parameter + " FROM \"bk_metrics\".\"autogen\".\"/burgerking" + this.current_feed.object + "\" WHERE " + time_interval + " GROUP BY time(" + group_by + ") FILL(" + fill + ")";
         Vue.axios
           .get(this.$store.getters.getInfluxServerAddress + "/query", {
             params: {
@@ -145,7 +145,7 @@
         let fun = this.current_feed.small_chart_data_function;
         let query_parameter = fun + "(\"" + this.current_feed.parameter + "\") as \"" + fun + "_" + this.current_feed.parameter + "\"";
 
-        let influxql_query = "SELECT " + query_parameter + " FROM \"bk\".\"autogen\".\"/burgerking" + this.current_feed.object + "\" WHERE " + time_interval + " GROUP BY time(" + group_by + ") FILL(" + fill + ") LIMIT " + limit;
+        let influxql_query = "SELECT " + query_parameter + " FROM \"bk_metrics\".\"autogen\".\"/burgerking" + this.current_feed.object + "\" WHERE " + time_interval + " GROUP BY time(" + group_by + ") FILL(" + fill + ") LIMIT " + limit;
         Vue.axios
           .get(this.$store.getters.getInfluxServerAddress + "/query", {
             params: {
@@ -178,7 +178,7 @@
         let fun = this.current_feed.latest_value_data_function;
         let query_parameter = fun + "(\"" + this.current_feed.parameter + "\") as \"" + fun + "_" + this.current_feed.parameter + "\"";
 
-        let influxql_query = "SELECT " + query_parameter + " FROM \"bk\".\"autogen\".\"/burgerking" + this.current_feed.object + "\" WHERE " + time_interval + " GROUP BY time(" + group_by + ") FILL(" + fill + ") LIMIT " + limit;
+        let influxql_query = "SELECT " + query_parameter + " FROM \"bk_metrics\".\"autogen\".\"/burgerking" + this.current_feed.object + "\" WHERE " + time_interval + " GROUP BY time(" + group_by + ") FILL(" + fill + ") LIMIT " + limit;
         Vue.axios
           .get(this.$store.getters.getInfluxServerAddress + "/query", {
             params: {
@@ -203,7 +203,7 @@
         let fun = this.current_feed.latest_value_data_function;
         let query_parameter = fun + "(\"" + this.current_feed.parameter_net_avg + "\") as \"" + fun + "_" + this.current_feed.parameter_net_avg + "\"";
 
-        let influxql_query = "SELECT " + query_parameter + " FROM \"bk\".\"autogen\".\"/burgerking" + this.current_feed.object_net_avg + "\" WHERE " + time_interval + " GROUP BY time(" + group_by + ") FILL(" + fill + ") LIMIT " + limit;
+        let influxql_query = "SELECT " + query_parameter + " FROM \"bk_metrics\".\"autogen\".\"/burgerking" + this.current_feed.object_net_avg + "\" WHERE " + time_interval + " GROUP BY time(" + group_by + ") FILL(" + fill + ") LIMIT " + limit;
         Vue.axios
           .get(this.$store.getters.getInfluxServerAddress + "/query", {
             params: {
