@@ -3,7 +3,7 @@
       <v-layout row wrap>
          <template v-for="card in cards_data.slice(0,3)">
             <v-flex d-flex md3 class="restaurant-manager-card">
-               <data-widget-manager :type="card.type" :data_feeds="card.data_feeds" :title="card.title"></data-widget-manager>
+               <data-widget-manager :id="card.id" :type="card.type" :data_feeds="card.data_feeds" :title="card.title"></data-widget-manager>
             </v-flex>
          </template>
         <v-flex d-flex md3 class="restaurant-manager-card">
@@ -11,7 +11,7 @@
         </v-flex>
         <template v-for="card in cards_data.slice(3,8)">
           <v-flex d-flex md3 class="restaurant-manager-card">
-            <data-widget-manager :type="card.type" :data_feeds="card.data_feeds" :title="card.title"></data-widget-manager>
+            <data-widget-manager :id="card.id" :type="card.type" :data_feeds="card.data_feeds" :title="card.title"></data-widget-manager>
           </v-flex>
         </template>
       </v-layout>
@@ -49,7 +49,7 @@ export default {
           title: this.$i18n.t("message.qty_of_customers"),
           data_feeds: [
             {
-              id: 1,
+              id: 11,
               measurement: {
                 name: "clients_per_day",
                 literal: this.$i18n.t("message.per_day"),
@@ -71,7 +71,7 @@ export default {
               latest_value_data_function: "sum"
             },
             {
-              id: 2,
+              id: 12,
               measurement: {
                 name: "clients_per_month",
                 literal: this.$i18n.t("message.per_month"),
@@ -94,7 +94,7 @@ export default {
               latest_value_data_function: "mean"
             },
             {
-              id: 3,
+              id: 13,
               measurement: {
                 name: "clients_per_day_per_meter",
                 literal: this.$i18n.t("message.per_day_per_meter"),
@@ -117,7 +117,7 @@ export default {
               latest_value_data_function: "mean"
             },
             {
-              id: 4,
+              id: 14,
               measurement: {
                 name: "clients_per_month_per_meter",
                 literal: this.$i18n.t("message.per_month_per_meter"),
@@ -147,7 +147,7 @@ export default {
           title: this.$i18n.t("message.restaurant_consumption"),
           data_feeds: [
             {
-              id: 1,
+              id: 21,
               measurement: {
                 name: "per_day_kWh",
                 literal: this.$i18n.t("message.per_day_kWh"),
@@ -169,7 +169,7 @@ export default {
               latest_value_data_function: "mean"
             },
             {
-              id: 2,
+              id: 22,
               measurement: {
                 name: "per_month_kWh",
                 literal: this.$i18n.t("message.per_month_kWh"),
@@ -192,7 +192,7 @@ export default {
               latest_value_data_function: "mean"
             },
             {
-              id: 3,
+              id: 23,
               measurement: {
                 name: "per_day_roubles",
                 literal: this.$i18n.t("message.per_day_roubles"),
@@ -215,7 +215,7 @@ export default {
               latest_value_data_function: "mean"
             },
             {
-              id: 4,
+              id: 24,
               measurement: {
                 name: "per_month_roubles",
                 literal: this.$i18n.t("message.per_month_roubles"),
@@ -245,7 +245,7 @@ export default {
           title: this.$i18n.t("message.restaurant_consumption"),
           data_feeds: [
             {
-              id: 1,
+              id: 31,
               measurement: {
                 name: "per_month_kWh_per_client",
                 literal: this.$i18n.t("message.per_month_kWh_per_client"),
@@ -268,7 +268,7 @@ export default {
               latest_value_data_function: "mean"
             },
             {
-              id: 2,
+              id: 32,
               measurement: {
                 name: "per_month_kWh_per_meter",
                 literal: this.$i18n.t("message.per_month_kWh_per_meter"),
@@ -291,7 +291,7 @@ export default {
               latest_value_data_function: "mean"
             },
             {
-              id: 3,
+              id: 33,
               measurement: {
                 name: "per_month_roubles_per_client",
                 literal: this.$i18n.t("message.per_month_roubles_per_client"),
@@ -314,7 +314,7 @@ export default {
               latest_value_data_function: "mean"
             },
             {
-              id: 4,
+              id: 34,
               measurement: {
                 name: "per_month_roubles_per_meter",
                 literal: this.$i18n.t("message.per_month_roubles_per_meter"),
@@ -344,7 +344,7 @@ export default {
           title: this.$i18n.t("message.lighting_consumption"),
           data_feeds: [
             {
-              id: 1,
+              id: 51,
               measurement: {
                 name: "per_month_kWh",
                 literal: this.$i18n.t("message.per_month_kWh"),
@@ -367,7 +367,7 @@ export default {
               latest_value_data_function: "mean"
             },
             {
-              id: 2,
+              id: 52,
               measurement: {
                 name: "per_month_kWh_per_meter",
                 literal: this.$i18n.t("message.per_month_kWh_per_meter"),
@@ -390,7 +390,7 @@ export default {
               latest_value_data_function: "mean"
             },
             {
-              id: 3,
+              id: 53,
               measurement: {
                 name: "per_month_roubles",
                 literal: this.$i18n.t("message.per_month_roubles"),
@@ -413,7 +413,7 @@ export default {
               latest_value_data_function: "mean"
             },
             {
-              id: 4,
+              id: 54,
               measurement: {
                 name: "per_month_roubles_per_meter",
                 literal: this.$i18n.t("message.per_month_roubles_per_meter"),
@@ -443,7 +443,7 @@ export default {
           title: this.$i18n.t("message.kitchen_consumption"),
           data_feeds: [
             {
-              id: 1,
+              id: 61,
               measurement: {
                 name: "per_month_kWh",
                 literal: this.$i18n.t("message.per_month_kWh"),
@@ -466,7 +466,7 @@ export default {
               latest_value_data_function: "mean"
             },
             {
-              id: 2,
+              id: 62,
               measurement: {
                 name: "per_month_kWh_per_meter",
                 literal: this.$i18n.t("message.per_month_kWh_per_meter"),
@@ -489,7 +489,7 @@ export default {
               latest_value_data_function: "mean"
             },
             {
-              id: 3,
+              id: 63,
               measurement: {
                 name: "per_month_roubles",
                 literal: this.$i18n.t("message.per_month_roubles"),
@@ -512,7 +512,7 @@ export default {
               latest_value_data_function: "mean"
             },
             {
-              id: 4,
+              id: 64,
               measurement: {
                 name: "per_month_roubles_per_meter",
                 literal: this.$i18n.t("message.per_month_roubles_per_meter"),
@@ -542,7 +542,7 @@ export default {
           title: this.$i18n.t("message.air_equipment_consumption"),
           data_feeds: [
             {
-              id: 1,
+              id: 71,
               measurement: {
                 name: "per_month_kWh",
                 literal: this.$i18n.t("message.per_month_kWh"),
@@ -565,7 +565,7 @@ export default {
               latest_value_data_function: "mean"
             },
             {
-              id: 2,
+              id: 72,
               measurement: {
                 name: "per_month_kWh_per_meter",
                 literal: this.$i18n.t("message.per_month_kWh_per_meter"),
@@ -588,7 +588,7 @@ export default {
               latest_value_data_function: "mean"
             },
             {
-              id: 3,
+              id: 73,
               measurement: {
                 name: "per_month_roubles",
                 literal: this.$i18n.t("message.per_month_roubles"),
@@ -611,7 +611,7 @@ export default {
               latest_value_data_function: "mean"
             },
             {
-              id: 4,
+              id: 74,
               measurement: {
                 name: "per_month_roubles_per_meter",
                 literal: this.$i18n.t("message.per_month_roubles_per_meter"),
@@ -641,7 +641,7 @@ export default {
           title: this.$i18n.t("message.other_equipment_consumption"),
           data_feeds: [
             {
-              id: 1,
+              id: 81,
               measurement: {
                 name: "per_month_kWh",
                 literal: this.$i18n.t("message.per_month_kWh"),
@@ -664,7 +664,7 @@ export default {
               latest_value_data_function: "mean"
             },
             {
-              id: 2,
+              id: 82,
               measurement: {
                 name: "per_month_kWh_per_meter",
                 literal: this.$i18n.t("message.per_month_kWh_per_meter"),
@@ -687,7 +687,7 @@ export default {
               latest_value_data_function: "mean"
             },
             {
-              id: 3,
+              id: 83,
               measurement: {
                 name: "per_month_roubles",
                 literal: this.$i18n.t("message.per_month_roubles"),
@@ -710,7 +710,7 @@ export default {
               latest_value_data_function: "mean"
             },
             {
-              id: 4,
+              id: 84,
               measurement: {
                 name: "per_month_roubles_per_meter",
                 literal: this.$i18n.t("message.per_month_roubles_per_meter"),

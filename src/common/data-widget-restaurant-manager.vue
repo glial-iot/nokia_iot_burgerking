@@ -57,7 +57,7 @@
             DataWidgetChartModal
         },
         name: "data-widget-text",
-        props: ["type", "title", "data_feeds"],
+        props: ["id", "type", "title", "data_feeds"],
         data: () => ({
             small_chart_data: [],
             full_chart_data: [],
@@ -76,11 +76,18 @@
                 this.$refs.chartModal.show(chart_title, this.small_chart_data);
             },
             setDefaultFeed() {
-                this.current_feed = this.data_feeds[0];
+                if(localStorage.getItem('widget_'+ this.id)) {
+                  this.current_feed_index = localStorage.getItem('widget_'+ this.id);
+                  this.current_feed = this.data_feeds[this.current_feed_index];
+                }
+                else {
+                  this.current_feed = this.data_feeds[0];
+                }
             },
             setCurrentFeed(feed, index) {
                 this.current_feed = feed;
                 this.current_feed_index = index;
+                localStorage.setItem('widget_'+ this.id, this.current_feed_index.toString());
             },
             reloadFeedMeta(){
                 this.current_feed.measurement = this.data_feeds[this.current_feed_index].measurement;

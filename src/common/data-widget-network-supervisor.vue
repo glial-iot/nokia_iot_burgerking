@@ -58,7 +58,7 @@
             DataWidgetChartModal
         },
         name: "data-widget-text",
-        props: ["type", "parameter", "title", "data_object", "value", "measurement", "avg_net_value", "chartData", "averaged"],
+        props: ["type", "parameter", "title", "data_object", "value", "measurement", "avg_net_value", "id", "averaged"],
         data: () => ({
             average_method: "arithmetic_average",
             small_chart_data: [],
@@ -69,10 +69,11 @@
         methods: {
             showChart() {
                 let chart_title = this.$props.averaged ? this.concat_title : this.title;
-                this.$refs.chartModal.show(chart_title, this.chartData);
+                this.$refs.chartModal.show(chart_title, this.full_chart_data);
             },
             setAvgOption(option) {
                 this.average_method = option;
+                localStorage.setItem('avg_method_w'+this.id, option);
             },
             getFullChartData() {
                 let data_series = [];
@@ -193,6 +194,8 @@
 
         },
         mounted: function () {
+            this.average_method = localStorage.getItem('avg_method_w'+this.id) ?
+              localStorage.getItem('avg_method_w'+this.id) : "arithmetic_average";
             this.refreshData();
         },
         watch: {

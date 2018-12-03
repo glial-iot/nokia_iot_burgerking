@@ -51,12 +51,13 @@ Vue.use(Vuex, VueAxios, Axios, Vue_i18n);
 
 const store = new Vuex.Store({
     state: {
-        locale: "ru",
+        locale: localStorage.getItem('locale') ? localStorage.getItem('locale') : 'ru',
         influxdb_server: "http://192.168.1.45:8086",
     },
     mutations: {
         updateLocale(state, locale) {
             this.state.locale = locale;
+            localStorage.setItem('locale', locale);
         }
     },
     getters: {
