@@ -29,7 +29,7 @@
                 <v-icon>fa-bars</v-icon>
               </div>
               <v-list>
-                <v-list-tile v-for="(item, i) in average_method_options" :key="i" @click="">
+                <v-list-tile v-for="(item, i) in average_method_options" :key="i">
                   <v-list-tile-title @click="setAvgOption(i)">{{item}}</v-list-tile-title>
                 </v-list-tile>
               </v-list>
