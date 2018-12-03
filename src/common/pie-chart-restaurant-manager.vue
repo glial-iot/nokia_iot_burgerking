@@ -70,7 +70,7 @@
         let axios_requests = [];
         this.data_feeds.forEach((feed) => {
           let query_parameter = fun + "(\"" + feed.data_parameter + "\") as \"" + fun + "_" + feed.data_parameter + "\"";
-          let influxql_query = "SELECT " + query_parameter + " FROM \"bk\".\"autogen\".\"/burgerking" + feed.data_object + "\" WHERE "+this.config.time_interval+" GROUP BY time("+this.config.group_period+") FILL(none) LIMIT 1";
+          let influxql_query = "SELECT " + query_parameter + " FROM \"bk\".\"autogen\".\"/burgerking" + feed.data_object + "\" WHERE " + this.config.time_interval + " GROUP BY time(" + this.config.group_period + ") FILL(none) LIMIT 1";
           console.log(influxql_query);
           axios_requests.push(Vue.axios
             .get(this.$store.getters.getInfluxServerAddress + "/query", {
@@ -103,13 +103,13 @@
         });
       },
       loadChart() {
-        if (this.chart){
+        if (this.chart) {
           new Promise((resolve, reject) => {
-            setTimeout(function() {
+            setTimeout(function () {
               resolve('disposed');
             }, 100);
             this.chart.dispose();
-          }).then(()=>{
+          }).then(() => {
             this.drawPieChart()
           });
         }
@@ -118,52 +118,52 @@
         }
       },
       drawPieChart() {
-          this.chart = am4core.create("chartdiv", am4charts.PieChart);
+        this.chart = am4core.create("chartdiv", am4charts.PieChart);
 
-          let pieSeries = this.chart.series.push(new am4charts.PieSeries());
-          pieSeries.dataFields.value = "energy_consumption";
-          pieSeries.dataFields.category = "equipment_category";
+        let pieSeries = this.chart.series.push(new am4charts.PieSeries());
+        pieSeries.dataFields.value = "energy_consumption";
+        pieSeries.dataFields.category = "equipment_category";
 
-          pieSeries.radius = 105;
+        pieSeries.radius = 105;
 
-          pieSeries.ticks.template.disabled = true;
-          pieSeries.alignLabels = false;
-          pieSeries.labels.template.text = "{value.percent.formatNumber('#.0')}%";
-          pieSeries.labels.template.radius = am4core.percent(-50);
-          pieSeries.labels.template.fill = am4core.color("white");
+        pieSeries.ticks.template.disabled = true;
+        pieSeries.alignLabels = false;
+        pieSeries.labels.template.text = "{value.percent.formatNumber('#.0')}%";
+        pieSeries.labels.template.radius = am4core.percent(-50);
+        pieSeries.labels.template.fill = am4core.color("white");
 
-          this.chart.innerRadius = am4core.percent(20);
+        this.chart.innerRadius = am4core.percent(20);
 
-          pieSeries.slices.template.stroke = am4core.color("#fff");
-          pieSeries.slices.template.strokeWidth = 2;
-          pieSeries.slices.template.strokeOpacity = 1;
-          pieSeries.slices.template.cursorOverStyle = [
-            {
-              "property": "cursor",
-              "value": "pointer"
-            }
-          ];
+        pieSeries.slices.template.stroke = am4core.color("#fff");
+        pieSeries.slices.template.strokeWidth = 2;
+        pieSeries.slices.template.strokeOpacity = 1;
+        pieSeries.slices.template.cursorOverStyle = [
+          {
+            "property": "cursor",
+            "value": "pointer"
+          }
+        ];
 
-          let shadow = pieSeries.slices.template.filters.push(new am4core.DropShadowFilter);
-          shadow.opacity = 0;
+        let shadow = pieSeries.slices.template.filters.push(new am4core.DropShadowFilter);
+        shadow.opacity = 0;
 
-          let hoverState = pieSeries.slices.template.states.getKey("hover");
+        let hoverState = pieSeries.slices.template.states.getKey("hover");
 
-          let hoverShadow = hoverState.filters.push(new am4core.DropShadowFilter);
-          hoverShadow.opacity = 0.7;
-          hoverShadow.blur = 5;
+        let hoverShadow = hoverState.filters.push(new am4core.DropShadowFilter);
+        hoverShadow.opacity = 0.7;
+        hoverShadow.blur = 5;
 
-          this.chart.legend = new am4charts.Legend();
-          this.chart.legend.position = "top";
-          this.chart.legend.fontSize = "12px";
-          this.chart.legend.markers.template.disabled = false;
-          this.chart.legend.markers.template.width = 10;
-          this.chart.legend.markers.template.height = 10;
+        this.chart.legend = new am4charts.Legend();
+        this.chart.legend.position = "top";
+        this.chart.legend.fontSize = "12px";
+        this.chart.legend.markers.template.disabled = false;
+        this.chart.legend.markers.template.width = 10;
+        this.chart.legend.markers.template.height = 10;
 
-          this.chart.legend.itemContainers.template.paddingTop = 10;
-          this.chart.legend.itemContainers.template.paddingBottom = 5;
+        this.chart.legend.itemContainers.template.paddingTop = 10;
+        this.chart.legend.itemContainers.template.paddingBottom = 5;
 
-          this.chart.data = this.small_chart_data;
+        this.chart.data = this.small_chart_data;
       }
     },
     mounted: function () {

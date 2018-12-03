@@ -5,29 +5,29 @@
 </template>
 
 <script>
-import L from 'leaflet'
-import HeatmapOverlay from '../../node_modules/heatmap.js/plugins/leaflet-heatmap/leaflet-heatmap.js'
+  import L from 'leaflet'
+  import HeatmapOverlay from '../../node_modules/heatmap.js/plugins/leaflet-heatmap/leaflet-heatmap.js'
 
-import { findRealParent, propsBinder } from 'vue2-leaflet'
+  import {findRealParent, propsBinder} from 'vue2-leaflet'
 
-const props = {
-   data: {
+  const props = {
+    data: {
       type: [Array, Object],
-   },
-   options: {
+    },
+    options: {
       type: [Array, Object]
-   }
-};
+    }
+  };
 
-export default {
-   name: 'Heatmap',
-   props: props,
-   data() {
+  export default {
+    name: 'Heatmap',
+    props: props,
+    data() {
       return {
-         ready: false,
+        ready: false,
       }
-   },
-   mounted() {
+    },
+    mounted() {
       this.mapObject = new HeatmapOverlay(this.options);
       this.mapObject.setData(this.data);
       L.DomEvent.on(this.mapObject, this.$listeners);
@@ -35,9 +35,9 @@ export default {
       this.ready = true;
       this.parentContainer = findRealParent(this.$parent);
       this.parentContainer.addLayer(this, false);
-   },
-   beforeDestroy() {
+    },
+    beforeDestroy() {
       this.parentContainer.removeLayer(this);
-   },
-};
+    },
+  };
 </script>
