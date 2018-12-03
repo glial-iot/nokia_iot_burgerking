@@ -3,7 +3,7 @@
     <v-layout row wrap>
       <template v-for="card in cards_data.slice(0,3)">
         <v-flex d-flex md3 class="restaurant-manager-card" :key="card.id">
-          <data-widget-manager :key="card.id" :type="card.type" :data_feeds="card.data_feeds"
+          <data-widget-manager :id="card.id" :type="card.type" :data_feeds="card.data_feeds"
                                :title="card.title"></data-widget-manager>
         </v-flex>
       </template>
@@ -12,7 +12,7 @@
       </v-flex>
       <template v-for="card in cards_data.slice(3,8)">
         <v-flex d-flex md3 class="restaurant-manager-card" :key="card.id">
-          <data-widget-manager :type="card.type" :data_feeds="card.data_feeds"
+          <data-widget-manager :id="card.id" :type="card.type" :data_feeds="card.data_feeds"
                                :title="card.title"></data-widget-manager>
         </v-flex>
       </template>
