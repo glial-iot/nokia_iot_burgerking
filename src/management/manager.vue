@@ -1,11 +1,19 @@
 <template>
    <v-container grid-list-md fill-height fluid>
       <v-layout row wrap>
-         <template v-for="card in cards_data">
+         <template v-for="card in cards_data.slice(0,3)">
             <v-flex d-flex md3 class="restaurant-manager-card">
                <data-widget-manager :type="card.type" :data_feeds="card.data_feeds" :title="card.title"></data-widget-manager>
             </v-flex>
          </template>
+        <v-flex d-flex md3 class="restaurant-manager-card">
+               <pie-chart-manager :config="pie_chart_data.config" :data_feeds="pie_chart_data.data_feeds"></pie-chart-manager>
+        </v-flex>
+        <template v-for="card in cards_data.slice(3,8)">
+          <v-flex d-flex md3 class="restaurant-manager-card">
+            <data-widget-manager :type="card.type" :data_feeds="card.data_feeds" :title="card.title"></data-widget-manager>
+          </v-flex>
+        </template>
       </v-layout>
    </v-container>
 </template>
@@ -18,6 +26,7 @@ import Vue_i18n from "vue-i18n";
 import "moment/locale/ru";
 
 import DataWidgetManager from "../common/data-widget-restaurant-manager";
+import PieChartManager from "../common/pie-chart-restaurant-manager";
 
 Vue.use(VueAxios, Axios, Vue_i18n);
 
@@ -25,7 +34,8 @@ const DATE_FORMAT = "DD MMM";
 
 export default {
   components: {
-    DataWidgetManager
+    DataWidgetManager,
+    PieChartManager
   },
   data: () => ({}),
   methods: {},
@@ -286,107 +296,6 @@ export default {
                 name: "per_month_roubles_per_client",
                 literal: this.$i18n.t("message.per_month_roubles_per_client"),
                 short: this.$i18n.t("message.roubles_per_client")
-              },
-              parameter: "PF",
-              object: "/power/QF20/",
-              object_net_avg: "/power/QF20/",
-              parameter_net_avg: "PF",
-              math_net_avg_multiplier: "1.1",
-              small_chart_group_period: "1d",
-              small_chart_time_interval: "time > now() - 5d",
-              small_chart_data_function: "mean", //median, sum
-              full_chart_group_period: "5m",
-              full_chart_time_interval: "time > now() - 24h",
-              full_chart_data_function: "mean",
-              latest_value_calc_avg_period:
-                "time > now() - 5h AND time < now() - 3h",
-              latest_value_calc_group_period: "2h",
-              latest_value_data_function: "mean"
-            },
-            {
-              id: 4,
-              measurement: {
-                name: "per_month_roubles_per_meter",
-                literal: this.$i18n.t("message.per_month_roubles_per_meter"),
-                short: this.$i18n.t("message.roubles_per_meter")
-              },
-              parameter: "Q",
-              object: "/power/QF20/",
-              object_net_avg: "/power/QF20/",
-              parameter_net_avg: "Q",
-              math_net_avg_multiplier: "1.1",
-              small_chart_group_period: "1d",
-              small_chart_time_interval: "time > now() - 5d",
-              small_chart_data_function: "mean", //median, sum
-              full_chart_group_period: "5m",
-              full_chart_time_interval: "time > now() - 24h",
-              full_chart_data_function: "mean",
-              latest_value_calc_avg_period:
-                "time > now() - 5h AND time < now() - 3h",
-              latest_value_calc_group_period: "2h",
-              latest_value_data_function: "mean"
-            }
-          ]
-        },
-        {
-          id: 4,
-          type: "consumption_per_area",
-          title: this.$i18n.t(
-            "message.restaurant_consumption_not_working_hours"
-          ),
-          data_feeds: [
-            {
-              id: 1,
-              measurement: {
-                name: "per_day_kWh_per_meter",
-                literal: this.$i18n.t("message.per_day_kWh_per_meter"),
-                short: this.$i18n.t("message.kWh_per_meter")
-              },
-              parameter: "I",
-              object: "/power/QF20/",
-              object_net_avg: "/power/QF20/",
-              parameter_net_avg: "I",
-              math_net_avg_multiplier: "1.1",
-              small_chart_group_period: "1d",
-              small_chart_time_interval: "time > now() - 5d",
-              small_chart_data_function: "mean", //median, sum
-              full_chart_group_period: "5m",
-              full_chart_time_interval: "time > now() - 24h",
-              full_chart_data_function: "mean",
-              latest_value_calc_avg_period:
-                "time > now() - 5h AND time < now() - 3h",
-              latest_value_calc_group_period: "2h",
-              latest_value_data_function: "mean"
-            },
-            {
-              id: 2,
-              measurement: {
-                name: "per_month_kWh_per_meter",
-                literal: this.$i18n.t("message.per_month_kWh_per_meter"),
-                short: this.$i18n.t("message.kWh_per_meter")
-              },
-              parameter: "P",
-              object: "/power/QF20/",
-              object_net_avg: "/power/QF20/",
-              parameter_net_avg: "P",
-              math_net_avg_multiplier: "1.1",
-              small_chart_group_period: "1d",
-              small_chart_time_interval: "time > now() - 5d",
-              small_chart_data_function: "mean", //median, sum
-              full_chart_group_period: "5m",
-              full_chart_time_interval: "time > now() - 24h",
-              full_chart_data_function: "mean",
-              latest_value_calc_avg_period:
-                "time > now() - 5h AND time < now() - 3h",
-              latest_value_calc_group_period: "2h",
-              latest_value_data_function: "mean"
-            },
-            {
-              id: 3,
-              measurement: {
-                name: "per_day_roubles_per_meter",
-                literal: this.$i18n.t("message.per_day_roubles_per_meter"),
-                short: this.$i18n.t("message.roubles_per_meter")
               },
               parameter: "PF",
               object: "/power/QF20/",
@@ -826,6 +735,47 @@ export default {
           ]
         }
       ];
+    },
+    pie_chart_data () {
+      return {
+        config: {
+          data_function: "max",
+          group_period: "96h",
+          time_interval: "time > now() - 96h",
+        },
+        data_feeds: [
+          {
+            equipment_type: "All",
+            equipment_name: this.$i18n.t("message.all_equipment"),
+            data_object: "/metrics/powergroups/main/All/",
+            data_parameter: "W"
+          },
+          {
+            equipment_type: "kitchen",
+            equipment_name: this.$i18n.t("message.kitchen"),
+            data_object: "/metrics/powergroups/main/kitchen/",
+            data_parameter: "W"
+          },
+          {
+            equipment_type: "light",
+            equipment_name: this.$i18n.t("message.light"),
+            data_object: "/metrics/powergroups/main/light/",
+            data_parameter: "W"
+          },
+          {
+            equipment_type: "climate",
+            equipment_name: this.$i18n.t("message.climate"),
+            data_object: "/metrics/powergroups/main/climate/",
+            data_parameter: "W"
+          },
+          {
+            equipment_type: "other",
+            equipment_name: this.$i18n.t("message.other"),
+            data_object: "/metrics/powergroups/main/other/",
+            data_parameter: "W"
+          }
+        ]
+      }
     }
   }
 };

@@ -175,7 +175,12 @@
          "lighting_consumption": "Lighting equipment consumption",
          "kitchen_consumption": "Kitchen equipment consumption",
          "air_equipment_consumption": "Climate equipment consumption",
-         "other_equipment_consumption": "Other equipment consumption"
+         "other_equipment_consumption": "Other equipment consumption",
+         "kitchen": "Kitchen",
+         "light": "Light",
+         "climate": "Climate",
+         "other": "Other"
+
       }
    },
    "ru": {
@@ -354,7 +359,11 @@
          "lighting_consumption": "Потребление освещением и рекламным оборудованием",
          "kitchen_consumption": "Потребление кухонным оборудованием",
          "air_equipment_consumption": "Потребление климатическим оборудованием",
-         "other_equipment_consumption": "Потребление остальными системами"
+         "other_equipment_consumption": "Потребление остальными системами",
+         "kitchen": "Кухня",
+         "light": "Свет и реклама",
+         "climate": "Климатика",
+         "other": "Остальное"
       }
    }
 }
