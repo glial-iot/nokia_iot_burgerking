@@ -32,7 +32,7 @@
               </div>
               <v-list>
                 <v-list-tile v-for="(feed, index) in data_feeds" :key="feed.id">
-                  <v-list-tile-title @click="setCurrentFeed(feed, index)">{{feed.measurement.literal}}
+                  <v-list-tile-title class="cursor-pointer" @click="setCurrentFeed(feed, index)">{{feed.measurement.literal}}
                   </v-list-tile-title>
                 </v-list-tile>
               </v-list>
@@ -86,7 +86,12 @@
       setDefaultFeed() {
         if (localStorage.getItem('widget_' + this.id)) {
           this.current_feed_index = localStorage.getItem('widget_' + this.id);
-          this.current_feed = this.data_feeds[this.current_feed_index];
+          if (this.data_feeds[this.current_feed_index]) {
+            this.current_feed = this.data_feeds[this.current_feed_index];
+          }
+          else {
+            this.current_feed = this.data_feeds[0];
+          }
         }
         else {
           this.current_feed = this.data_feeds[0];
