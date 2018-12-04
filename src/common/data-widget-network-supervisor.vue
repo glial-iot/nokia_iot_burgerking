@@ -112,6 +112,9 @@
                 )
               })
             }
+            else {
+              console.log("No data form influx. Query: "+ influxql_query)
+            }
             this.full_chart_data = data_series;
             this.data_loaded = true;
           })
@@ -151,6 +154,9 @@
                 )
               })
             }
+            else {
+              console.log("No data form influx. Query: "+ influxql_query)
+            }
             this.small_chart_data = data_series;
           })
           .catch(error => {
@@ -180,6 +186,9 @@
           .then(response => {
             if (response.data.results[0].series) {
               this.current_value = response.data.results[0].series[0].values[0][1].toFixed(2);
+            }
+            else {
+              console.log("No data form influx. Query: "+ influxql_query)
             }
           })
           .catch(error => {

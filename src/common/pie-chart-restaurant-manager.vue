@@ -82,21 +82,26 @@
         });
         Vue.axios.all(axios_requests).then((results) => {
           results.forEach((response) => {
-            let value = response.data.results[0].series[0].values[0][1].toFixed(2);
-            let data_object = response.data.results[0].series[0].name;
-            this.data_feeds.forEach((feed) => {
-              if (data_object.indexOf(feed.data_object) !== -1) {
-                if (data_object.indexOf("All") === -1) {
-                  this.energy_consumption_data.push({
-                    "equipment_category": feed.equipment_name,
-                    "energy_consumption": value
-                  });
+            if (response.data.results[0].series) {
+              let value = response.data.results[0].series[0].values[0][1].toFixed(2);
+              let data_object = response.data.results[0].series[0].name;
+              this.data_feeds.forEach((feed) => {
+                if (data_object.indexOf(feed.data_object) !== -1) {
+                  if (data_object.indexOf("All") === -1) {
+                    this.energy_consumption_data.push({
+                      "equipment_category": feed.equipment_name,
+                      "energy_consumption": value
+                    });
+                  }
+                  else {
+                    this.total_value = value;
+                  }
                 }
-                else {
-                  this.total_value = value;
-                }
-              }
-            })
+              })
+            }
+            else {
+              console.log("No data form influx. Data object: "+ response.data.results[0].series[0].name)
+            }
           });
           this.small_chart_data = this.energy_consumption_data;
           this.loadChart();

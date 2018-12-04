@@ -134,6 +134,9 @@
                 )
               })
             }
+            else {
+              console.log("No data form influx. Query: "+ influxql_query)
+            }
             this.full_chart_data = data_series;
             this.data_loaded = true;
           })
@@ -169,6 +172,9 @@
                 )
               })
             }
+            else {
+                console.log("No data form influx. Query: "+ influxql_query)
+            }
             this.small_chart_data = data_series;
           })
           .catch(error => {
@@ -195,6 +201,9 @@
             if (response.data.results[0].series) {
               this.current_value = response.data.results[0].series[0].values[0][1].toFixed(2);
             }
+            else {
+              console.log("No data form influx. Query: "+ influxql_query)
+            }
           })
           .catch(error => {
             console.log(error)
@@ -220,6 +229,9 @@
             if (response.data.results[0].series) {
               let avg_multiplier = parseFloat(this.current_feed.math_net_avg_multiplier);
               this.average_network_value = (avg_multiplier * response.data.results[0].series[0].values[0][1]).toFixed(2);
+            }
+            else {
+              console.log("No data form influx. Query: "+ influxql_query)
             }
           })
           .catch(error => {
