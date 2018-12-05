@@ -58,20 +58,20 @@
                   literal: this.$i18n.t("message.per_day"),
                   short: this.$i18n.t("message.clients_short")
                 },
-                parameter: "current_day",
-                object: "/metrics/counters/clients/",
-                object_net_avg: "/metrics/counters/clients/",
-                parameter_net_avg: "current_day",
-                math_net_avg_multiplier: "0.9", // +10%
-                small_chart_group_period: "1d",
-                small_chart_time_interval: "time > now() - 5d",
-                small_chart_data_function: "median", //median, sum
-                full_chart_group_period: "10m",
+                parameter: "last_24h",
+                object: "/metrics/summary/clients/",
+                object_net_avg: "/metrics/summary/clients/",
+                parameter_net_avg: "last_24h",
+                math_net_avg_multiplier: "0.9",
+                small_chart_group_period: "1h",
+                small_chart_time_interval: "time > now() - 2d",
+                small_chart_data_function: "median",
+                full_chart_group_period: "2m",
                 full_chart_time_interval: "time > now() - 10d",
                 full_chart_data_function: "median",
-                latest_value_calc_avg_period: "time > now() - 1m",
-                latest_value_calc_group_period: "1m",
-                latest_value_data_function: "median"
+                latest_value_calc_avg_period: "time > now() - 5m",
+                latest_value_calc_group_period: "5m",
+                latest_value_data_function: "max"
               },
               {
                 id: 12,
@@ -80,68 +80,43 @@
                   literal: this.$i18n.t("message.per_month"),
                   short: this.$i18n.t("message.clients_short")
                 },
-                parameter: "current_month",
-                object: "/metrics/counters/clients/",
-                object_net_avg: "/metrics/counters/clients/",
-                parameter_net_avg: "current_month",
-                math_net_avg_multiplier: "1.1", // +10%
-                small_chart_group_period: "1d",
-                small_chart_time_interval: "time > now() - 5d",
-                small_chart_data_function: "median", //median, sum
-                full_chart_group_period: "5m",
-                full_chart_time_interval: "time > now() - 24h",
-                full_chart_data_function: "median",
-                latest_value_calc_avg_period:
-                  "time > now() - 1h",
-                latest_value_calc_group_period: "1m",
-                latest_value_data_function: "median"
-              },
-              /* {
-                id: 13,
-                measurement: {
-                  name: "clients_per_day_per_meter",
-                  literal: this.$i18n.t("message.per_day_per_meter"),
-                  short: this.$i18n.t("message.clients_short")
-                },
-                parameter: "in",
-                object: "/users/1/",
-                object_net_avg: "/users/1/",
-                parameter_net_avg: "in",
+                parameter: "last_30d",
+                object: "/metrics/summary/clients/",
+                object_net_avg: "/metrics/summary/clients/",
+                parameter_net_avg: "last_30d",
                 math_net_avg_multiplier: "1.1",
-                small_chart_group_period: "1d",
-                small_chart_time_interval: "time > now() - 5d",
-                small_chart_data_function: "mean", //median, sum
-                full_chart_group_period: "5m",
-                full_chart_time_interval: "time > now() - 24h",
-                full_chart_data_function: "mean",
-                latest_value_calc_avg_period:
-                  "time > now() - 5h AND time < now() - 3h",
-                latest_value_calc_group_period: "2h",
-                latest_value_data_function: "mean"
-              }, */
-/*               {
+                small_chart_group_period: "5d",
+                small_chart_time_interval: "time > now() - 90d",
+                small_chart_data_function: "median",
+                full_chart_group_period: "1h",
+                full_chart_time_interval: "time > now() - 90h",
+                full_chart_data_function: "median",
+                latest_value_calc_avg_period: "time > now() - 5m",
+                latest_value_calc_group_period: "5m",
+                latest_value_data_function: "max"
+              },
+               {
                 id: 14,
                 measurement: {
                   name: "clients_per_month_per_meter",
                   literal: this.$i18n.t("message.per_month_per_meter"),
                   short: this.$i18n.t("message.clients_short")
                 },
-                parameter: "in",
-                object: "/users/1/",
-                object_net_avg: "/users/1/",
-                parameter_net_avg: "in",
+                parameter: "last_month_per_area",
+                object: "/metrics/relative/clients/",
+                object_net_avg: "/metrics/relative/clients/",
+                parameter_net_avg: "last_month_per_area",
                 math_net_avg_multiplier: "1.1",
-                small_chart_group_period: "1d",
-                small_chart_time_interval: "time > now() - 5d",
-                small_chart_data_function: "mean", //median, sum
-                full_chart_group_period: "5m",
-                full_chart_time_interval: "time > now() - 24h",
-                full_chart_data_function: "mean",
-                latest_value_calc_avg_period:
-                  "time > now() - 5h AND time < now() - 3h",
-                latest_value_calc_group_period: "2h",
-                latest_value_data_function: "mean"
-              } */
+                small_chart_group_period: "5d",
+                small_chart_time_interval: "time > now() - 90d",
+                small_chart_data_function: "median",
+                full_chart_group_period: "1h",
+                full_chart_time_interval: "time > now() - 90h",
+                full_chart_data_function: "median",
+                latest_value_calc_avg_period: "time > now() - 5m",
+                latest_value_calc_group_period: "5m",
+                latest_value_data_function: "max"
+              }
             ]
           },
           {
@@ -156,20 +131,20 @@
                   literal: this.$i18n.t("message.per_day_kWh"),
                   short: this.$i18n.t("message.kilowatt_per_hour")
                 },
-                parameter: "current_day",
-                object: "/metrics/counters/energy/all/",
-                object_net_avg: "/metrics/counters/energy/all/",
-                parameter_net_avg: "current_day",
+                parameter: "last_24h",
+                object: "/metrics/summary/energy/all/",
+                object_net_avg: "/metrics/summary/energy/all/",
+                parameter_net_avg: "last_24h",
                 math_net_avg_multiplier: "1.1",
                 small_chart_group_period: "1d",
                 small_chart_time_interval: "time > now() - 5d",
-                small_chart_data_function: "median", //median, sum
+                small_chart_data_function: "median",
                 full_chart_group_period: "10m",
                 full_chart_time_interval: "time > now() - 10d",
                 full_chart_data_function: "median",
-                latest_value_calc_avg_period: "time > now() - 1m",
-                latest_value_calc_group_period: "1m",
-                latest_value_data_function: "median"
+                latest_value_calc_avg_period: "time > now() - 5m",
+                latest_value_calc_group_period: "5m",
+                latest_value_data_function: "max"
               },
               {
                 id: 22,
@@ -178,21 +153,20 @@
                   literal: this.$i18n.t("message.per_month_kWh"),
                   short: this.$i18n.t("message.kilowatt_per_hour")
                 },
-                parameter: "current_month",
-                object: "/metrics/counters/energy/all/",
-                object_net_avg: "/metrics/counters/energy/all/",
-                parameter_net_avg: "current_month",
+                parameter: "last_30d",
+                object: "/metrics/summary/energy/all/",
+                object_net_avg: "/metrics/summary/energy/all/",
+                parameter_net_avg: "last_30d",
                 math_net_avg_multiplier: "1.1",
                 small_chart_group_period: "1d",
                 small_chart_time_interval: "time > now() - 5d",
-                small_chart_data_function: "median", //median, sum
+                small_chart_data_function: "median",
                 full_chart_group_period: "5m",
-                full_chart_time_interval: "time > now() - 24h",
+                full_chart_time_interval: "time > now() - 10h",
                 full_chart_data_function: "median",
-                latest_value_calc_avg_period:
-                  "time > now() - 1h",
-                latest_value_calc_group_period: "1m",
-                latest_value_data_function: "median"
+                latest_value_calc_avg_period: "time > now() - 5m",
+                latest_value_calc_group_period: "5m",
+                latest_value_data_function: "max"
               }/* ,
               {
                 id: 23,
@@ -208,7 +182,7 @@
                 math_net_avg_multiplier: "1.1",
                 small_chart_group_period: "1d",
                 small_chart_time_interval: "time > now() - 5d",
-                small_chart_data_function: "mean", //median, sum
+                small_chart_data_function: "mean",
                 full_chart_group_period: "5m",
                 full_chart_time_interval: "time > now() - 24h",
                 full_chart_data_function: "mean",
@@ -231,7 +205,7 @@
                 math_net_avg_multiplier: "1.1",
                 small_chart_group_period: "1d",
                 small_chart_time_interval: "time > now() - 5d",
-                small_chart_data_function: "mean", //median, sum
+                small_chart_data_function: "mean",
                 full_chart_group_period: "5m",
                 full_chart_time_interval: "time > now() - 24h",
                 full_chart_data_function: "mean",
@@ -254,20 +228,20 @@
                   literal: this.$i18n.t("message.per_month_kWh_per_client"),
                   short: this.$i18n.t("message.kWh_per_client")
                 },
-                parameter: "month_per_client",
+                parameter: "last_month_per_client",
                 object: "/metrics/relative/energy/",
                 object_net_avg: "/metrics/relative/energy/",
-                parameter_net_avg: "month_per_client",
+                parameter_net_avg: "last_month_per_client",
                 math_net_avg_multiplier: "1.1",
                 small_chart_group_period: "1d",
                 small_chart_time_interval: "time > now() - 5d",
-                small_chart_data_function: "median", //median, sum
+                small_chart_data_function: "median",
                 full_chart_group_period: "10m",
                 full_chart_time_interval: "time > now() - 10d",
                 full_chart_data_function: "median",
-                latest_value_calc_avg_period: "time > now() - 1m",
-                latest_value_calc_group_period: "1m",
-                latest_value_data_function: "median"
+                latest_value_calc_avg_period: "time > now() - 5m",
+                latest_value_calc_group_period: "5m",
+                latest_value_data_function: "max"
               },
               {
                 id: 32,
@@ -276,43 +250,42 @@
                   literal: this.$i18n.t("message.per_month_kWh_per_meter"),
                   short: this.$i18n.t("message.kWh_per_meter")
                 },
-                parameter: "month_per_area",
+                parameter: "last_month_per_area",
                 object: "/metrics/relative/energy/",
                 object_net_avg: "/metrics/relative/energy/",
-                parameter_net_avg: "month_per_area",
+                parameter_net_avg: "last_month_per_area",
                 math_net_avg_multiplier: "1.1",
                 small_chart_group_period: "1d",
                 small_chart_time_interval: "time > now() - 5d",
-                small_chart_data_function: "median", //median, sum
+                small_chart_data_function: "median",
                 full_chart_group_period: "10m",
                 full_chart_time_interval: "time > now() - 10d",
                 full_chart_data_function: "median",
-                latest_value_calc_avg_period: "time > now() - 1m",
-                latest_value_calc_group_period: "1m",
-                latest_value_data_function: "median"
+                latest_value_calc_avg_period: "time > now() - 5m",
+                latest_value_calc_group_period: "5m",
+                latest_value_data_function: "max"
               },
-              /* {
+               {
                 id: 33,
                 measurement: {
                   name: "per_month_roubles_per_client",
                   literal: this.$i18n.t("message.per_month_roubles_per_client"),
                   short: this.$i18n.t("message.roubles_per_client")
                 },
-                parameter: "PF",
-                object: "/power/QF20/",
-                object_net_avg: "/power/QF20/",
-                parameter_net_avg: "PF",
+                parameter: "last_month_per_client",
+                object: "/metrics/relative/money/",
+                object_net_avg: "/metrics/relative/money/",
+                parameter_net_avg: "last_month_per_client",
                 math_net_avg_multiplier: "1.1",
                 small_chart_group_period: "1d",
                 small_chart_time_interval: "time > now() - 5d",
-                small_chart_data_function: "mean", //median, sum
-                full_chart_group_period: "5m",
-                full_chart_time_interval: "time > now() - 24h",
-                full_chart_data_function: "mean",
-                latest_value_calc_avg_period:
-                  "time > now() - 5h AND time < now() - 3h",
-                latest_value_calc_group_period: "2h",
-                latest_value_data_function: "mean"
+                small_chart_data_function: "median",
+                full_chart_group_period: "10m",
+                full_chart_time_interval: "time > now() - 10d",
+                full_chart_data_function: "median",
+                latest_value_calc_avg_period: "time > now() - 5m",
+                latest_value_calc_group_period: "5m",
+                latest_value_data_function: "max"
               },
               {
                 id: 34,
@@ -321,22 +294,21 @@
                   literal: this.$i18n.t("message.per_month_roubles_per_meter"),
                   short: this.$i18n.t("message.roubles_per_meter")
                 },
-                parameter: "Q",
-                object: "/power/QF20/",
-                object_net_avg: "/power/QF20/",
-                parameter_net_avg: "Q",
+                parameter: "last_month_per_area",
+                object: "/metrics/relative/money/",
+                object_net_avg: "/metrics/relative/money/",
+                parameter_net_avg: "last_month_per_area",
                 math_net_avg_multiplier: "1.1",
                 small_chart_group_period: "1d",
                 small_chart_time_interval: "time > now() - 5d",
-                small_chart_data_function: "mean", //median, sum
-                full_chart_group_period: "5m",
-                full_chart_time_interval: "time > now() - 24h",
-                full_chart_data_function: "mean",
-                latest_value_calc_avg_period:
-                  "time > now() - 5h AND time < now() - 3h",
-                latest_value_calc_group_period: "2h",
-                latest_value_data_function: "mean"
-              } */
+                small_chart_data_function: "median",
+                full_chart_group_period: "10m",
+                full_chart_time_interval: "time > now() - 10d",
+                full_chart_data_function: "median",
+                latest_value_calc_avg_period: "time > now() - 5m",
+                latest_value_calc_group_period: "5m",
+                latest_value_data_function: "max"
+              }
             ]
           },
           {
@@ -351,20 +323,20 @@
                   literal: this.$i18n.t("message.per_month_kWh"),
                   short: this.$i18n.t("message.kilowatt_per_hour")
                 },
-                parameter: "current_month",
-                object: "/metrics/counters/energy/light/",
-                object_net_avg: "/metrics/counters/energy/light/",
-                parameter_net_avg: "current_month",
+                parameter: "last_30d",
+                object: "/metrics/summary/energy/light/",
+                object_net_avg: "/metrics/summary/energy/light/",
+                parameter_net_avg: "last_30d",
                 math_net_avg_multiplier: "1.1",
                 small_chart_group_period: "1d",
                 small_chart_time_interval: "time > now() - 5d",
-                small_chart_data_function: "median", //median, sum
+                small_chart_data_function: "median",
                 full_chart_group_period: "10m",
                 full_chart_time_interval: "time > now() - 10d",
                 full_chart_data_function: "median",
-                latest_value_calc_avg_period: "time > now() - 1m",
-                latest_value_calc_group_period: "1m",
-                latest_value_data_function: "median"
+                latest_value_calc_avg_period: "time > now() - 5m",
+                latest_value_calc_group_period: "5m",
+                latest_value_data_function: "max"
               },
               /* {
                 id: 52,
@@ -380,7 +352,7 @@
                 math_net_avg_multiplier: "1.1",
                 small_chart_group_period: "1d",
                 small_chart_time_interval: "time > now() - 5d",
-                small_chart_data_function: "mean", //median, sum
+                small_chart_data_function: "mean",
                 full_chart_group_period: "5m",
                 full_chart_time_interval: "time > now() - 24h",
                 full_chart_data_function: "mean",
@@ -403,7 +375,7 @@
                 math_net_avg_multiplier: "1.1",
                 small_chart_group_period: "1d",
                 small_chart_time_interval: "time > now() - 5d",
-                small_chart_data_function: "mean", //median, sum
+                small_chart_data_function: "mean",
                 full_chart_group_period: "5m",
                 full_chart_time_interval: "time > now() - 24h",
                 full_chart_data_function: "mean",
@@ -426,7 +398,7 @@
                 math_net_avg_multiplier: "1.1",
                 small_chart_group_period: "1d",
                 small_chart_time_interval: "time > now() - 5d",
-                small_chart_data_function: "mean", //median, sum
+                small_chart_data_function: "mean",
                 full_chart_group_period: "5m",
                 full_chart_time_interval: "time > now() - 24h",
                 full_chart_data_function: "mean",
@@ -449,20 +421,20 @@
                   literal: this.$i18n.t("message.per_month_kWh"),
                   short: this.$i18n.t("message.kilowatt_per_hour")
                 },
-                parameter: "current_month",
-                object: "/metrics/counters/energy/kitchen/",
-                object_net_avg: "/metrics/counters/energy/kitchen/",
-                parameter_net_avg: "current_month",
+                parameter: "last_30d",
+                object: "/metrics/summary/energy/kitchen/",
+                object_net_avg: "/metrics/summary/energy/kitchen/",
+                parameter_net_avg: "last_30d",
                 math_net_avg_multiplier: "1.1",
                 small_chart_group_period: "1d",
                 small_chart_time_interval: "time > now() - 5d",
-                small_chart_data_function: "median", //median, sum
+                small_chart_data_function: "median",
                 full_chart_group_period: "10m",
                 full_chart_time_interval: "time > now() - 10d",
                 full_chart_data_function: "median",
-                latest_value_calc_avg_period: "time > now() - 1m",
-                latest_value_calc_group_period: "1m",
-                latest_value_data_function: "median"
+                latest_value_calc_avg_period: "time > now() - 5m",
+                latest_value_calc_group_period: "5m",
+                latest_value_data_function: "max"
               },
               /* {
                 id: 62,
@@ -478,7 +450,7 @@
                 math_net_avg_multiplier: "1.1",
                 small_chart_group_period: "1d",
                 small_chart_time_interval: "time > now() - 5d",
-                small_chart_data_function: "mean", //median, sum
+                small_chart_data_function: "mean",
                 full_chart_group_period: "5m",
                 full_chart_time_interval: "time > now() - 24h",
                 full_chart_data_function: "mean",
@@ -501,7 +473,7 @@
                 math_net_avg_multiplier: "1.1",
                 small_chart_group_period: "1d",
                 small_chart_time_interval: "time > now() - 5d",
-                small_chart_data_function: "mean", //median, sum
+                small_chart_data_function: "mean",
                 full_chart_group_period: "5m",
                 full_chart_time_interval: "time > now() - 24h",
                 full_chart_data_function: "mean",
@@ -524,7 +496,7 @@
                 math_net_avg_multiplier: "1.1",
                 small_chart_group_period: "1d",
                 small_chart_time_interval: "time > now() - 5d",
-                small_chart_data_function: "mean", //median, sum
+                small_chart_data_function: "mean",
                 full_chart_group_period: "5m",
                 full_chart_time_interval: "time > now() - 24h",
                 full_chart_data_function: "mean",
@@ -547,20 +519,20 @@
                   literal: this.$i18n.t("message.per_month_kWh"),
                   short: this.$i18n.t("message.kilowatt_per_hour")
                 },
-                parameter: "current_month",
-                object: "/metrics/counters/energy/climate/",
-                object_net_avg: "/metrics/counters/energy/climate/",
-                parameter_net_avg: "current_month",
+                parameter: "last_30d",
+                object: "/metrics/summary/energy/climate/",
+                object_net_avg: "/metrics/summary/energy/climate/",
+                parameter_net_avg: "last_30d",
                 math_net_avg_multiplier: "0.9",
                 small_chart_group_period: "1d",
                 small_chart_time_interval: "time > now() - 5d",
-                small_chart_data_function: "median", //median, sum
+                small_chart_data_function: "median",
                 full_chart_group_period: "10m",
                 full_chart_time_interval: "time > now() - 10d",
                 full_chart_data_function: "median",
-                latest_value_calc_avg_period: "time > now() - 1m",
-                latest_value_calc_group_period: "1m",
-                latest_value_data_function: "median"
+                latest_value_calc_avg_period: "time > now() - 5m",
+                latest_value_calc_group_period: "5m",
+                latest_value_data_function: "max"
               },
               /* {
                 id: 72,
@@ -576,7 +548,7 @@
                 math_net_avg_multiplier: "1.1",
                 small_chart_group_period: "1d",
                 small_chart_time_interval: "time > now() - 5d",
-                small_chart_data_function: "mean", //median, sum
+                small_chart_data_function: "mean",
                 full_chart_group_period: "5m",
                 full_chart_time_interval: "time > now() - 24h",
                 full_chart_data_function: "mean",
@@ -599,7 +571,7 @@
                 math_net_avg_multiplier: "1.1",
                 small_chart_group_period: "1d",
                 small_chart_time_interval: "time > now() - 5d",
-                small_chart_data_function: "mean", //median, sum
+                small_chart_data_function: "mean",
                 full_chart_group_period: "5m",
                 full_chart_time_interval: "time > now() - 24h",
                 full_chart_data_function: "mean",
@@ -622,7 +594,7 @@
                 math_net_avg_multiplier: "1.1",
                 small_chart_group_period: "1d",
                 small_chart_time_interval: "time > now() - 5d",
-                small_chart_data_function: "mean", //median, sum
+                small_chart_data_function: "mean",
                 full_chart_group_period: "5m",
                 full_chart_time_interval: "time > now() - 24h",
                 full_chart_data_function: "mean",
@@ -645,20 +617,20 @@
                   literal: this.$i18n.t("message.per_month_kWh"),
                   short: this.$i18n.t("message.kilowatt_per_hour")
                 },
-                parameter: "current_month",
-                object: "/metrics/counters/energy/other/",
-                object_net_avg: "/metrics/counters/energy/other/",
-                parameter_net_avg: "current_month",
+                parameter: "last_30d",
+                object: "/metrics/summary/energy/other/",
+                object_net_avg: "/metrics/summary/energy/other/",
+                parameter_net_avg: "last_30d",
                 math_net_avg_multiplier: "0.7",
                 small_chart_group_period: "1d",
                 small_chart_time_interval: "time > now() - 5d",
-                small_chart_data_function: "median", //median, sum
+                small_chart_data_function: "median",
                 full_chart_group_period: "10m",
                 full_chart_time_interval: "time > now() - 10d",
                 full_chart_data_function: "median",
-                latest_value_calc_avg_period: "time > now() - 1m",
-                latest_value_calc_group_period: "1m",
-                latest_value_data_function: "median"
+                latest_value_calc_avg_period: "time > now() - 5m",
+                latest_value_calc_group_period: "5m",
+                latest_value_data_function: "max"
               },
 /*               {
                 id: 82,
@@ -674,7 +646,7 @@
                 math_net_avg_multiplier: "1.1",
                 small_chart_group_period: "1d",
                 small_chart_time_interval: "time > now() - 5d",
-                small_chart_data_function: "mean", //median, sum
+                small_chart_data_function: "mean",
                 full_chart_group_period: "5m",
                 full_chart_time_interval: "time > now() - 24h",
                 full_chart_data_function: "mean",
@@ -697,7 +669,7 @@
                 math_net_avg_multiplier: "1.1",
                 small_chart_group_period: "1d",
                 small_chart_time_interval: "time > now() - 5d",
-                small_chart_data_function: "mean", //median, sum
+                small_chart_data_function: "mean",
                 full_chart_group_period: "5m",
                 full_chart_time_interval: "time > now() - 24h",
                 full_chart_data_function: "mean",
@@ -720,7 +692,7 @@
                 math_net_avg_multiplier: "1.1",
                 small_chart_group_period: "1d",
                 small_chart_time_interval: "time > now() - 5d",
-                small_chart_data_function: "mean", //median, sum
+                small_chart_data_function: "mean",
                 full_chart_group_period: "5m",
                 full_chart_time_interval: "time > now() - 24h",
                 full_chart_data_function: "mean",
@@ -741,12 +713,6 @@
             time_interval: "time > now() - 96h",
           },
           data_feeds: [
-            /* {
-              equipment_type: "All",
-              equipment_name: this.$i18n.t("message.all_equipment"),
-              data_object: "/metrics/powergroups/main/all/",
-              data_parameter: "W"
-            }, */
             {
               equipment_type: "kitchen",
               equipment_name: this.$i18n.t("message.kitchen"),
