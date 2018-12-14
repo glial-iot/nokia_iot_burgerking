@@ -5,7 +5,7 @@
         <v-icon>fa fa-spinner fa-spin fa-3x</v-icon>
       </div>
     </div>
-    <v-layout row wrap>
+    <v-layout row fill-height>
       <v-flex d-flex md12>
         <v-card v-if="data_loaded" class="restaurant-card piechart-card">
           <div class="chart-background">
@@ -129,7 +129,11 @@
         pieSeries.dataFields.value = "energy_consumption";
         pieSeries.dataFields.category = "equipment_category";
 
-        pieSeries.radius = 105;
+        pieSeries.radius = 200;
+
+        // I know. That's nonsense, but "left" doesn't work at all. :))))
+        pieSeries.paddingRight = -100;
+        pieSeries.align = "right";
 
         pieSeries.ticks.template.disabled = true;
         pieSeries.alignLabels = false;
@@ -159,13 +163,15 @@
         hoverShadow.blur = 5;
 
         this.chart.legend = new am4charts.Legend();
-        this.chart.legend.position = "top";
-        this.chart.legend.fontSize = "12px";
+        this.chart.legend.position = "right";
+        this.chart.legend.fontSize = "17px";
         this.chart.legend.markers.template.disabled = false;
-        this.chart.legend.markers.template.width = 10;
-        this.chart.legend.markers.template.height = 10;
+        this.chart.legend.markers.template.width = 40;
+        this.chart.legend.markers.template.height = 40;
+        this.chart.legend.markers.template.marginRight = 20;
 
         this.chart.legend.itemContainers.template.paddingTop = 10;
+        this.chart.legend.itemContainers.template.marginLeft = -250;
         this.chart.legend.itemContainers.template.paddingBottom = 5;
 
         this.chart.data = this.small_chart_data;

@@ -3,6 +3,9 @@ import main_template from './main_template.vue'
 
 import management_map from './management/map.vue'
 import manager_ui from './management/manager.vue'
+import manager_pie_chart from './management/manager-pie-chart.vue'
+import manager_bar_chart from './management/manager-bar-chart.vue'
+import restaurant_map from './management/restaurant-map.vue'
 import welcome_page from './index/index.vue'
 
 import Vuetify from 'vuetify'
@@ -30,7 +33,23 @@ const router = new VueRouter({
   },
     {
       path: '/restaurant-management/:restaurant_id',
+      name: 'manager-main',
       component: manager_ui
+    },
+    {
+      path: '/manager-pie-chart/:restaurant_id',
+      name: 'manager-pie-chart',
+      component: manager_pie_chart
+    },
+    {
+      path: '/manager-bar-chart/:restaurant_id',
+      name: 'manager-bar-chart',
+      component: manager_bar_chart
+    },
+    {
+      path: '/restaurant-map/:restaurant_id',
+      name: 'restaurant-map',
+      component: restaurant_map
     },
     {
       path: '/',

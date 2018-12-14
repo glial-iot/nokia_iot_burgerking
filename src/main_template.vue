@@ -1,5 +1,21 @@
 <template lang=html>
   <v-app id="inspire">
+    <v-navigation-drawer v-if="['manager-main', 'manager-pie-chart', 'manager-bar-chart', 'restaurant-map'].includes($route.name)"
+      :clipped="true" disable-route-watcher
+      mini-variant
+      fixed app disable-resize-watcher
+    >
+      <v-list dense>
+        <template v-for="item in items">
+          <v-list-tile :key="item.text" :to="{path: item.path}">
+            <v-list-tile-action>
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-tile-action>
+          </v-list-tile>
+        </template>
+      </v-list>
+      <language-select class="language-select"></language-select>
+    </v-navigation-drawer>
     <v-toolbar color="primary" dark app fixed clipped-left class="toolbar">
       <v-toolbar-items class="cursor-pointer" @click="$router.push('/')">
         <img class="align-self-center logo_bk mr-3" src="./assets/logo_burgerking.svg" alt="BK Logo">
@@ -51,14 +67,28 @@
       items() {
         return [
           {
-            path: "management",
+            number: 1,
+            icon: "fa-project-diagram",
+            path: "/restaurant-management/1",
             text: this.$i18n.t("message.restaurants"),
-            icon: "fa-map"
           },
           {
-            path: "restaurant",
+            number: 2,
+            icon: "fa-chart-pie",
+            path: "/manager-pie-chart/1",
             text: this.$i18n.t("message.manager_ui"),
-            icon: "fa-user"
+          },
+          {
+            number: 3,
+            icon: "fa-chart-bar",
+            path: "/manager-bar-chart/1",
+            text: this.$i18n.t("message.manager_ui"),
+          },
+          {
+            number: 4,
+            icon: "fa-map",
+            path: "/restaurant-map/1",
+            text: this.$i18n.t("message.manager_ui"),
           }
         ];
       }
