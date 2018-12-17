@@ -28,7 +28,7 @@
   import "moment/locale/ru";
 
   import DataWidgetManager from "../common/data-widget-restaurant-manager";
-  import PieChartManager from "../common/pie-chart-restaurant-manager";
+  import PieChartManager from "../common/pie-chart-restaurant-manager-widget";
 
   Vue.use(VueAxios, Axios, Vue_i18n);
 
