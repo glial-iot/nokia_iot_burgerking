@@ -90,7 +90,7 @@
               data_type: "temperature",
               measurement_unit: "℃",
               sensor_svg_id: "hallCentralTemp",
-              data_object: "/raw/climate/AM-5/",
+              data_object: "/raw/climate/AM-4/",
               data_parameter: "T"
             },
             {
@@ -98,7 +98,7 @@
               data_type: "temperature",
               measurement_unit: "℃",
               sensor_svg_id: "hallNearWallTemp",
-              data_object: "/raw/climate/AM-4/",
+              data_object: "/raw/climate/AM-5/",
               data_parameter: "T"
             },
             {
@@ -106,7 +106,7 @@
               data_type: "humidity",
               measurement_unit: "%",
               sensor_svg_id: "hallAir",
-              data_object: "/raw/climate/AM-5/",
+              data_object: "/raw/climate/AM-4/",
               data_parameter: "RH"
             },
             {
