@@ -70,25 +70,21 @@
             number: 1,
             icon: "fa-project-diagram",
             path: "/restaurant-management/1",
-            text: this.$i18n.t("message.restaurants"),
           },
           {
             number: 2,
             icon: "fa-chart-pie",
             path: "/manager-pie-chart/1",
-            text: this.$i18n.t("message.manager_ui"),
           },
           {
             number: 3,
             icon: "fa-chart-bar",
             path: "/manager-bar-chart/1",
-            text: this.$i18n.t("message.manager_ui"),
           },
           {
             number: 4,
             icon: "fa-map",
             path: "/restaurant-map/1",
-            text: this.$i18n.t("message.manager_ui"),
           }
         ];
       }

@@ -179,7 +179,11 @@
       "kitchen": "Kitchen",
       "light": "Light",
       "climate": "Climate",
-      "other": "Other"
+      "other": "Other",
+      "staff_room": "Staff room",
+      "service": "Service room",
+      "hall": "Hall",
+      "freezer": "Freezer"
     }
   },
   "ru": {
@@ -362,7 +366,11 @@
       "kitchen": "Кухня",
       "light": "Свет и реклама",
       "climate": "Климатика",
-      "other": "Остальное"
+      "other": "Остальное",
+      "staff_room": "Зона сотрудников",
+      "service": "Служебное помещение",
+      "hall": "Зал",
+      "freezer": "Холодильник"
     }
   }
 }
