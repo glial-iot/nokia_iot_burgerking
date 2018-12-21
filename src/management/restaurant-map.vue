@@ -33,24 +33,44 @@
       text() {
         return [
           {
-            svg_id: "roomBlueName",
+            svg_class: "roomBlueName",
             value: this.$i18n.t("message.staff_room")
           },
           {
-            svg_id: "roomRedName",
-            value: this.$i18n.t("message.kitchen")
+            svg_class: "roomRedName",
+            value: this.$i18n.t("message.kitchen_hall")
           },
           {
-            svg_id: "roomMagentaName",
+            svg_class: "roomMagentaName",
             value: this.$i18n.t("message.service")
           },
           {
-            svg_id: "roomGreenName",
+            svg_class: "roomGreenName",
             value: this.$i18n.t("message.hall")
           },
           {
-            svg_id: "roomPurpleName",
+            svg_class: "roomPurpleName",
             value: this.$i18n.t("message.freezer")
+          },
+          {
+            svg_class: "luminosityText",
+            value: this.$i18n.t("message.luminosity")
+          },
+          {
+            svg_class: "temperatureText",
+            value: this.$i18n.t("message.temperature")
+          },
+          {
+            svg_class: "humidityText",
+            value: this.$i18n.t("message.humidity")
+          },
+          {
+            svg_class: "CO2Text",
+            value: this.$i18n.t("message.co2level")
+          },
+          {
+            svg_class: "clientsText",
+            value: this.$i18n.t("message.visitors")
           }
         ]
       },
@@ -64,62 +84,115 @@
             {
               data_function: "mean",
               data_type: "temperature",
-              measurement_unit: "℃",
+              data_description: this.$i18n.t("message.temperature"),
+              measurement_unit: "°C",
               sensor_svg_id: "outsideTemp",
               data_object: "/raw/climate/AM-1/",
               data_parameter: "T"
             },
             {
               data_function: "mean",
+              data_type: "humidity",
+              data_description: this.$i18n.t("message.humidity"),
+              measurement_unit: "%",
+              sensor_svg_id: "outsideHumidity",
+              data_object: "/raw/climate/AM-1/",
+              data_parameter: "RH"
+            },
+            {
+              data_function: "mean",
               data_type: "temperature",
-              measurement_unit: "℃",
+              data_description: this.$i18n.t("message.temperature"),
+              measurement_unit: "°C",
               sensor_svg_id: "kitchenTemp1",
               data_object: "/raw/climate/AM-2/",
               data_parameter: "T"
             },
             {
               data_function: "mean",
+              data_type: "humidity",
+              data_description: this.$i18n.t("message.humidity"),
+              measurement_unit: "%",
+              sensor_svg_id: "kitchenHumidity1",
+              data_object: "/raw/climate/AM-2/",
+              data_parameter: "RH"
+            },
+            {
+              data_function: "mean",
               data_type: "temperature",
-              measurement_unit: "℃",
+              data_description: this.$i18n.t("message.temperature"),
+              measurement_unit: "°C",
               sensor_svg_id: "kitchenTemp2",
               data_object: "/raw/climate/AM-3/",
               data_parameter: "T"
             },
             {
               data_function: "mean",
+              data_type: "humidity",
+              data_description: this.$i18n.t("message.humidity"),
+              measurement_unit: "%",
+              sensor_svg_id: "kitchenHumidity2",
+              data_object: "/raw/climate/AM-3/",
+              data_parameter: "RH"
+            },
+            {
+              data_function: "mean",
               data_type: "temperature",
-              measurement_unit: "℃",
+              data_description: this.$i18n.t("message.temperature"),
+              measurement_unit: "°C",
               sensor_svg_id: "hallCentralTemp",
               data_object: "/raw/climate/AM-4/",
               data_parameter: "T"
             },
             {
               data_function: "mean",
+              data_type: "humidity",
+              data_description: this.$i18n.t("message.humidity"),
+              measurement_unit: "%",
+              sensor_svg_id: "hallCentralHumidity",
+              data_object: "/raw/climate/AM-4/",
+              data_parameter: "RH"
+            },
+            {
+              data_function: "mean",
               data_type: "temperature",
-              measurement_unit: "℃",
+              data_description: this.$i18n.t("message.temperature"),
+              measurement_unit: "°C",
               sensor_svg_id: "hallNearWallTemp",
               data_object: "/raw/climate/AM-5/",
               data_parameter: "T"
             },
             {
-              data_function: "max",
+              data_function: "mean",
               data_type: "humidity",
+              data_description: this.$i18n.t("message.humidity"),
               measurement_unit: "%",
-              sensor_svg_id: "hallAir",
-              data_object: "/raw/climate/AM-4/",
+              sensor_svg_id: "hallNearWallHumidity",
+              data_object: "/raw/climate/AM-5/",
               data_parameter: "RH"
             },
             {
               data_function: "max",
-              data_type: "humidity",
-              measurement_unit: "%",
-              sensor_svg_id: "kitchenAir",
-              data_object: "/raw/climate/AM-3/",
-              data_parameter: "RH"
+              data_type: "CO2",
+              data_description: this.$i18n.t("message.co2level"),
+              measurement_unit: "ppm",
+              sensor_svg_id: "hallCO2",
+              data_object: "/raw/climate/Air-2/",
+              data_parameter: "CO2"
+            },
+            {
+              data_function: "max",
+              data_type: "CO2",
+              data_description: this.$i18n.t("message.co2level"),
+              measurement_unit: "ppm",
+              sensor_svg_id: "kitchenCO2",
+              data_object: "/raw/climate/Air-2/",
+              data_parameter: "CO2"
             },
             {
               data_function: "sum",
               data_type: "clients",
+              data_description: this.$i18n.t("message.visitors"),
               measurement_unit: this.$i18n.t("message.clients_short"),
               sensor_svg_id: "hallClients",
               data_object: "/raw/clients/",
@@ -127,16 +200,18 @@
             },
             {
               data_function: "mean",
-              data_type: "energy",
-              measurement_unit: this.$i18n.t("message.kilowatt_per_hour"),
+              data_type: "light",
+              data_description: this.$i18n.t("message.luminosity"),
+              measurement_unit: this.$i18n.t("message.lux"),
               sensor_svg_id: "hallLamp",
               data_object: "/raw/climate/I-1/",
               data_parameter: "Light"
             },
             {
               data_function: "mean",
-              data_type: "energy",
-              measurement_unit: this.$i18n.t("message.kilowatt_per_hour"),
+              data_type: "light",
+              data_description: this.$i18n.t("message.luminosity"),
+              measurement_unit: this.$i18n.t("message.lux"),
               sensor_svg_id: "kitchenLamp",
               data_object: "/raw/climate/I-2/",
               data_parameter: "Light"

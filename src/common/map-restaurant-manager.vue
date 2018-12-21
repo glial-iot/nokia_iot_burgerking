@@ -40,14 +40,17 @@
 
         let fill_svg_with_data = () => {
           this.text.forEach((el) => {
-            let container = svgDiv.getSVGDocument().getElementById(el.svg_id);
-            let textNode = container.childNodes[0];
-            textNode.nodeValue = el.value;
+            let containers = svgDiv.getSVGDocument().getElementsByClassName(el.svg_class);
+            Array.from(containers).forEach((container) => {
+              let textNode = container.childNodes[0];
+              textNode.nodeValue = el.value;
+            });
           });
           this.svg_data.forEach((el) => {
             let container = svgDiv.getSVGDocument().getElementById(el.sensor_svg_id);
+            console.log(el.sensor_svg_id);
             let textNode = container.childNodes[0];
-            textNode.nodeValue = el.value + " " +  el.measurement_unit;
+            textNode.nodeValue = el.data_description+": "+el.value + " " +  el.measurement_unit;
           });
         };
 
@@ -74,9 +77,10 @@
                 if (data_object.indexOf(feed.data_object) !== -1 && data_parameter === feed.data_function +"_" +feed.data_parameter) {
                   this.svg_data.push({
                       "data_type": feed.data_type,
+                      "data_description": feed.data_description,
                       "measurement_unit": feed.measurement_unit,
                       "sensor_svg_id": feed.sensor_svg_id,
-                      "value": value
+                      "value": feed.data_type === "clients" ? Math.round(value) : value
                     });
                 }
               })

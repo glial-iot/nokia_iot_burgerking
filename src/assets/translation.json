@@ -177,13 +177,19 @@
       "air_equipment_consumption": "Climate equipment consumption",
       "other_equipment_consumption": "Other equipment consumption",
       "kitchen": "Kitchen",
+      "kitchen_hall": "Kitchen",
       "light": "Light",
       "climate": "Climate",
       "other": "Other",
       "staff_room": "Staff room",
       "service": "Service room",
       "hall": "Hall",
-      "freezer": "Freezer"
+      "freezer": "Freezer",
+      "luminosity": "Luminosity",
+      "humidity": "Humidity",
+      "co2level": "CO₂ level",
+      "visitors": "Visitors",
+      "lux": "lux"
     }
   },
   "ru": {
@@ -364,13 +370,19 @@
       "air_equipment_consumption": "Потребление климатическим оборудованием",
       "other_equipment_consumption": "Потребление остальными системами",
       "kitchen": "Кухня",
+      "kitchen_hall": "Цех",
       "light": "Свет и реклама",
       "climate": "Климатика",
       "other": "Остальное",
-      "staff_room": "Зона сотрудников",
-      "service": "Служебное помещение",
+      "staff_room": "Служебные помещения",
+      "service": "Зона выдачи",
       "hall": "Зал",
-      "freezer": "Холодильник"
+      "freezer": "Холодный склад",
+      "luminosity": "Освещенность",
+      "humidity": "Влажность",
+      "co2level": "Уровень CO₂",
+      "visitors": "Посетителей",
+      "lux": "лк."
     }
   }
 }
