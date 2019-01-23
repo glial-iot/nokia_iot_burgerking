@@ -5,6 +5,7 @@ import management_map from './management/map.vue'
 import manager_ui from './management/manager.vue'
 import manager_pie_chart from './management/manager-pie-chart.vue'
 import manager_bar_chart from './management/manager-bar-chart.vue'
+import manager_sunburst_bar_chart from './management/manager-sunburst-bar-chart.vue'
 import restaurant_map from './management/restaurant-map.vue'
 import welcome_page from './index/index.vue'
 
@@ -29,6 +30,7 @@ Vue.use(VueRouter)
 const router = new VueRouter({
   routes: [{
     path: '/sites-management',
+    name: 'sites-management',
     component: management_map
   },
     {
@@ -42,6 +44,11 @@ const router = new VueRouter({
       component: manager_pie_chart
     },
     {
+      path: '/manager-sunburst-bar-chart/:restaurant_id',
+      name: 'manager-sunburst-bar-chart',
+      component: manager_sunburst_bar_chart
+    },
+    {
       path: '/manager-bar-chart/:restaurant_id',
       name: 'manager-bar-chart',
       component: manager_bar_chart
@@ -53,6 +60,7 @@ const router = new VueRouter({
     },
     {
       path: '/',
+      name: 'welcome',
       component: welcome_page
     },
     {

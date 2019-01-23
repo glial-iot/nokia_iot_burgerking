@@ -189,7 +189,22 @@
       "humidity": "Humidity",
       "co2level": "CO₂ level",
       "visitors": "Visitors",
-      "lux": "lux"
+      "lux": "lux",
+      "all_consumers": "All consumers",
+      "drinks": "Drinks",
+      "ovens": "Ovens",
+      "freezers": "Freezers",
+      "lights": "Lights",
+      "adv_lights": "Ads lights",
+      "ventilation": "Ventilation",
+      "heating": "Heating",
+      "cashbox": "Cashbox",
+      "household": "Household",
+      "air_conditioning": "Conditioning",
+      "sockets": "Sockets",
+      "sunburst_chart_heading": "Sunburst heading",
+      "bar_chart_heading": "Bar chart heading"
+
     }
   },
   "ru": {
@@ -382,7 +397,21 @@
       "humidity": "Влажность",
       "co2level": "Уровень CO₂",
       "visitors": "Посетителей",
-      "lux": "лк."
+      "lux": "лк.",
+      "all_consumers": "Все потребители",
+      "drinks": "Напитки",
+      "ovens": "Плиты",
+      "freezers": "Холодильники",
+      "lights": "Освещение",
+      "adv_lights": "Вывески",
+      "ventilation": "Вентиляция",
+      "heating": "Обогреватели",
+      "cashbox": "Кассы",
+      "household": "Бытовая техника",
+      "air_conditioning": "Кондиционеры",
+      "sockets": "Розетки",
+      "sunburst_chart_heading": "Заголовок sunburst'а",
+      "bar_chart_heading": "Заголовок bar_chart'а"
     }
   }
 }

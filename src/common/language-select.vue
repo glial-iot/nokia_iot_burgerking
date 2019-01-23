@@ -1,13 +1,9 @@
 <template>
-  <v-container fluid class="invisible">
-    <v-layout column wrap align-center>
-      <v-flex xs1 sm1 d-flex align-end>
+  <v-container fill-height p-0 fluid class="invisible">
         <v-select
           v-model="selected_locale"
           :items="langs"
         ></v-select>
-      </v-flex>
-    </v-layout>
   </v-container>
 </template>
 

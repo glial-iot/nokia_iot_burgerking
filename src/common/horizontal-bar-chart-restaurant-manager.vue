@@ -5,7 +5,7 @@
         <v-icon>fa fa-spinner fa-spin fa-3x</v-icon>
       </div>
     </div>
-    <v-layout row fill-height>
+    <v-layout row>
       <v-flex d-flex md12>
         <v-card v-if="data_loaded" class="restaurant-card piechart-card">
           <div class="chart-background">
@@ -139,11 +139,11 @@
         chart.data = temp_data;
 
         chart.colors.step = 2;
-        chart.height = 500;
+        chart.height = 360;
         chart.padding(30, 30, 10, 30);
         chart.legend = new am4charts.Legend();
 
-        chart.legend.marginTop = 150;
+        chart.legend.marginTop = 30;
 
         chart.legend.markers.template.width = 30;
         chart.legend.markers.template.height = 30;

@@ -326,3 +326,14 @@ table.table thead tr {
 .logo_bk_main {
   height: 100px;
 }
+
+.relative_block {
+  position:relative;
+}
+
+.absolute_heading {
+  position: absolute;
+  top:3%;
+  left:1.2%;
+  z-index: 10;
+}

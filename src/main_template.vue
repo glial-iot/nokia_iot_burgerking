@@ -1,6 +1,6 @@
 <template lang=html>
   <v-app id="inspire">
-    <v-navigation-drawer v-if="['manager-main', 'manager-pie-chart', 'manager-bar-chart', 'restaurant-map'].includes($route.name)"
+    <v-navigation-drawer v-if="!['welcome', 'sites-management'].includes($route.name)"
       :clipped="true" disable-route-watcher
       mini-variant
       fixed app disable-resize-watcher
@@ -83,6 +83,11 @@
           },
           {
             number: 4,
+            icon: "fa-sun",
+            path: "/manager-sunburst-bar-chart/1",
+          },
+          {
+            number: 5,
             icon: "fa-map",
             path: "/restaurant-map/1",
           }
