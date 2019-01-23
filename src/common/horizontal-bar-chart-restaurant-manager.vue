@@ -7,7 +7,7 @@
     </div>
     <v-layout row>
       <v-flex d-flex md12>
-        <v-card v-if="data_loaded" class="restaurant-card piechart-card">
+        <v-card v-if="data_loaded" class="piechart-card">
           <div class="chart-background">
             <div id="chartdiv"></div>
           </div>

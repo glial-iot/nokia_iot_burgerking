@@ -1,6 +1,6 @@
 <template>
   <v-container grid-list-md fill-height fluid>
-    <v-layout row wrap>
+    <v-layout column wrap>
       <v-flex d-flex md12 class="restaurant-manager-card">
         <map-restaurant-manager :text="text" :config="map_data.config" :data_feeds="map_data.data_feeds"></map-restaurant-manager>
       </v-flex>

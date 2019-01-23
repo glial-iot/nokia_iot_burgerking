@@ -38,6 +38,10 @@
   z-index: 1;
 }
 
+.piechart-card {
+  min-height: 350px;
+}
+
 .piechart-card .chart-background {
   opacity: 1;
   z-index: 1;
@@ -278,7 +282,7 @@ table.table thead tr {
 }
 
 .restaurant-card {
-  min-height: 350px;
+  min-height: 335px;
 }
 
 .logo_bk {

@@ -5,7 +5,7 @@
         <v-icon>fa fa-spinner fa-spin fa-3x</v-icon>
       </div>
     </div>
-    <v-layout row fill-height>
+    <v-layout columnn fill-height>
       <v-flex d-flex md12>
         <v-card v-if="data_loaded" class="restaurant-card piechart-card">
           <object data="/src/assets/bk_plan_ids.svg" type="image/svg+xml" id="svgMap" width="100%" height="100%"></object>
