@@ -179,7 +179,8 @@
           series.dataFields.valueX = "value" + index;
           series.dataFields.valueXShow = "totalPercent";
           series.stacked = true;
-          series.tooltip.pointerOrientation = "horizontal";
+          series.tooltip.pointerOrientation = "vertical";
+          series.columns.template.tooltipY = 0;
 
           let bullet = series.bullets.push(new am4charts.LabelBullet());
           bullet.label.text = "{valueX.totalPercent.formatNumber('#.00')}%";
