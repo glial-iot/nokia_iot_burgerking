@@ -268,12 +268,13 @@
        * @private
        */
       click(value) {
-        this.graphNodes.clicked = value;
+        /** Zoom to node functionality disabled */
+        //this.graphNodes.clicked = value;
         /**
          * Fired when sunburst node is clicked.
          * @param {Object} value - {node, sunburst} The corresponding node and sunburst component
          */
-        this.$emit("clickNode", { node: value, sunburst: this });
+        //this.$emit("clickNode", { node: value, sunburst: this });
       },
 
       /**
