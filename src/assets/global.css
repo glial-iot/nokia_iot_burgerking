@@ -43,6 +43,7 @@
 }
 
 .barchart-card, .sunburst-card {
+  min-height: 320px !important;
   box-shadow: none;
   background-color: #fafafa !important;
 }
