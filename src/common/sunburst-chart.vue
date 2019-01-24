@@ -21,6 +21,8 @@
 
   Vue.use(Vuex, Vue_i18n);
 
+
+
   import sunburst from "./chart_components/sunburst"
   import breadcrumbTrail from "./chart_components/breadcrumbTrail"
   import nodeInfoDisplayer from "./chart_components/sunburstInfo"
@@ -41,6 +43,7 @@
 
       }
     },
+    props: ["config", "data_feeds"],
     computed: {
       tree () {
         return {
@@ -48,6 +51,7 @@
           "children": [
             {
               "name": this.$i18n.t("message.kitchen"),
+              "color": "#67b7dc",
               "children": [
                 {
                   "name": this.$i18n.t("message.drinks"),
@@ -65,6 +69,7 @@
             },
             {
               "name": this.$i18n.t("message.light"),
+              "color": "#6771dc",
               "children": [
                 {
                   "name": this.$i18n.t("message.lights"),
@@ -78,6 +83,7 @@
             },
             {
               "name": this.$i18n.t("message.climate"),
+              "color": "#a367dc",
               "children": [
                 {
                   "name": this.$i18n.t("message.ventilation"),
@@ -95,6 +101,7 @@
             },
             {
               "name": this.$i18n.t("message.other"),
+              "color": "#dc67ce",
               "children": [
                 {
                   "name": this.$i18n.t("message.cashbox"),

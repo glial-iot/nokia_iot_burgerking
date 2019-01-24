@@ -348,7 +348,7 @@
       },
       colorGetter() {
         const colorScale = colorSchemes[this.colorScheme].scale;
-        return d => colorScale(this.getCategoryForColor(d));
+        return d => d.data.color ? d.data.color : colorScale(this.getCategoryForColor(d));
       }
     },
 

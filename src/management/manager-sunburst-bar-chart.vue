@@ -3,11 +3,11 @@
     <v-layout column wrap>
       <v-flex d-flex md6 class="sunburst-manager-card relative_block">
         <h2 class="absolute_heading">{{$t('message.sunburst_chart_heading')}}</h2>
-        <sunburst-chart-manager></sunburst-chart-manager>
+        <sunburst-chart-manager :config="chart_data.config" :data_feeds="chart_data.data_feeds"></sunburst-chart-manager>
       </v-flex>
       <v-flex d-flex md6 class="restaurant-manager-card relative_block">
         <h2 class="absolute_heading">{{$t('message.bar_chart_heading')}}</h2>
-         <bar-chart-manager :config="bar_chart_data.config" :data_feeds="bar_chart_data.data_feeds"></bar-chart-manager>
+         <bar-chart-manager :config="chart_data.config" :data_feeds="chart_data.data_feeds"></bar-chart-manager>
       </v-flex>
     </v-layout>
   </v-container>
@@ -37,7 +37,7 @@
     mounted: function () {
     },
     computed: {
-      bar_chart_data() {
+      chart_data() {
         return {
           config: {
             data_function: "max",
@@ -71,7 +71,7 @@
             }
           ]
         }
-      }
+      },
     }
   };
 </script>
