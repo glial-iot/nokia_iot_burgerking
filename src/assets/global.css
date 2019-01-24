@@ -42,8 +42,15 @@
   min-height: 350px;
 }
 
+.barchart-card {
+  min-height: 250px !important;
+}
+
+.sunburst-card {
+  min-height: 360px !important;
+}
+
 .barchart-card, .sunburst-card {
-  min-height: 320px !important;
   box-shadow: none;
   background-color: #fafafa !important;
 }

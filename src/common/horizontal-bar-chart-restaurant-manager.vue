@@ -6,22 +6,11 @@
       </div>
     </div>
     <v-layout row>
-      <v-flex d-flex md12 v-if="data_loaded">
-        <v-card  class="piechart-card barchart-card">
+      <v-flex d-flex md12>
+        <v-card v-if="data_loaded" class="piechart-card barchart-card">
           <div class="chart-background">
             <div id="chartdiv"></div>
           </div>
-          <div class="widget-content">
-            <v-card-title primary class="d-block title text-center mt-0">
-              <span></span>
-            </v-card-title>
-          </div>
-          <v-card-actions v-if="false" class="widget-actions">
-            <v-spacer></v-spacer>
-            <div class="cursor-pointer" @click="showChart()">
-              <v-icon>fa-chart-bar</v-icon>
-            </div>
-          </v-card-actions>
         </v-card>
       </v-flex>
     </v-layout>
@@ -139,11 +128,11 @@
         chart.data = temp_data;
 
         chart.colors.step = 2;
-        chart.height = 300;
-        chart.padding(30, 30, 10, 30);
+        chart.height = 200;
+        chart.padding(40, 30, -30, 30);
         chart.legend = new am4charts.Legend();
 
-        chart.legend.marginTop = -20;
+        chart.legend.marginTop = -40;
 
         chart.legend.markers.template.width = 30;
         chart.legend.markers.template.height = 30;
