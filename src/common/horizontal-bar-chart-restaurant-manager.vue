@@ -128,11 +128,11 @@
         chart.data = temp_data;
 
         chart.colors.step = 2;
-        chart.height = 200;
+        chart.height = 180;
         chart.padding(40, 30, -30, 30);
         chart.legend = new am4charts.Legend();
 
-        chart.legend.marginTop = -40;
+        chart.legend.marginTop = -20;
 
         chart.legend.markers.template.width = 30;
         chart.legend.markers.template.height = 30;

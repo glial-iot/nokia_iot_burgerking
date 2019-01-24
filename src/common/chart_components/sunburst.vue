@@ -140,7 +140,7 @@
       this.arcSunburst = arc()
         .startAngle(d => scaleX(d.x0))
         .endAngle(d => scaleX(d.x1))
-        .innerRadius(d => Math.max(100, this.radius - scaleY(d.y1)))
+        .innerRadius(d => Math.max(110, this.radius - scaleY(d.y1)))
         .outerRadius(d => Math.max(0, this.radius -  scaleY(d.y0)));
 
       this.scaleX = scaleX;

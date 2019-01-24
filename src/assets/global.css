@@ -43,11 +43,11 @@
 }
 
 .barchart-card {
-  min-height: 250px !important;
+  min-height: 180px !important;
 }
 
 .sunburst-card {
-  min-height: 360px !important;
+  min-height: 420px !important;
 }
 
 .barchart-card, .sunburst-card {

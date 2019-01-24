@@ -41,10 +41,10 @@
     z-index: 10;
     background: none;
     margin-top:-2em;
-    margin-left:-3em;
+    margin-left:-3.5em;
   }
   .sunburst-info span {
     background: none;
-    font-size: 2em;
+    font-size: 1.5em;
   }
 </style>
