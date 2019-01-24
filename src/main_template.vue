@@ -74,20 +74,10 @@
           {
             number: 2,
             icon: "fa-chart-pie",
-            path: "/manager-pie-chart/1",
-          },
-          {
-            number: 3,
-            icon: "fa-chart-bar",
-            path: "/manager-bar-chart/1",
-          },
-          {
-            number: 4,
-            icon: "fa-sun",
             path: "/manager-sunburst-bar-chart/1",
           },
           {
-            number: 5,
+            number: 3,
             icon: "fa-map",
             path: "/restaurant-map/1",
           }
