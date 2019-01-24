@@ -375,6 +375,7 @@
   .graph {
     height: 100%;
     width: 100%;
+    padding-top:10px;
     display: flex;
     flex-flow: column wrap;
   }
