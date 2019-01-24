@@ -1,5 +1,5 @@
 <template>
-  <v-card pt-1>
+  <v-card class="sunburst-card" pt-1>
   <sunburst :data="tree" :min-angle-displayed="0">
 
     <template slot-scope="{ nodes, actions }">

@@ -6,8 +6,8 @@
       </div>
     </div>
     <v-layout row>
-      <v-flex d-flex md12>
-        <v-card v-if="data_loaded" class="piechart-card">
+      <v-flex d-flex md12 v-if="data_loaded">
+        <v-card  class="piechart-card barchart-card">
           <div class="chart-background">
             <div id="chartdiv"></div>
           </div>
@@ -143,11 +143,12 @@
         chart.padding(30, 30, 10, 30);
         chart.legend = new am4charts.Legend();
 
-        chart.legend.marginTop = 30;
+        chart.legend.marginTop = -30;
 
         chart.legend.markers.template.width = 30;
         chart.legend.markers.template.height = 30;
         chart.legend.markers.template.marginRight = 20;
+        chart.legend.position = "top";
 
         let categoryAxis = chart.yAxes.push(new am4charts.CategoryAxis());
         categoryAxis.dataFields.category = "category";
