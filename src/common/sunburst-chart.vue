@@ -1,4 +1,5 @@
 <template>
+  <v-card pt-1>
   <sunburst :data="tree" :min-angle-displayed="0">
 
     <template slot-scope="{ nodes, actions }">
@@ -10,6 +11,7 @@
     <breadcrumbTrail slot="legend" slot-scope="{ nodes, colorGetter, width }" :current="nodes.mouseOver" :root="nodes.root" :colorGetter="colorGetter" :from="nodes.clicked" :width="width" />
 
   </sunburst>
+  </v-card>
 </template>
 
 <script>

@@ -88,7 +88,7 @@
           return;
         }
         const nodeArray = this.current.ancestors().reverse();
-        const origin = this.from || this.root;
+        const origin = nodeArray[1];
         const [, ...nodeFrom] = origin.ancestors();
 
         // Data join; key function combines name and depth (= position in sequence).
@@ -123,7 +123,7 @@
             "transform",
             (d, i) => "translate(" + i * (this.itemWidth + this.spacing) + ", 0)"
           )
-          .style("opacity", d => (nodeFrom.indexOf(d) === -1 ? 1 : 0.5));
+          .style("display", d => (nodeFrom.indexOf(d) === -1 ? 1 : "none"));
 
         const percentage = (100 * this.current.value) / this.root.value;
         const text = `${percentage.toPrecision(3)} %`;
@@ -171,7 +171,7 @@
   .sequence {
     width: 100%;
     height: 50px;
-    margin-left: 10px;
+    margin-left: -12%;
     margin-right: 10px;
   }
 </style>
