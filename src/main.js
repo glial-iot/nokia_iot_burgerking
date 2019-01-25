@@ -46,14 +46,14 @@ const router = new VueRouter({
       name: 'restaurant-map',
       component: restaurant_map
     },
-    {
+    /*{
       path: '/',
       name: 'welcome',
       component: welcome_page
-    },
+    },*/
     {
       path: '*',
-      redirect: '/'
+      redirect: '/sites-management'
     }]
 });
 

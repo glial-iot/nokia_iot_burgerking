@@ -17,7 +17,7 @@
       <language-select class="language-select"></language-select>
     </v-navigation-drawer>
     <v-toolbar color="primary" dark app fixed clipped-left class="toolbar">
-      <v-toolbar-items class="cursor-pointer" @click="$router.push('/')">
+      <v-toolbar-items class="cursor-pointer" @click="$router.push('/sites-management')">
         <img class="align-self-center logo_bk mr-3" src="./assets/logo_burgerking.svg" alt="BK Logo">
         <div class="d-inline align-self-center title main-title">{{$t("message.energy_management")}}</div>
       </v-toolbar-items>
