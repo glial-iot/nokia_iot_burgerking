@@ -202,8 +202,8 @@
       "household": "Household",
       "air_conditioning": "Conditioning",
       "sockets": "Sockets",
-      "sunburst_chart_heading": "Sunburst heading",
-      "bar_chart_heading": "Bar chart heading"
+      "sunburst_chart_heading": "Power consumption",
+      "bar_chart_heading": "Electricity cost"
 
     }
   },
@@ -410,8 +410,8 @@
       "household": "Бытовая техника",
       "air_conditioning": "Кондиционеры",
       "sockets": "Розетки",
-      "sunburst_chart_heading": "Заголовок sunburst'а",
-      "bar_chart_heading": "Заголовок bar_chart'а"
+      "sunburst_chart_heading": "Потребление энергии",
+      "bar_chart_heading": "Стоимость электроэнергии"
     }
   }
 }
