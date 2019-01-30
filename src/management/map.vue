@@ -36,22 +36,22 @@
       <v-flex d-flex md5>
         <v-layout row wrap>
           <v-flex d-flex md3>
-            <data-widget-text :averaged="true" :id="1" parameter="day_per_client" data_object="/metrics/relative/energy/"
+            <data-widget-text :averaged="true" :id="1" parameter="last_day_per_client" data_object="/metrics/relative/energy/"
                               :title="$t('message.network_consumption_per_m2')"
                               :measurement="$t('message.kWh_per_meter')"></data-widget-text>
           </v-flex>
           <v-flex d-flex md3>
-            <data-widget-text :averaged="true" :id="2" parameter="month_per_client" data_object="/metrics/relative/energy/"
+            <data-widget-text :averaged="true" :id="2" parameter="last_month_per_area" data_object="/metrics/relative/energy/"
                               :title="$t('message.network_consumption_per_client')"
                               :measurement="$t('message.kWh_per_client')"></data-widget-text>
           </v-flex>
           <v-flex d-flex md3>
-            <data-widget-text :averaged="true" :id="3" parameter="current_month" data_object="/metrics/counters/energy/all/"
+            <data-widget-text :averaged="true" :id="3" parameter="last_month" data_object="/metrics/counters/energy/all/"
                               :title="$t('message.network_consumption_per_month')"
                               :measurement="$t('message.kilowatt_per_hour')"></data-widget-text>
           </v-flex>
           <v-flex d-flex md3>
-            <data-widget-text :averaged="false" :id="4" parameter="month_per_client" data_object="/metrics/relative/energy/"
+            <data-widget-text :averaged="false" :id="4" parameter="last_month_per_client" data_object="/metrics/relative/energy/"
                               :title="$t('message.minimal_network_consumption_per_client')"
                               :measurement="$t('message.kWh_per_client')"></data-widget-text>
           </v-flex>
