@@ -3,8 +3,10 @@ import main_template from './main_template.vue'
 
 import management_map from './management/map.vue'
 import manager_ui from './management/manager.vue'
+import manager_ui_new from './management/manager_new.vue'
 import manager_sunburst_bar_chart from './management/manager-sunburst-bar-chart.vue'
 import restaurant_map from './management/restaurant-map.vue'
+import economy from './management/economy'
 import welcome_page from './index/index.vue'
 
 import Vuetify from 'vuetify'
@@ -33,6 +35,11 @@ const router = new VueRouter({
   },
     {
       path: '/restaurant-management/:restaurant_id',
+      name: 'manager-main-new',
+      component: manager_ui_new
+    },
+    {
+      path: '/restaurant-management-old/:restaurant_id',
       name: 'manager-main',
       component: manager_ui
     },
@@ -45,6 +52,11 @@ const router = new VueRouter({
       path: '/restaurant-map/:restaurant_id',
       name: 'restaurant-map',
       component: restaurant_map
+    },
+    {
+      path: '/economy',
+      name: 'economy',
+      component: economy
     },
     /*{
       path: '/',

@@ -128,7 +128,7 @@
         chart.data = temp_data;
 
         chart.colors.step = 2;
-        chart.height = 180;
+        chart.height = 130;
         chart.padding(40, 30, -30, 30);
         chart.legend = new am4charts.Legend();
 

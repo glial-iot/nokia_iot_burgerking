@@ -11,7 +11,7 @@
           <div class="chart-background" style="z-index:0">
             <bar-chart :data="small_chart_data" :hideAxis="true" :isDashboard="true"></bar-chart>
           </div>
-          <div class="widget-content">
+          <div class="widget-content-map">
             <v-card-title primary class="d-block title text-center mt-0">
               <span v-if="averaged === true">{{concat_title}}</span>
               <span v-else>{{title}}</span>

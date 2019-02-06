@@ -75,6 +75,16 @@
   z-index: 2;
 }
 
+.widget-content-new {
+  min-height: 255px;
+  position: relative;
+  z-index: 2;
+}
+
+.widget-content-map {
+  min-height: 250px;
+}
+
 .widget-actions {
   position: absolute;
   width: 100%;
@@ -294,8 +304,26 @@ table.table thead tr {
   min-height: 450px;
 }
 
+
+.amChart_container {
+  max-height: 90px;
+  overflow: hidden;
+}
+
+.small_amChart {
+  height: 130px;
+}
+
 .restaurant-card {
   min-height: 335px;
+}
+
+.restaurant-card-new {
+  min-height: 150px;
+}
+
+.restaurant-manager-card-new .restaurant-card {
+  min-height: 0;
 }
 
 .logo_bk {
@@ -354,3 +382,42 @@ table.table thead tr {
   left:1.2%;
   z-index: 10;
 }
+
+.block_content_row {
+  max-height: 200px;
+}
+
+.data_meta_info {
+  font-size: 22px;
+  text-align:center;
+}
+
+.data_value {
+  font-size: 24px;
+  text-align:center;
+}
+
+.data_meta_info p {
+  margin-top: 5%
+}
+
+.data_value p {
+  margin-top: 12%
+}
+
+.table_container {
+
+}
+
+.economy_heading, .economy_value {
+  text-align:center;
+}
+
+.economy_value {
+  font-size: 20px;
+}
+
+.economy_digit {
+  font-size: 32px;
+}
+

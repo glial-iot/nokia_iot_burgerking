@@ -1,8 +1,13 @@
 <template>
   <v-container grid-list-md fill-height fluid>
     <v-layout column wrap>
-      <v-flex d-flex md12 class="restaurant-manager-card">
+      <v-flex d-flex md11 class="restaurant-manager-card">
         <map-restaurant-manager :text="text" :config="map_data.config" :data_feeds="map_data.data_feeds"></map-restaurant-manager>
+      </v-flex>
+      <v-flex d-flex md1 class="footer-internal">
+        <div class="caption text-center align-self-center">
+          2018-2019 © Nokia IoT Laboratory, Moscow.   Powered by Nokia Glial™ and IMPACT™.   Version: {{frontend_version}}
+        </div>
       </v-flex>
     </v-layout>
   </v-container>
@@ -25,7 +30,9 @@
     components: {
       MapRestaurantManager
     },
-    data: () => ({}),
+    data: () => ({
+      frontend_version: VERSION,
+    }),
     methods: {},
     mounted: function () {
     },

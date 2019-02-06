@@ -5,9 +5,14 @@
         <h2 class="absolute_heading">{{$t('message.sunburst_chart_heading')}}</h2>
         <sunburst-chart-manager :config="chart_data.config" :data_feeds="chart_data.data_feeds"></sunburst-chart-manager>
       </v-flex>
-      <v-flex d-flex md4 class="restaurant-manager-card relative_block">
+      <v-flex d-flex md3 class="restaurant-manager-card relative_block">
         <h2 class="absolute_heading">{{$t('message.bar_chart_heading')}}</h2>
          <bar-chart-manager :config="chart_data.config" :data_feeds="chart_data.data_feeds"></bar-chart-manager>
+      </v-flex>
+      <v-flex d-flex md1 class="footer-internal">
+        <div class="caption text-center align-self-center relative_block">
+          2018-2019 © Nokia IoT Laboratory, Moscow.   Powered by Nokia Glial™ and IMPACT™.   Version: {{frontend_version}}
+        </div>
       </v-flex>
     </v-layout>
   </v-container>
@@ -32,7 +37,9 @@
       BarChartManager,
       SunburstChartManager
     },
-    data: () => ({}),
+    data: () => ({
+      frontend_version: VERSION,
+    }),
     methods: {},
     mounted: function () {
     },

@@ -29,9 +29,6 @@
     <v-content>
       <router-view></router-view>
     </v-content>
-    <div class="pt-0 mt-0 mb-0 pb-0 ml-0 pl-2 caption text-center">
-      2018-2019 © Nokia IoT Laboratory, Moscow.   Powered by Nokia Glial™ and IMPACT™.   Version: {{frontend_version}}
-    </div>
   </v-app>
 </template>
 
@@ -71,15 +68,25 @@
             icon: "fa-project-diagram",
             path: "/restaurant-management/1",
           },
-          {
+          /*{
             number: 2,
+            icon: "fa-project-diagram",
+            path: "/restaurant-management-old/1",
+          },*/
+          {
+            number: 3,
             icon: "fa-chart-pie",
             path: "/manager-sunburst-bar-chart/1",
           },
           {
-            number: 3,
+            number: 4,
             icon: "fa-map",
             path: "/restaurant-map/1",
+          },
+          {
+            number: 5,
+            icon: "fa-percent",
+            path: "/economy",
           }
         ];
       }
