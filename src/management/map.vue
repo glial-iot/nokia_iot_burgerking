@@ -1,68 +1,59 @@
 <template>
   <v-container grid-list-md fill-height fluid>
     <v-layout column>
-      <v-flex d-flex md12>
-        <v-layout column>
-          <v-flex d-flex md6>
-            <v-layout row wrap>
-              <v-flex d-flex md5>
-                <v-layout row wrap>
-                  <v-flex d-flex md12>
-                    <v-card>
-                      <l-map :zoom="map.zoom" style="z-index: 5" :center="map.center">
-                        <l-tile-layer :url="map.url" :attribution="map.attribution"></l-tile-layer>
-                        <template v-for="restaurant in restaurants">
-                          <l-marker :lat-lng="restaurant.coordinates" @click="map_marker_click"
-                                    v-bind:key="restaurant.name"
-                                    :icon="get_marker_icon(restaurant.selected)"></l-marker>
-                        </template>
-                      </l-map>
-                    </v-card>
-                  </v-flex>
-                </v-layout>
-              </v-flex>
-              <v-flex d-flex md7>
-                <v-layout row wrap>
-                  <v-flex d-flex md12>
-                    <v-layout column="">
-                      <v-flex d-flex md12 class="table-block">
-                        <restaurants-table ref="restaurantsTable" @restaurant_row_clicked="table_click"
-                                           :data="restaurants"></restaurants-table>
-                      </v-flex>
-                    </v-layout>
-                  </v-flex>
-                </v-layout>
-              </v-flex>
-            </v-layout>
-          </v-flex>
+      <v-flex d-flex md7>
+        <v-layout row wrap>
           <v-flex d-flex md5>
             <v-layout row wrap>
-              <v-flex d-flex md3>
-                <data-widget-text :averaged="true" :id="1" parameter="day_per_client" data_object="/metrics/relative/energy/"
-                                  :title="$t('message.network_consumption_per_m2')"
-                                  :measurement="$t('message.kWh_per_meter')"></data-widget-text>
-              </v-flex>
-              <v-flex d-flex md3>
-                <data-widget-text :averaged="true" :id="2" parameter="month_per_client" data_object="/metrics/relative/energy/"
-                                  :title="$t('message.network_consumption_per_client')"
-                                  :measurement="$t('message.kWh_per_client')"></data-widget-text>
-              </v-flex>
-              <v-flex d-flex md3>
-                <data-widget-text :averaged="true" :id="3" parameter="current_month" data_object="/metrics/counters/energy/all/"
-                                  :title="$t('message.network_consumption_per_month')"
-                                  :measurement="$t('message.kilowatt_per_hour')"></data-widget-text>
-              </v-flex>
-              <v-flex d-flex md3>
-                <data-widget-text :averaged="false" :id="4" parameter="month_per_client" data_object="/metrics/relative/energy/"
-                                  :title="$t('message.minimal_network_consumption_per_client')"
-                                  :measurement="$t('message.kWh_per_client')"></data-widget-text>
+              <v-flex d-flex md12>
+                <v-card>
+                  <l-map :zoom="map.zoom" style="z-index: 5" :center="map.center">
+                    <l-tile-layer :url="map.url" :attribution="map.attribution"></l-tile-layer>
+                    <template v-for="restaurant in restaurants">
+                      <l-marker :lat-lng="restaurant.coordinates" @click="map_marker_click"
+                                v-bind:key="restaurant.name"
+                                :icon="get_marker_icon(restaurant.selected)"></l-marker>
+                    </template>
+                  </l-map>
+                </v-card>
               </v-flex>
             </v-layout>
           </v-flex>
-          <v-flex d-flex md1 class="footer-internal">
-            <div class="caption text-center align-self-center">
-              2018-2019 © Nokia IoT Laboratory, Moscow.   Powered by Nokia Glial™ and IMPACT™.   Version: {{frontend_version}}
-            </div>
+          <v-flex d-flex md7>
+            <v-layout row wrap>
+              <v-flex d-flex md12>
+                <v-layout column="">
+                  <v-flex d-flex md12 class="table-block">
+                    <restaurants-table ref="restaurantsTable" @restaurant_row_clicked="table_click"
+                                       :data="restaurants"></restaurants-table>
+                  </v-flex>
+                </v-layout>
+              </v-flex>
+            </v-layout>
+          </v-flex>
+        </v-layout>
+      </v-flex>
+      <v-flex d-flex md5>
+        <v-layout row wrap>
+          <v-flex d-flex md3>
+            <data-widget-text :averaged="true" :id="1" parameter="last_day_per_client" data_object="/metrics/relative/energy/"
+                              :title="$t('message.network_consumption_per_m2')"
+                              :measurement="$t('message.kWh_per_meter')"></data-widget-text>
+          </v-flex>
+          <v-flex d-flex md3>
+            <data-widget-text :averaged="true" :id="2" parameter="last_month_per_area" data_object="/metrics/relative/energy/"
+                              :title="$t('message.network_consumption_per_client')"
+                              :measurement="$t('message.kWh_per_client')"></data-widget-text>
+          </v-flex>
+          <v-flex d-flex md3>
+            <data-widget-text :averaged="true" :id="3" parameter="last_month" data_object="/metrics/counters/energy/all/"
+                              :title="$t('message.network_consumption_per_month')"
+                              :measurement="$t('message.kilowatt_per_hour')"></data-widget-text>
+          </v-flex>
+          <v-flex d-flex md3>
+            <data-widget-text :averaged="false" :id="4" parameter="last_month_per_client" data_object="/metrics/relative/energy/"
+                              :title="$t('message.minimal_network_consumption_per_client')"
+                              :measurement="$t('message.kWh_per_client')"></data-widget-text>
           </v-flex>
         </v-layout>
       </v-flex>
@@ -102,7 +93,6 @@
       BarChart
     },
     data: () => ({
-      frontend_version: VERSION,
       map: {
         zoom: 13,
         center: L.latLng(55.57748493, 37.59711026),
