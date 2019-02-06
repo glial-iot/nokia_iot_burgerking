@@ -1,7 +1,7 @@
 <template>
   <v-container grid-list-md fill-height fluid>
     <v-layout column>
-      <v-flex d-flex md7>
+      <v-flex d-flex md6>
         <v-layout row wrap>
           <v-flex d-flex md5>
             <v-layout row wrap>
@@ -57,6 +57,11 @@
           </v-flex>
         </v-layout>
       </v-flex>
+      <v-flex d-flex md1 class="footer-internal">
+        <div class="caption text-center align-self-center relative_block">
+          2018-2019 © Nokia IoT Laboratory, Moscow.   Powered by Nokia Glial™ and IMPACT™.   Version: {{frontend_version}}
+        </div>
+      </v-flex>
     </v-layout>
   </v-container>
 </template>
@@ -93,6 +98,7 @@
       BarChart
     },
     data: () => ({
+      frontend_version: VERSION,
       map: {
         zoom: 13,
         center: L.latLng(55.57748493, 37.59711026),
