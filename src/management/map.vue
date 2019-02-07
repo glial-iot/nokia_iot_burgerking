@@ -46,7 +46,7 @@
                               :measurement="$t('message.kWh_per_client')"></data-widget-text>
           </v-flex>
           <v-flex d-flex md3>
-            <data-widget-text :averaged="true" :id="3" parameter="last_month" data_object="/metrics/counters/energy/all/"
+            <data-widget-text :averaged="true" :id="3" parameter="last_30d" data_object="/metrics/summary/energy/all/"
                               :title="$t('message.network_consumption_per_month')"
                               :measurement="$t('message.kilowatt_per_hour')"></data-widget-text>
           </v-flex>
@@ -177,7 +177,7 @@
             "energy_per_client": 1,
             "status": "open",
             "restaurant_page": "bk_anino_mkad",
-            "rating": 4.8,
+            "rating": 4,
             "selected": false,
             "chartData": [
               {title: "Период 1", value: 3},
@@ -186,7 +186,6 @@
               {title: "Период 4", value: 6},
               {title: "Период 5", value: 2}
             ]
-
           },
           {
             "coordinates": {
@@ -198,8 +197,135 @@
             "energy_daily": 300,
             "energy_per_client": 0.7,
             "status": "open",
-            "restaurant_page": "bk_bitca_rynok",
-            "rating": 3.4,
+            "restaurant_page": "bk_anino_mkad",
+            "rating": 2,
+            "selected": false,
+            "chartData": [
+              {title: "Период 1", value: 1},
+              {title: "Период 2", value: 1},
+              {title: "Период 3", value: 4},
+              {title: "Период 4", value: 3},
+              {title: "Период 5", value: 2}
+            ]
+          },
+          {
+            "coordinates": {
+              "lat": "55.622604069110984",
+              "lng": "37.605929999999965"
+            },
+            "address": "TC Global City",
+            "type": "restaurant",
+            "energy_daily": 830,
+            "energy_per_client": 1.2,
+            "status": "open",
+            "restaurant_page": "bk_anino_mkad",
+            "rating": 6,
+            "selected": false,
+            "chartData": [
+              {title: "Период 1", value: 1},
+              {title: "Период 2", value: 1},
+              {title: "Период 3", value: 4},
+              {title: "Период 4", value: 3},
+              {title: "Период 5", value: 2}
+            ]
+          },
+          {
+            "coordinates": {
+              "lat": "55.61111406914094",
+              "lng": "37.60662199999995"
+            },
+            "address": "TC Columbus",
+            "type": "restaurant",
+            "energy_daily": 430,
+            "energy_per_client": 0.9,
+            "status": "open",
+            "restaurant_page": "bk_anino_mkad",
+            "rating": 3,
+            "selected": false,
+            "chartData": [
+              {title: "Период 1", value: 1},
+              {title: "Период 2", value: 1},
+              {title: "Период 3", value: 4},
+              {title: "Период 4", value: 3},
+              {title: "Период 5", value: 2}
+            ]
+          },
+          {
+            "coordinates": {
+              "lat": "55.565605569172696",
+              "lng": "37.556127499999995"
+            },
+            "address": "TC Viva",
+            "type": "restaurant",
+            "energy_daily": 1200,
+            "energy_per_client": 0.4,
+            "status": "open",
+            "restaurant_page": "bk_anino_mkad",
+            "rating": 1,
+            "selected": false,
+            "chartData": [
+              {title: "Период 1", value: 1},
+              {title: "Период 2", value: 1},
+              {title: "Период 3", value: 4},
+              {title: "Период 4", value: 3},
+              {title: "Период 5", value: 2}
+            ]
+          },
+          {
+            "coordinates": {
+              "lat": "55.573108069162224",
+              "lng": "37.60912799999999"
+            },
+            "address": "TC Bitca Park",
+            "type": "restaurant",
+            "energy_daily": 200,
+            "energy_per_client": 1.1,
+            "status": "open",
+            "restaurant_page": "bk_anino_mkad",
+            "rating": 5,
+            "selected": false,
+            "chartData": [
+              {title: "Период 1", value: 1},
+              {title: "Период 2", value: 1},
+              {title: "Период 3", value: 4},
+              {title: "Период 4", value: 3},
+              {title: "Период 5", value: 2}
+            ]
+          }
+          ,
+          {
+            "coordinates": {
+              "lat": "55.63322106907874",
+              "lng": "37.624246999999976"
+            },
+            "address": "TC Retail Park",
+            "type": "restaurant",
+            "energy_daily": 200,
+            "energy_per_client": 1.6,
+            "status": "open",
+            "restaurant_page": "bk_anino_mkad",
+            "rating": 8,
+            "selected": false,
+            "chartData": [
+              {title: "Период 1", value: 1},
+              {title: "Период 2", value: 1},
+              {title: "Период 3", value: 4},
+              {title: "Период 4", value: 3},
+              {title: "Период 5", value: 2}
+            ]
+          },
+          {
+            "coordinates": {
+              "lat": "55.58680706913798",
+              "lng": "37.72496599999989"
+            },
+            "address": "TC Vegas",
+            "type": "restaurant",
+            "energy_daily": 200,
+            "energy_per_client": 1.4,
+            "status": "open",
+            "restaurant_page": "bk_anino_mkad",
+            "rating": 7,
             "selected": false,
             "chartData": [
               {title: "Период 1", value: 1},
