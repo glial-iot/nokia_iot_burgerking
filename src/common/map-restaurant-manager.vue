@@ -32,23 +32,36 @@
     }),
     methods: {
       getLatestValues() {
+
+        function getSVG (container) {
+          let ua = navigator.userAgent.toLowerCase();
+          if (ua.indexOf('safari') != -1) {
+            if (ua.indexOf('chrome') > -1) {
+              return container.getSVGDocument()
+            } else {
+              return container.contentDocument
+            }
+          }
+          else {
+            return container.getSVGDocument()
+          }
+        }
         this.svg_data = [];
         let axios_requests = [];
 
         let svgDiv = document.getElementById("svgMap");
-        let svgData= svgDiv.getSVGDocument();
+        let svgData= getSVG(svgDiv);
 
         let fill_svg_with_data = () => {
           this.text.forEach((el) => {
-            let containers = svgDiv.getSVGDocument().getElementsByClassName(el.svg_class);
+            let containers = getSVG(svgDiv).getElementsByClassName(el.svg_class);
             Array.from(containers).forEach((container) => {
               let textNode = container.childNodes[0];
               textNode.nodeValue = el.value;
             });
           });
           this.svg_data.forEach((el) => {
-            let container = svgDiv.getSVGDocument().getElementById(el.sensor_svg_id);
-            console.log(el.sensor_svg_id);
+            let container = getSVG(svgDiv).getElementById(el.sensor_svg_id);
             let textNode = container.childNodes[0];
             textNode.nodeValue = el.data_description+": "+el.value + " " +  el.measurement_unit;
           });
