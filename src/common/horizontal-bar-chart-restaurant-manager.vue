@@ -71,6 +71,7 @@
         });
         Vue.axios.all(axios_requests).then((results) => {
           results.forEach((response) => {
+            console.log(response);
             if (response.data.results[0].series) {
               let value = response.data.results[0].series[0].values[0][1].toFixed(2);
               let data_object = response.data.results[0].series[0].name;

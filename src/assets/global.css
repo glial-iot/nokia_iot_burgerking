@@ -43,11 +43,13 @@
 }
 
 .barchart-card {
+  width: 100%;
   min-height: 180px !important;
 }
 
 .sunburst-card {
   min-height: 420px !important;
+  width: 100%;
 }
 
 .barchart-card, .sunburst-card {
@@ -306,7 +308,7 @@ table.table thead tr {
 
 
 .amChart_container {
-  max-height: 90px;
+  max-height: 100px;
   overflow: hidden;
 }
 

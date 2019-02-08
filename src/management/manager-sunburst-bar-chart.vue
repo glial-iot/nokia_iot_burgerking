@@ -48,8 +48,8 @@
         return {
           config: {
             data_function: "max",
-            group_period: "96h",
-            time_interval: "time > now() - 96h",
+            group_period: "7d",
+            time_interval: "time > now() - 7d",
           },
           data_feeds: [
             {

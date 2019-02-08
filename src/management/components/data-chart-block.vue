@@ -49,9 +49,12 @@
 
         chart.data = this.chart_data;
         chart.paddingLeft = -20;
+        chart.paddingBottom = 50;
 
         let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
         dateAxis.renderer.grid.template.location = 0;
+        dateAxis.renderer.ticks.template.disabled = true;
+        dateAxis.renderer.labels.template.disabled = true;
 
         let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
         valueAxis.tooltip.disabled = true;

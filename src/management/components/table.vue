@@ -2,7 +2,7 @@
   <div>
     <detail ref="restaurantTable"></detail>
     <v-layout column class="table-column">
-      <v-flex d-inline-flex class="flex-full-height">
+      <v-flex md10 d-flex class="flex-full-height">
         <v-card class="no-shadow">
           <v-data-table :headers="table_headers" :items="data" :pagination.sync="pagination" hide-actions
                         class="elevation-1">
@@ -33,7 +33,7 @@
           </v-data-table>
         </v-card>
       </v-flex>
-      <v-flex v-if="pagination.totalItems > pagination.rowsPerPage" d-block>
+      <v-flex md2 v-if="pagination.totalItems > pagination.rowsPerPage" d-flex>
         <v-card class="no-shadow pagination-block">
           <v-pagination class="custom-pagination" v-model="pagination.page" :length="pages"></v-pagination>
         </v-card>
@@ -54,7 +54,7 @@
       detail
     },
     data: () => ({
-      pagination: {rowsPerPage: 12}
+      pagination: {rowsPerPage: 5}
     }),
     props: ["data"],
     computed: {

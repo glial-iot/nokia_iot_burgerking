@@ -15,7 +15,7 @@
     "axios": "^0.18.0",
     "bulma": "^0.7.1",
     "chart.js": "^2.7.2",
-    "d3": "^5.5.0",
+    "d3": "5.5.0",
     "ejs-loader": "^0.3.1",
     "favicons-webpack-plugin": "0.0.9",
     "heatmap.js": "^2.0.5",
@@ -37,10 +37,10 @@
     "vue-yandex-maps": "^0.7.9",
     "vue2-ace-editor": "0.0.10",
     "vue2-leaflet": "^1.2.3",
-    "vue-resize-directive": "^1.1.4",
+    "vue-resize-directive": "1.1.4",
     "vuetify": "^1.0.18",
     "vuex": "^3.0.1",
-    "@amcharts/amcharts4": "^4.0.1"
+    "@amcharts/amcharts4": "4.0.1"
   },
   "browserslist": [
     "> 1%",
@@ -59,7 +59,7 @@
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-vue": "^4.5.0",
     "file-loader": "^1.1.4",
-    "vue-loader": "^13.0.5",
+    "vue-loader": "^14.2.2",
     "vue-template-compiler": "^2.4.4",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.9.1"
