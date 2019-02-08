@@ -48,7 +48,7 @@
             },
             table_headers () {
                 return [
-                    { text: "Тревоги и уведомления", value: "events" },
+                    { text: this.$i18n.t("message.alarms_and_events"), value: "events" },
                 ]
             }
         },

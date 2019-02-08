@@ -8,7 +8,7 @@
               <v-flex d-flex md6 class="column_container">
                 <v-layout column wrap>
                   <v-flex d-flex md1 class="block_title">
-                    <h3 class="text-md-center">Климатические параметры</h3>
+                    <h3 class="text-md-center">{{$t('message.climatic_parameters')}}</h3>
                   </v-flex>
                   <v-flex d-flex md11 class="block_content">
                     <template v-for="card in small_cards_data">
@@ -23,7 +23,7 @@
               <v-flex d-flex md6 class="column_container">
                 <v-layout column wrap>
                   <v-flex d-flex md1 class="block_title">
-                    <h3 class="text-md-center">Энергия</h3>
+                    <h3 class="text-md-center">{{$t('message.energy')}}</h3>
                   </v-flex>
                   <v-flex d-flex md11 class="block_content">
                     <template v-for="card in cards_data">
@@ -101,9 +101,9 @@
       data_chart_blocks () {
         return [
           {
-            text: "За последние сутки:",
+            text: this.$i18n.t("message.for_last_day")+":",
             value: 430,
-            value_metering: "клиентов",
+            value_metering: this.$i18n.t("message.clients"),
             graph_data: [
               {
                 date: new Date('2019-01-29T03:24:00'),
@@ -133,9 +133,9 @@
             ]
           },
           {
-            text: "За последний месяц:",
+            text: this.$i18n.t("message.for_last_month")+":",
             value: "12 000",
-            value_metering: "клиентов",
+            value_metering: this.$i18n.t("message.clients"),
             graph_data: [
               {
                 date: new Date('2018-09-29T03:24:00'),
@@ -165,9 +165,9 @@
             ]
           },
           {
-            text: "На квадратный метр:",
+            text: this.$i18n.t("message.per_square_meter"),
             value: 20,
-            value_metering: "кл/м²",
+            value_metering: this.$i18n.t("message.clients_per_meter_short"),
             graph_data: [
               {
                 date: new Date('2019-01-29T03:24:00'),
@@ -200,10 +200,10 @@
       },
       events () {
         return [
-          "21 декабря, 17:40     -   Освещение не выключено ночью",
-          "25 декабря, 2:40     -   Не выключена плита",
-          "28 декабря, 4:43     -   Отключение питания холодильника",
-          "30 декабря, 2:15     -   Перетоп. Температура в зале +28",
+          this.$i18n.t("message.dummy_1"),
+          this.$i18n.t("message.dummy_2"),
+          this.$i18n.t("message.dummy_3"),
+          this.$i18n.t("message.dummy_4")
         ]
       },
       small_cards_data () {
@@ -211,7 +211,7 @@
           {
             id: 1,
             type: "clients_per_period",
-            title: "Температура",
+            title: this.$i18n.t("message.temperature"),
             data_feeds: [
               {
                 id: 11,
@@ -241,7 +241,7 @@
           {
             id: 1,
             type: "clients_per_period",
-            title: "Влажность",
+            title: this.$i18n.t("message.humidity"),
             data_feeds: [
               {
                 id: 11,
