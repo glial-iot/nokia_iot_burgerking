@@ -16,7 +16,7 @@
               <span>{{title}} {{current_feed.measurement.literal | decapitalize}}<br>&nbsp;</span>
             </v-card-title>
             <v-card-text class="d-block text-center">
-              <span class="display-2">{{current_feed.measurement.explicit_value}}</span><span
+              <span class="display-2">{{current_value | round}}</span><span
               class="headline"> {{current_feed.measurement.short}}</span>
             </v-card-text>
           </div>
@@ -99,7 +99,7 @@
         let fun = this.current_feed.full_chart_data_function;
         let query_parameter = fun + "(\"" + this.current_feed.parameter + "\") as \"" + fun + "_" + this.current_feed.parameter + "\"";
 
-        let influxql_query = "SELECT " + query_parameter + " FROM \"bk_metrics\".\"autogen\".\"/burgerking" + this.current_feed.object + "\" WHERE " + time_interval + " GROUP BY time(" + group_by + ") FILL(" + fill + ")";
+        let influxql_query = "SELECT " + query_parameter + " FROM \"bk_raw\".\"autogen\".\"/burgerking" + this.current_feed.object + "\" WHERE " + time_interval + " GROUP BY time(" + group_by + ") FILL(" + fill + ")";
         Vue.axios
           .get(this.$store.getters.getInfluxServerAddress + "/query", {
             params: {
@@ -138,7 +138,7 @@
         let fun = this.current_feed.small_chart_data_function;
         let query_parameter = fun + "(\"" + this.current_feed.parameter + "\") as \"" + fun + "_" + this.current_feed.parameter + "\"";
 
-        let influxql_query = "SELECT " + query_parameter + " FROM \"bk_metrics\".\"autogen\".\"/burgerking" + this.current_feed.object + "\" WHERE " + time_interval + " GROUP BY time(" + group_by + ") FILL(" + fill + ") LIMIT " + limit;
+        let influxql_query = "SELECT " + query_parameter + " FROM \"bk_raw\".\"autogen\".\"/burgerking" + this.current_feed.object + "\" WHERE " + time_interval + " GROUP BY time(" + group_by + ") FILL(" + fill + ") LIMIT " + limit;
         Vue.axios
           .get(this.$store.getters.getInfluxServerAddress + "/query", {
             params: {
@@ -174,7 +174,7 @@
         let fun = this.current_feed.latest_value_data_function;
         let query_parameter = fun + "(\"" + this.current_feed.parameter + "\") as \"" + fun + "_" + this.current_feed.parameter + "\"";
 
-        let influxql_query = "SELECT " + query_parameter + " FROM \"bk_metrics\".\"autogen\".\"/burgerking" + this.current_feed.object + "\" WHERE " + time_interval + " GROUP BY time(" + group_by + ") FILL(" + fill + ") LIMIT " + limit;
+        let influxql_query = "SELECT " + query_parameter + " FROM \"bk_raw\".\"autogen\".\"/burgerking" + this.current_feed.object + "\" WHERE " + time_interval + " GROUP BY time(" + group_by + ") FILL(" + fill + ") LIMIT " + limit;
         Vue.axios
           .get(this.$store.getters.getInfluxServerAddress + "/query", {
             params: {
@@ -262,6 +262,18 @@
         if (!value) return ''
         value = value.toString()
         return value.charAt(0).toLowerCase() + value.slice(1)
+      },
+      round(value, decimals) {
+        if(!value) {
+          value = 0;
+        }
+
+        if(!decimals) {
+          decimals = 0;
+        }
+
+        value = Math.round(value * Math.pow(10, decimals)) / Math.pow(10, decimals);
+        return value;
       }
     },
     watch: {

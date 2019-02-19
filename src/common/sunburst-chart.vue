@@ -21,8 +21,6 @@
 
   Vue.use(Vuex, Vue_i18n);
 
-
-
   import sunburst from "./chart_components/sunburst"
   import breadcrumbTrail from "./chart_components/breadcrumbTrail"
   import nodeInfoDisplayer from "./chart_components/sunburstInfo"

@@ -54,7 +54,7 @@
       detail
     },
     data: () => ({
-      pagination: {rowsPerPage: 5}
+      pagination: {rowsPerPage: 4}
     }),
     props: ["data"],
     computed: {
