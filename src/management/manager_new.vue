@@ -42,7 +42,7 @@
               <v-flex d-flex md6 class="column_container block_content_container ml-1">
                 <v-layout column class="block_content_container_column">
                   <template v-for="block in data_chart_blocks">
-                    <data-chart-block :block="block" :chart_data="block.graph_data"></data-chart-block>
+                    <data-chart-block :block="block" :current_feed="block.data_feed"></data-chart-block>
                   </template>
                 </v-layout>
               </v-flex>
@@ -102,99 +102,48 @@
         return [
           {
             text: this.$i18n.t("message.for_last_day")+":",
-            value: 430,
             value_metering: this.$i18n.t("message.clients"),
-            graph_data: [
-              {
-                date: new Date('2019-01-29T03:24:00'),
-                name: 'graph_data',
-                value: 1
-              },
-              {
-                date: new Date('2019-01-30T03:24:00'),
-                name: 'graph_data',
-                value: 2
-              },
-              {
-                date: new Date('2019-02-01T03:24:00'),
-                name: 'graph_data',
-                value: 1
-              },
-              {
-                date: new Date('2019-02-02T03:24:00'),
-                name: 'graph_data',
-                value: 3
-              },
-              {
-                date: new Date('2019-02-03T03:24:00'),
-                name: 'graph_data',
-                value: 5
+            data_feed: {
+              parameter: "last_24h",
+              object: "/metrics/summary/clients/",
+              small_chart_group_period: "1d",
+              small_chart_time_interval: "time > now() - 5d",
+              small_chart_data_function: "median",
+              latest_value_calc_avg_period: "time > now() - 3h",
+              latest_value_calc_group_period: "3h",
+              latest_value_data_function: "median",
+              round_to_whole: true
               }
-            ]
           },
           {
             text: this.$i18n.t("message.for_last_month")+":",
-            value: "12 000",
             value_metering: this.$i18n.t("message.clients"),
-            graph_data: [
-              {
-                date: new Date('2018-09-29T03:24:00'),
-                name: 'graph_data',
-                value: 1
-              },
-              {
-                date: new Date('2018-10-29T03:24:00'),
-                name: 'graph_data',
-                value: 2
-              },
-              {
-                date: new Date('2018-11-29T03:24:00'),
-                name: 'graph_data',
-                value: 1
-              },
-              {
-                date: new Date('2018-12-29T03:24:00'),
-                name: 'graph_data',
-                value: 3
-              },
-              {
-                date: new Date('2019-01-03T03:24:00'),
-                name: 'graph_data',
-                value: 5
-              }
-            ]
+            data_feed: {
+              parameter: "last_30d",
+              object: "/metrics/summary/clients/",
+              small_chart_group_period: "1d",
+              small_chart_time_interval: "time > now() - 5d",
+              small_chart_data_function: "median",
+              latest_value_calc_avg_period: "time > now() - 3h",
+              latest_value_calc_group_period: "3h",
+              latest_value_data_function: "median",
+              round_to_whole: true
+            }
           },
           {
-            text: this.$i18n.t("message.per_square_meter"),
-            value: 20,
+            text: this.$i18n.t("message.per_square_meter")+":",
             value_metering: this.$i18n.t("message.clients_per_meter_short"),
-            graph_data: [
-              {
-                date: new Date('2019-01-29T03:24:00'),
-                name: 'graph_data',
-                value: 1
-              },
-              {
-                date: new Date('2019-01-30T03:24:00'),
-                name: 'graph_data',
-                value: 2
-              },
-              {
-                date: new Date('2019-02-01T03:24:00'),
-                name: 'graph_data',
-                value: 1
-              },
-              {
-                date: new Date('2019-02-02T03:24:00'),
-                name: 'graph_data',
-                value: 3
-              },
-              {
-                date: new Date('2019-02-03T03:24:00'),
-                name: 'graph_data',
-                value: 5
-              }
-            ]
+            data_feed: {
+              parameter: "last_day_per_area",
+              object: "/metrics/relative/clients/",
+              small_chart_group_period: "15d",
+              small_chart_time_interval: "time > now() - 150d",
+              small_chart_data_function: "median",
+              latest_value_calc_avg_period: "time > now() - 30d",
+              latest_value_calc_group_period: "30d",
+              latest_value_data_function: "median",
+              round: false
+            }
           }
         ]
       },
@@ -224,14 +173,14 @@
                 object_net_avg: "/raw/climate/AM-4/",
                 parameter_net_avg: "T",
                 math_net_avg_multiplier: "0.9",
-                small_chart_group_period: "6d",
-                small_chart_time_interval: "time > now() - 30d",
+                small_chart_group_period: "1d",
+                small_chart_time_interval: "time > now() - 5d",
                 small_chart_data_function: "median",
-                full_chart_group_period: "1d",
-                full_chart_time_interval: "time > now() - 30d",
+                full_chart_group_period: "1h",
+                full_chart_time_interval: "time > now() - 10d",
                 full_chart_data_function: "median",
-                latest_value_calc_avg_period: "time > now() - 30d",
-                latest_value_calc_group_period: "30d",
+                latest_value_calc_avg_period: "time > now() - 3h",
+                latest_value_calc_group_period: "3h",
                 latest_value_data_function: "max"
               },
             ]
@@ -252,14 +201,14 @@
                 object_net_avg: "/raw/climate/AM-4/",
                 parameter_net_avg: "RH",
                 math_net_avg_multiplier: "0.9",
-                small_chart_group_period: "6d",
-                small_chart_time_interval: "time > now() - 30d",
+                small_chart_group_period: "1d",
+                small_chart_time_interval: "time > now() - 5d",
                 small_chart_data_function: "median",
-                full_chart_group_period: "1d",
-                full_chart_time_interval: "time > now() - 30d",
+                full_chart_group_period: "1h",
+                full_chart_time_interval: "time > now() - 10d",
                 full_chart_data_function: "median",
-                latest_value_calc_avg_period: "time > now() - 30d",
-                latest_value_calc_group_period: "30d",
+                latest_value_calc_avg_period: "time > now() - 3h",
+                latest_value_calc_group_period: "3h",
                 latest_value_data_function: "max"
               },
             ]
@@ -280,14 +229,14 @@
                 object_net_avg: "/raw/climate/Air-2/",
                 parameter_net_avg: "CO2",
                 math_net_avg_multiplier: "0.9",
-                small_chart_group_period: "6d",
-                small_chart_time_interval: "time > now() - 30d",
+                small_chart_group_period: "1d",
+                small_chart_time_interval: "time > now() - 5d",
                 small_chart_data_function: "median",
-                full_chart_group_period: "1d",
-                full_chart_time_interval: "time > now() - 30d",
+                full_chart_group_period: "1h",
+                full_chart_time_interval: "time > now() - 10d",
                 full_chart_data_function: "median",
-                latest_value_calc_avg_period: "time > now() - 30d",
-                latest_value_calc_group_period: "30d",
+                latest_value_calc_avg_period: "time > now() - 3h",
+                latest_value_calc_group_period: "3h",
                 latest_value_data_function: "max"
               },
             ]
@@ -313,14 +262,14 @@
                 object_net_avg: "/metrics/summary/energy/all/",
                 parameter_net_avg: "last_24h",
                 math_net_avg_multiplier: "1.1",
-                small_chart_group_period: "6d",
-                small_chart_time_interval: "time > now() - 30d",
+                small_chart_group_period: "1d",
+                small_chart_time_interval: "time > now() - 5d",
                 small_chart_data_function: "median",
                 full_chart_group_period: "1d",
                 full_chart_time_interval: "time > now() - 30d",
                 full_chart_data_function: "median",
-                latest_value_calc_avg_period: "time > now() - 30d",
-                latest_value_calc_group_period: "30d",
+                latest_value_calc_avg_period: "time > now() - 24h",
+                latest_value_calc_group_period: "24h",
                 latest_value_data_function: "max"
               },
               {
@@ -335,15 +284,15 @@
                 object_net_avg: "/metrics/summary/energy/all/",
                 parameter_net_avg: "last_30d",
                 math_net_avg_multiplier: "1.1",
-                small_chart_group_period: "6d",
-                small_chart_time_interval: "time > now() - 30d",
+                small_chart_group_period: "30d",
+                small_chart_time_interval: "time > now() - 150d",
                 small_chart_data_function: "median",
                 full_chart_group_period: "1d",
-                full_chart_time_interval: "time > now() - 30d",
+                full_chart_time_interval: "time > now() - 150d",
                 full_chart_data_function: "median",
                 latest_value_calc_avg_period: "time > now() - 30d",
-                latest_value_calc_group_period: "30d",
-                latest_value_data_function: "max"
+                latest_value_calc_group_period: "1d",
+                latest_value_data_function: "sum"
               }
             ]
           },
@@ -364,15 +313,15 @@
                 object_net_avg: "/metrics/relative/energy/",
                 parameter_net_avg: "last_month_per_area",
                 math_net_avg_multiplier: "1.1",
-                small_chart_group_period: "6d",
-                small_chart_time_interval: "time > now() - 30d",
+                small_chart_group_period: "1d",
+                small_chart_time_interval: "time > now() - 5d",
                 small_chart_data_function: "median",
                 full_chart_group_period: "1d",
                 full_chart_time_interval: "time > now() - 30d",
                 full_chart_data_function: "median",
                 latest_value_calc_avg_period: "time > now() - 30d",
-                latest_value_calc_group_period: "30d",
-                latest_value_data_function: "max"
+                latest_value_calc_group_period: "1d",
+                latest_value_data_function: "sum"
               },
               {
                 id: 22,
@@ -386,15 +335,15 @@
                 object_net_avg: "/metrics/relative/energy/",
                 parameter_net_avg: "last_month_per_client",
                 math_net_avg_multiplier: "1.1",
-                small_chart_group_period: "6d",
-                small_chart_time_interval: "time > now() - 30d",
+                small_chart_group_period: "30d",
+                small_chart_time_interval: "time > now() - 150d",
                 small_chart_data_function: "median",
                 full_chart_group_period: "1d",
-                full_chart_time_interval: "time > now() - 30d",
+                full_chart_time_interval: "time > now() - 150d",
                 full_chart_data_function: "median",
                 latest_value_calc_avg_period: "time > now() - 30d",
-                latest_value_calc_group_period: "30d",
-                latest_value_data_function: "max"
+                latest_value_calc_group_period: "1d",
+                latest_value_data_function: "median"
               }
             ]
           }

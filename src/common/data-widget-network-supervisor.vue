@@ -83,8 +83,8 @@
       getFullChartData() {
         let data_series = [];
         let fill = "none"; //fill the gap between "now" and last data received
-        let time_interval = "time > now() - 24h";
-        let group_by = "5m"; // group by 1 hour
+        let time_interval = "time > now() - 30d";
+        let group_by = "1d"; // group by 1 day
         let query_parameter = this.parameter;
         if (this.average_method === "arithmetic_average") {
           query_parameter = "mean(\"" + this.parameter + "\") as \"Mean_" + this.parameter + "\"";
@@ -166,7 +166,7 @@
       getLatestValue() {
         let fill = "none"; //fill the gap between "now" and last data received
         let limit = 1; // only 1 value
-        let time_interval = "time > now() - 5h AND time < now() - 3h"; //last 5 days
+        let time_interval = "time > now() - 5h AND time < now() - 3h";
         let group_by = "2h"; // group by 2 hours
         let query_parameter = this.parameter;
         if (this.average_method === "arithmetic_average") {

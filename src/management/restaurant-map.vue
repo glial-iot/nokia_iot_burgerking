@@ -84,8 +84,8 @@
       map_data() {
         return {
           config: {
-            group_period: "1d",
-            time_interval: "time > now() - 30d",
+            group_period: "1h",
+            time_interval: "time > now() - 1h",
           },
           data_feeds: [
             {
